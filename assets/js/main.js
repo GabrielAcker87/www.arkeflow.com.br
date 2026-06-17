@@ -1,73 +1,210 @@
 (function () {
   'use strict';
 
-  // ── Canvas: firefly particles ────────────────────────────────
+  // ── Canvas: bubble system ────────────────────────────────────
   var canvas = document.getElementById('bg');
   var ctx    = canvas.getContext('2d');
   var W, H;
-  var particles = [];
-  var CYAN  = [0, 200, 220];
-  var MINT  = [38, 255, 147];
-  var COUNT = 50;
 
-  function buildParticles() {
-    particles = [];
-    for (var i = 0; i < COUNT; i++) {
-      var isCyan = Math.random() < 0.7;
-      particles.push({
-        x:     Math.random() * W,
-        y:     Math.random() * H,
-        r:     0.8 + Math.random() * 2.2,
-        vx:    (Math.random() - 0.5) * 0.5,
-        vy:    (Math.random() - 0.5) * 0.5,
-        color: isCyan ? CYAN : MINT,
-        phase: Math.random() * Math.PI * 2,
-        speed: 0.0007 + Math.random() * 0.0012
-      });
-    }
+  var CYAN = [0, 200, 220];
+  var MINT = [38, 255, 147];
+
+  var SMALL_COUNT  = 20;
+  var MEDIUM_COUNT = 22;
+  var bubbles = [];
+
+  function makeBubble(isSmall) {
+    var isCyan = Math.random() < 0.7;
+    var r = isSmall
+      ? 2 + Math.random() * 3
+      : 6 + Math.random() * 7;
+    return {
+      x:           Math.random() * W,
+      y:           Math.random() * H,
+      r:           r,
+      vx:          (Math.random() - 0.5) * 0.28,
+      vy:          (Math.random() - 0.5) * 0.24,
+      color:       isCyan ? CYAN : MINT,
+      phase:       Math.random() * Math.PI * 2,
+      phaseSpd:    0.008 + Math.random() * 0.012,
+      baseOpacity: 0.30 + Math.random() * 0.42,
+      ttl:         2500 + Math.floor(Math.random() * 3501),
+      popping:     false,
+      popFrame:    0,
+      popDuration: 0,
+      particles:   []
+    };
+  }
+
+  function buildBubbles() {
+    bubbles = [];
+    for (var i = 0; i < SMALL_COUNT; i++)  bubbles.push(makeBubble(true));
+    for (var j = 0; j < MEDIUM_COUNT; j++) bubbles.push(makeBubble(false));
   }
 
   function resizeCanvas() {
     W = canvas.width  = window.innerWidth;
     H = canvas.height = window.innerHeight;
-    buildParticles();
+    buildBubbles();
   }
   resizeCanvas();
   window.addEventListener('resize', resizeCanvas, { passive: true });
 
-  function drawParticles(ts) {
-    ctx.clearRect(0, 0, W, H);
-    for (var j = 0; j < particles.length; j++) {
-      var p = particles[j];
-      p.x += p.vx;
-      p.y += p.vy;
-      if (p.x < -20)       p.x = W + 20;
-      else if (p.x > W + 20) p.x = -20;
-      if (p.y < -20)       p.y = H + 20;
-      else if (p.y > H + 20) p.y = -20;
+  function drawBubble(b, opacity) {
+    var x = b.x, y = b.y, r = b.r;
+    var rc = b.color[0], gc = b.color[1], bc = b.color[2];
 
-      var pulse = 0.5 + 0.5 * Math.sin(p.phase + ts * p.speed);
-      var alpha = 0.25 + pulse * 0.55;
-      var r = p.color[0], g = p.color[1], b = p.color[2];
-      var gR = p.r * 5;
+    // 1. Outer glow
+    var glowR = r * 5.5;
+    var g1 = ctx.createRadialGradient(x, y, 0, x, y, glowR);
+    g1.addColorStop(0, 'rgba(' + rc + ',' + gc + ',' + bc + ',' + (opacity * 0.08).toFixed(4) + ')');
+    g1.addColorStop(1, 'rgba(' + rc + ',' + gc + ',' + bc + ',0)');
+    ctx.beginPath();
+    ctx.arc(x, y, glowR, 0, Math.PI * 2);
+    ctx.fillStyle = g1;
+    ctx.fill();
 
-      var grad = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, gR);
-      grad.addColorStop(0, 'rgba(' + r + ',' + g + ',' + b + ',' + alpha.toFixed(3) + ')');
-      grad.addColorStop(1, 'rgba(' + r + ',' + g + ',' + b + ',0)');
+    // 2. Body fill
+    var hx = x - r * 0.30, hy = y - r * 0.35;
+    var g2 = ctx.createRadialGradient(hx, hy, 0, x, y, r);
+    g2.addColorStop(0, 'rgba(' + rc + ',' + gc + ',' + bc + ',' + (opacity * 0.13).toFixed(4) + ')');
+    g2.addColorStop(1, 'rgba(' + rc + ',' + gc + ',' + bc + ',' + (opacity * 0.03).toFixed(4) + ')');
+    ctx.beginPath();
+    ctx.arc(x, y, r, 0, Math.PI * 2);
+    ctx.fillStyle = g2;
+    ctx.fill();
 
+    // 3. Rim stroke
+    ctx.beginPath();
+    ctx.arc(x, y, r, 0, Math.PI * 2);
+    ctx.strokeStyle = 'rgba(' + rc + ',' + gc + ',' + bc + ',' + (opacity * 0.70).toFixed(4) + ')';
+    ctx.lineWidth = 0.9;
+    ctx.stroke();
+
+    // 4. Highlight — clipped to bubble arc
+    ctx.save();
+    ctx.beginPath();
+    ctx.arc(x, y, r, 0, Math.PI * 2);
+    ctx.clip();
+    var hx2 = x - r * 0.33, hy2 = y - r * 0.33;
+    var g3 = ctx.createRadialGradient(hx2, hy2, 0, hx2, hy2, r * 0.5);
+    g3.addColorStop(0, 'rgba(255,255,255,' + (opacity * 0.58).toFixed(4) + ')');
+    g3.addColorStop(1, 'rgba(255,255,255,0)');
+    ctx.beginPath();
+    ctx.arc(x, y, r, 0, Math.PI * 2);
+    ctx.fillStyle = g3;
+    ctx.fill();
+    ctx.restore();
+  }
+
+  function startPop(b) {
+    b.popping     = true;
+    b.popFrame    = 0;
+    b.popDuration = 45 + Math.floor(Math.random() * 30);
+    var count = 4 + Math.floor(Math.random() * 6);
+    b.particles = [];
+    for (var i = 0; i < count; i++) {
+      b.particles.push({
+        angle:  Math.random() * Math.PI * 2,
+        speed:  0.6 + Math.random() * 2.9,
+        radius: 0.8 + Math.random() * Math.max(0, b.r * 0.28 - 0.8),
+        delay:  Math.random() * 0.25,
+        wobble: (Math.random() - 0.5) * 0.8,
+        fade:   0.6 + Math.random() * 0.4
+      });
+    }
+  }
+
+  function resetBubble(b) {
+    var isSmall = b.r <= 5;
+    var nb = makeBubble(isSmall);
+    b.x = nb.x; b.y = nb.y; b.r = nb.r;
+    b.vx = nb.vx; b.vy = nb.vy;
+    b.color = nb.color; b.phase = nb.phase;
+    b.phaseSpd = nb.phaseSpd; b.baseOpacity = nb.baseOpacity;
+    b.ttl = nb.ttl; b.popping = false; b.particles = [];
+  }
+
+  function drawPop(b) {
+    var prog = b.popFrame / b.popDuration;
+    b.popFrame++;
+    var rc = b.color[0], gc = b.color[1], bc = b.color[2];
+
+    for (var i = 0; i < b.particles.length; i++) {
+      var p = b.particles[i];
+      if (prog < p.delay) continue;
+      var lp    = (prog - p.delay) / (1 - p.delay);
+      if (lp > 1) lp = 1;
+      var angle = p.angle + p.wobble * lp;
+      var dist  = p.speed * lp * b.r * 2.5;
+      var px    = b.x + Math.cos(angle) * dist;
+      var py    = b.y + Math.sin(angle) * dist;
+      var alpha = (1 - lp) * p.fade;
+
+      var glowR = p.radius * 5;
+      var grd = ctx.createRadialGradient(px, py, 0, px, py, glowR);
+      grd.addColorStop(0, 'rgba(' + rc + ',' + gc + ',' + bc + ',' + (alpha * 0.6).toFixed(4) + ')');
+      grd.addColorStop(1, 'rgba(' + rc + ',' + gc + ',' + bc + ',0)');
       ctx.beginPath();
-      ctx.arc(p.x, p.y, gR, 0, Math.PI * 2);
-      ctx.fillStyle = grad;
+      ctx.arc(px, py, glowR, 0, Math.PI * 2);
+      ctx.fillStyle = grd;
       ctx.fill();
 
       ctx.beginPath();
-      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-      ctx.fillStyle = 'rgba(' + r + ',' + g + ',' + b + ',' + Math.min(1, alpha + 0.25).toFixed(3) + ')';
+      ctx.arc(px, py, Math.max(0.1, p.radius), 0, Math.PI * 2);
+      ctx.fillStyle = 'rgba(' + rc + ',' + gc + ',' + bc + ',' + alpha.toFixed(4) + ')';
       ctx.fill();
     }
-    requestAnimationFrame(drawParticles);
+
+    if (b.popFrame >= b.popDuration) resetBubble(b);
   }
-  requestAnimationFrame(drawParticles);
+
+  function drawFrame() {
+    ctx.clearRect(0, 0, W, H);
+
+    // Background depth — 1. linear gradient top→bottom
+    var bgGrd = ctx.createLinearGradient(0, 0, 0, H);
+    bgGrd.addColorStop(0,    'rgba(0,0,0,0.22)');
+    bgGrd.addColorStop(0.45, 'rgba(0,0,0,0)');
+    bgGrd.addColorStop(1,    'rgba(0,12,28,0.28)');
+    ctx.fillStyle = bgGrd;
+    ctx.fillRect(0, 0, W, H);
+
+    // Background depth — 2. radial ambient glow
+    var acx = W * 0.5, acy = H * 0.6, ambR = W * 0.5;
+    var ambGrd = ctx.createRadialGradient(acx, acy, 0, acx, acy, ambR);
+    ambGrd.addColorStop(0, 'rgba(0,40,60,0.10)');
+    ambGrd.addColorStop(1, 'rgba(0,40,60,0)');
+    ctx.fillStyle = ambGrd;
+    ctx.fillRect(0, 0, W, H);
+
+    for (var i = 0; i < bubbles.length; i++) {
+      var b = bubbles[i];
+
+      if (b.popping) { drawPop(b); continue; }
+
+      b.x += b.vx;
+      b.y += b.vy;
+
+      var margin = b.r * 6;
+      if (b.x < -margin)         b.x = W + margin;
+      else if (b.x > W + margin) b.x = -margin;
+      if (b.y < -margin)         b.y = H + margin;
+      else if (b.y > H + margin) b.y = -margin;
+
+      b.phase += b.phaseSpd;
+      var pulse   = 0.82 + 0.18 * Math.sin(b.phase);
+      var opacity = b.baseOpacity * pulse;
+
+      drawBubble(b, opacity);
+
+      b.ttl--;
+      if (b.ttl <= 0) startPop(b);
+    }
+
+    requestAnimationFrame(drawFrame);
+  }
+  requestAnimationFrame(drawFrame);
 
   // ── Intro sequence (precise timestamp-based timing) ──────────
   var introEl  = document.getElementById('intro');
