@@ -140,8 +140,8 @@
     activeBlock = el;
     var ar = parseInt(el.dataset.r, 10);
     var ac = parseInt(el.dataset.c, 10);
-    var cx = ac === 0 ? 28 : ac === 2 ? -28 : 0;
-    var cy = ar === 0 ? 22 : -22;
+    var cx = ac === 0 ? 30 : ac === 2 ? -30 : 0;
+    var cy = ar === 0 ? 25 : -25;
 
     blocks.forEach(function (b) {
       b.style.transition = BASE_TRANS;
@@ -211,8 +211,8 @@
       var dy = (e.clientY - rect.top   - rect.height / 2) / (rect.height / 2);
       var mc = parseInt(this.dataset.c, 10);
       var mr = parseInt(this.dataset.r, 10);
-      var cx = mc === 0 ? 28 : mc === 2 ? -28 : 0;
-      var cy = mr === 0 ? 22 : -22;
+      var cx = mc === 0 ? 30 : mc === 2 ? -30 : 0;
+      var cy = mr === 0 ? 25 : -25;
       // Disable transform transition during live tracking
       this.style.transition = TILT_TRANS;
       this.style.transform  =
