@@ -128,14 +128,11 @@
     'filter 0.35s ease, opacity 0.35s ease,' +
     'border-color 0.25s ease, box-shadow 0.25s ease';
 
-  var activeBlock  = null;
-  var leaveTimer   = null;
-  var cleanupTimer = null;
+  var activeBlock = null;
+  var leaveTimer  = null;
 
   function activateBlock(el) {
-    // Cancel any pending leave/cleanup timers
-    if (leaveTimer)   { clearTimeout(leaveTimer);   leaveTimer   = null; }
-    if (cleanupTimer) { clearTimeout(cleanupTimer); cleanupTimer = null; }
+    if (leaveTimer) { clearTimeout(leaveTimer); leaveTimer = null; }
 
     activeBlock = el;
     var ar = parseInt(el.dataset.r, 10);
@@ -185,17 +182,6 @@
       b.classList.remove('is-active', 'is-pushed');
     });
 
-    // After transition settles, clear inline styles — BUT only if still no active block.
-    // This prevents the cleanup from resetting pushed blocks when the user moves between blocks.
-    cleanupTimer = setTimeout(function () {
-      if (activeBlock === null) {
-        blocks.forEach(function (b) {
-          b.style.transition  = '';
-          b.style.transform   = '';
-        });
-      }
-      cleanupTimer = null;
-    }, 420);
   }
 
   blocks.forEach(function (block) {

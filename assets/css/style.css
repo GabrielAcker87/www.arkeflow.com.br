@@ -38,7 +38,7 @@ html, body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--midnight);
+  background: transparent;
   transition: opacity 0.5s ease;
 }
 #intro.done {
