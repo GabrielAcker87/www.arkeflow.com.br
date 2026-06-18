@@ -567,16 +567,21 @@
 
   function closeExpanded() {
     if (!expandedBlock) return;
-    var el = expandedBlock;
+    var el         = expandedBlock;
+    var origin     = expandedOrigin;
+    expandedBlock  = null;
+    expandedOrigin = null;
+    gridEl.classList.remove('is-expanded-open');
+
     if (!closingFromPopstate && history.state && history.state.arkeExpanded) {
       history.back();
     }
 
     // Animate back to natural grid position
-    el.style.top    = expandedOrigin.top    + 'px';
-    el.style.left   = expandedOrigin.left   + 'px';
-    el.style.width  = expandedOrigin.width  + 'px';
-    el.style.height = expandedOrigin.height + 'px';
+    el.style.top    = origin.top    + 'px';
+    el.style.left   = origin.left   + 'px';
+    el.style.width  = origin.width  + 'px';
+    el.style.height = origin.height + 'px';
 
     backdrop.classList.remove('active');
     blocks.forEach(function (b) {
@@ -591,9 +596,6 @@
       el.style.width    = '';
       el.style.height   = '';
       el.style.zIndex   = '';
-      expandedBlock  = null;
-      expandedOrigin = null;
-      gridEl.classList.remove('is-expanded-open');
     }, 430);
   }
 

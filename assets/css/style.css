@@ -579,4 +579,7 @@ a.ce-contact-item:hover .ce-ci-value { color: var(--electric-cyan); }
 
   #skip-wrap { bottom: 16px; right: 16px; }
 
+  .block.is-expanded::-webkit-scrollbar { display: none; }
+  .block.is-expanded { scrollbar-width: none; }
+
 }
