@@ -540,17 +540,19 @@
 
     // Next frame: CSS transition applies, animate block to center
     requestAnimationFrame(function () {
-      var isMobile = window.innerWidth <= 767;
+      var isMobile  = window.innerWidth <= 767;
+      var viewportH = (window.visualViewport && window.visualViewport.height)
+                      || window.innerHeight;
       var tw, th, expandTop, expandLeft;
       if (isMobile) {
         tw          = window.innerWidth  - 32;
-        th          = window.innerHeight - 80;
+        th          = viewportH - 80;
         expandTop   = 60;
         expandLeft  = 16;
       } else {
         tw          = Math.min(1060, window.innerWidth  - 280);
-        th          = Math.min(660,  window.innerHeight - 240);
-        expandTop   = (window.innerHeight - th) / 2;
+        th          = Math.min(660,  viewportH - 240);
+        expandTop   = (viewportH - th) / 2;
         expandLeft  = (window.innerWidth  - tw) / 2;
       }
       el.classList.add('is-expanded');
