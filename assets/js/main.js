@@ -330,11 +330,11 @@
 
     // Logo at navbar position instantly (no animation)
     var logo = getLogoSize();
-    var navTx = 20 - logo.w * 0.16;
-    var navTy = 14 - logo.h * 0.16;
+    var navTx = 20 - logo.w * 0.3075;
+    var navTy = 14 - logo.h * 0.3075;
     introLogoEl.style.transition = 'none';
     introLogoEl.style.opacity    = '1';
-    introLogoEl.style.transform  = 'translate(' + navTx + 'px,' + navTy + 'px) scale(0.68)';
+    introLogoEl.style.transform  = 'translate(' + navTx + 'px,' + navTy + 'px) scale(0.385)';
 
     // Fade intro overlay
     introEl.classList.add('done');
@@ -391,10 +391,10 @@
     if (skipped) return;
 
     // ── Logo exits to navbar position
-    var navTx = 20 - logo.w * 0.16;
-    var navTy = 14 - logo.h * 0.16;
+    var navTx = 20 - logo.w * 0.3075;
+    var navTy = 14 - logo.h * 0.3075;
     introLogoEl.style.transition = 'transform 900ms ' + EASE_LOGO_OUT;
-    introLogoEl.style.transform  = 'translate(' + navTx + 'px,' + navTy + 'px) scale(0.68)';
+    introLogoEl.style.transform  = 'translate(' + navTx + 'px,' + navTy + 'px) scale(0.385)';
 
     // ── 150ms after logo starts moving: expand blocks
     await safeWait(150);

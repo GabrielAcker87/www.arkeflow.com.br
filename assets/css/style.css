@@ -49,9 +49,9 @@ html, body {
 .intro-phrase {
   position: absolute;
   inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  margin: auto;
+  max-width: 560px;
+  height: fit-content;
   font-size: clamp(20px, 2.6vw, 38px);
   font-weight: 300;
   text-align: center;
@@ -69,6 +69,9 @@ html, body {
   opacity: 0;
   pointer-events: none;
 }
+#intro-logo .wm-arke { font-size: 52px; }
+#intro-logo .wm-flow  { font-size: 52px; }
+#intro-logo .wm-sub   { font-size: 11px; letter-spacing: 0.28em; margin-top: 6px; }
 
 #skip-btn {
   position: fixed;
