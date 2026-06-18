@@ -477,13 +477,110 @@
 
   }
 
+  // ── Block expand (click to center) ───────────────────────────
+  var backdrop       = document.getElementById('expand-backdrop');
+  var expandedBlock  = null;
+  var expandedOrigin = null;
+
+  function expandBlock(el) {
+    if (expandedBlock) return;
+
+    // Remove hover styles, get natural (untransformed) rect
+    el.style.transition  = 'none';
+    el.style.transform   = '';
+    el.style.filter      = '';
+    el.style.opacity     = '';
+    el.style.borderColor = '';
+    el.style.boxShadow   = '';
+    el.getBoundingClientRect(); // force reflow
+
+    var rect = el.getBoundingClientRect();
+    expandedOrigin = { top: rect.top, left: rect.left, width: rect.width, height: rect.height };
+
+    // Fix at natural position — no visible jump
+    el.style.position = 'fixed';
+    el.style.top      = rect.top    + 'px';
+    el.style.left     = rect.left   + 'px';
+    el.style.width    = rect.width  + 'px';
+    el.style.height   = rect.height + 'px';
+
+    // Clear all hover/pushed state from every block
+    activeBlock = null;
+    blocks.forEach(function (b) {
+      if (b === el) return;
+      b.style.transition  = 'none';
+      b.style.transform   = '';
+      b.style.filter      = '';
+      b.style.opacity     = '';
+      b.style.borderColor = '';
+      b.style.boxShadow   = '';
+      b.style.zIndex      = '';
+      b.classList.remove('is-active', 'is-pushed');
+    });
+    el.classList.remove('is-active', 'is-pushed');
+
+    expandedBlock = el;
+    gridEl.classList.add('is-expanded-open');
+
+    // Next frame: CSS transition applies, animate block to center
+    requestAnimationFrame(function () {
+      var tw = window.innerWidth  - 228;
+      var th = window.innerHeight - 220;
+      el.classList.add('is-expanded');
+      el.style.top    = ((window.innerHeight - th) / 2) + 'px';
+      el.style.left   = ((window.innerWidth  - tw) / 2) + 'px';
+      el.style.width  = tw + 'px';
+      el.style.height = th + 'px';
+      blocks.forEach(function (b) {
+        if (b !== el) b.classList.add('is-receded');
+      });
+      backdrop.classList.add('active');
+    });
+  }
+
+  function closeExpanded() {
+    if (!expandedBlock) return;
+    var el = expandedBlock;
+
+    // Animate back to natural grid position
+    el.style.top    = expandedOrigin.top    + 'px';
+    el.style.left   = expandedOrigin.left   + 'px';
+    el.style.width  = expandedOrigin.width  + 'px';
+    el.style.height = expandedOrigin.height + 'px';
+
+    backdrop.classList.remove('active');
+    blocks.forEach(function (b) {
+      if (b !== el) b.classList.remove('is-receded');
+    });
+
+    setTimeout(function () {
+      el.classList.remove('is-expanded');
+      el.style.position = '';
+      el.style.top      = '';
+      el.style.left     = '';
+      el.style.width    = '';
+      el.style.height   = '';
+      el.style.zIndex   = '';
+      expandedBlock  = null;
+      expandedOrigin = null;
+      gridEl.classList.remove('is-expanded-open');
+    }, 430);
+  }
+
+  backdrop.addEventListener('click', closeExpanded);
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') closeExpanded();
+  });
+
   blocks.forEach(function (block) {
 
     block.addEventListener('mouseenter', function () {
+      if (gridEl.classList.contains('is-expanded-open')) return;
       activateBlock(this);
     });
 
     block.addEventListener('mousemove', function (e) {
+      if (gridEl.classList.contains('is-expanded-open')) return;
       if (activeBlock !== this) return;
       var rect = this.getBoundingClientRect();
       var dx = (e.clientX - rect.left  - rect.width  / 2) / (rect.width  / 2);
@@ -492,7 +589,6 @@
       var mr = parseInt(this.dataset.r, 10);
       var cx = mc === 0 ? 30 : mc === 2 ? -30 : 0;
       var cy = mr === 0 ? 25 : -25;
-      // Disable transform transition during live tracking
       this.style.transition = TILT_TRANS;
       this.style.transform  =
         'rotateX(' + (-dy * 6).toFixed(2) + 'deg)' +
@@ -502,10 +598,14 @@
     });
 
     block.addEventListener('mouseleave', function () {
+      if (gridEl.classList.contains('is-expanded-open')) return;
       if (activeBlock !== this) return;
-      // Short debounce: if mouse enters another block within 12ms,
-      // activateBlock cancels this timer and no reset happens.
       leaveTimer = setTimeout(resetAll, 12);
+    });
+
+    block.addEventListener('click', function () {
+      if (gridEl.classList.contains('is-expanded-open')) return;
+      if (this.classList.contains('is-active')) expandBlock(this);
     });
 
   });
