@@ -16,7 +16,6 @@
 html, body {
   height: 100%;
   overflow: hidden;
-  overscroll-behavior: none;
   font-family: var(--font);
   background: var(--midnight);
   color: #fff;
@@ -549,6 +548,16 @@ a.ce-contact-item:hover .ce-ci-value { color: var(--electric-cyan); }
     left:   16px !important;
     width:  calc(100vw - 32px) !important;
     height: calc(100vh - 80px) !important;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Contact expanded: flow naturally — let parent handle scroll */
+  .contact-expanded {
+    position: relative !important;
+    inset: unset !important;
+    min-height: 100% !important;
+    overflow: visible !important;
   }
 
   .contact-expanded { flex-direction: column; }
@@ -557,8 +566,14 @@ a.ce-contact-item:hover .ce-ci-value { color: var(--electric-cyan); }
     border-right: none;
     border-bottom: 1px solid rgba(255,255,255,0.05);
     padding: 20px 18px;
+    overflow-y: visible !important;
+    height: auto !important;
   }
-  .ce-right { padding: 20px 18px; }
+  .ce-right {
+    padding: 20px 18px;
+    overflow-y: visible !important;
+    height: auto !important;
+  }
 
   .intro-phrase { font-size: clamp(18px, 5vw, 28px); }
 
