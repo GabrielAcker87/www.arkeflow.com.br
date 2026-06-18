@@ -328,18 +328,23 @@
       el.style.opacity    = '0';
     });
 
-    // Logo at navbar position instantly (no animation)
+    // Logo snap to exact navbar wordmark position, invisible (no overlap on skip)
     var logo = getLogoSize();
-    var navTx = 20 - logo.w * 0.3075;
-    var navTy = 14 - logo.h * 0.3075;
+    var navWordmark = navbarEl.querySelector('.wordmark');
+    var navRect = navWordmark.getBoundingClientRect();
+    var exactScale = navRect.width / logo.w;
+    var exactTx = navRect.left - logo.w * (1 - exactScale) / 2;
+    var exactTy = navRect.top  - logo.h * (1 - exactScale) / 2;
     introLogoEl.style.transition = 'none';
-    introLogoEl.style.opacity    = '1';
-    introLogoEl.style.transform  = 'translate(' + navTx + 'px,' + navTy + 'px) scale(0.385)';
+    introLogoEl.style.transform  = 'translate(' + exactTx + 'px,' + exactTy + 'px) scale(' + exactScale + ')';
+    introLogoEl.style.opacity    = '0';
 
     // Fade intro overlay
     introEl.classList.add('done');
-    // Show real navbar
+    // Navbar appears instantly (logo already invisible)
+    navbarEl.style.transition = 'none';
     navbarEl.classList.add('visible');
+    requestAnimationFrame(function () { navbarEl.style.transition = ''; });
     // Block expansion
     triggerBlockExpansion();
   }
@@ -390,18 +395,32 @@
     await safeWait(650 + HOLD_TIME);
     if (skipped) return;
 
-    // ── Logo exits to navbar position
-    var navTx = 20 - logo.w * 0.3075;
-    var navTy = 14 - logo.h * 0.3075;
+    // ── Logo exits to exact navbar wordmark position
+    var navWordmark = navbarEl.querySelector('.wordmark');
+    var navRect = navWordmark.getBoundingClientRect();
+    var exactScale = navRect.width / logo.w;
+    var exactTx = navRect.left - logo.w * (1 - exactScale) / 2;
+    var exactTy = navRect.top  - logo.h * (1 - exactScale) / 2;
     introLogoEl.style.transition = 'transform 900ms ' + EASE_LOGO_OUT;
-    introLogoEl.style.transform  = 'translate(' + navTx + 'px,' + navTy + 'px) scale(0.385)';
+    introLogoEl.style.transform  = 'translate(' + exactTx + 'px,' + exactTy + 'px) scale(' + exactScale + ')';
+
+    // Cross-fade only after logo finishes moving
+    function onLogoArrival(evt) {
+      if (evt.propertyName !== 'transform') return;
+      introLogoEl.removeEventListener('transitionend', onLogoArrival);
+      if (skipped) return;
+      introLogoEl.style.transition = 'opacity 0.4s ease';
+      introLogoEl.style.opacity    = '0';
+      navbarEl.classList.add('visible');
+    }
+    introLogoEl.addEventListener('transitionend', onLogoArrival);
 
     // ── 150ms after logo starts moving: expand blocks
     await safeWait(150);
     if (skipped) return;
 
     introEl.classList.add('done');
-    navbarEl.classList.add('visible');
+    // navbarEl.classList.add('visible') moved to transitionend handler above
     triggerBlockExpansion();
   }
 
