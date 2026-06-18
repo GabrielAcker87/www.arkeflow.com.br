@@ -329,13 +329,14 @@
     });
 
     // Logo snaps instantly to navbar position and stays (no handoff)
-    var logo = getLogoSize();
+    var vw  = window.innerWidth;
+    var vh  = window.innerHeight;
     var nbr = navbarEl.getBoundingClientRect();
     var exactScale = 20 / 52;
-    var exactTx = nbr.left + 20;
-    var exactTy = nbr.top  + 14;
+    var exactTx = (nbr.left + 20) - vw / 2;
+    var exactTy = (nbr.top  + 14) - vh / 2;
     introLogoEl.style.transition = 'none';
-    introLogoEl.style.transform  = 'translate(' + exactTx + 'px,' + exactTy + 'px) scale(' + exactScale + ')';
+    introLogoEl.style.transform  = 'translate(' + exactTx + 'px, ' + exactTy + 'px) scale(' + exactScale + ')';
     introLogoEl.style.opacity    = '1';
     introLogoEl.style.zIndex     = '100';
 
@@ -376,27 +377,25 @@
     // ── Logo emerges simultaneously with phrase 3 exiting
     hidePhrase(phraseA, PHRASES[2]);
 
-    var logo = getLogoSize();
-    var centerTx = (window.innerWidth  - logo.w) / 2;
-    var centerTy = (window.innerHeight - logo.h) / 2;
-
     introLogoEl.style.transition = 'none';
     introLogoEl.style.opacity    = '0';
-    introLogoEl.style.transform  = 'translate(' + centerTx + 'px,' + centerTy + 'px) scale(0.65)';
+    introLogoEl.style.transform  = 'translate(-50%, -50%) scale(0.65)';
     introLogoEl.getBoundingClientRect();
     introLogoEl.style.transition = 'transform 650ms ' + EASE_LOGO_IN + ', opacity 650ms ease';
     introLogoEl.style.opacity    = '1';
-    introLogoEl.style.transform  = 'translate(' + centerTx + 'px,' + centerTy + 'px) scale(1.0)';
+    introLogoEl.style.transform  = 'translate(-50%, -50%) scale(1.0)';
 
     // ── Hold logo at center
     await safeWait(650 + HOLD_TIME);
     if (skipped) return;
 
     // ── Logo slides to navbar position and stays permanently
+    var vw  = window.innerWidth;
+    var vh  = window.innerHeight;
     var nbr = navbarEl.getBoundingClientRect();
     var exactScale = 20 / 52;
-    var exactTx = nbr.left + 20;
-    var exactTy = nbr.top  + 14;
+    var exactTx = (nbr.left + 20) - vw / 2;
+    var exactTy = (nbr.top  + 14) - vh / 2;
     introLogoEl.style.transition = 'transform 900ms ' + EASE_LOGO_OUT;
     introLogoEl.style.transform  = 'translate(' + exactTx + 'px,' + exactTy + 'px) scale(' + exactScale + ')';
 
