@@ -534,11 +534,18 @@ a.ce-contact-item:hover .ce-ci-value { color: var(--electric-cyan); }
 .qs-expanded {
   display: none;
   position: absolute;
-  inset: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
   overflow: hidden;
+}
+.block.is-expanded .qs-expanded {
+  display: flex;
   flex-direction: column;
 }
-.block.is-expanded .qs-expanded { display: flex; }
 
 .qs-header {
   flex-shrink: 0;
