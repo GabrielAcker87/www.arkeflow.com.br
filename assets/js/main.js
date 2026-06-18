@@ -492,9 +492,10 @@
   }
 
   // ── Block expand (click to center) ───────────────────────────
-  var backdrop       = document.getElementById('expand-backdrop');
-  var expandedBlock  = null;
-  var expandedOrigin = null;
+  var backdrop            = document.getElementById('expand-backdrop');
+  var expandedBlock       = null;
+  var expandedOrigin      = null;
+  var closingFromPopstate = false;
 
   function expandBlock(el) {
     if (expandedBlock) return;
@@ -534,6 +535,7 @@
     el.classList.remove('is-active', 'is-pushed');
 
     expandedBlock = el;
+    history.pushState({ arkeExpanded: true }, '');
     gridEl.classList.add('is-expanded-open');
 
     // Next frame: CSS transition applies, animate block to center
@@ -566,6 +568,9 @@
   function closeExpanded() {
     if (!expandedBlock) return;
     var el = expandedBlock;
+    if (!closingFromPopstate && history.state && history.state.arkeExpanded) {
+      history.back();
+    }
 
     // Animate back to natural grid position
     el.style.top    = expandedOrigin.top    + 'px';
@@ -598,6 +603,13 @@
   });
   document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape') closeExpanded();
+  });
+  window.addEventListener('popstate', function () {
+    if (expandedBlock) {
+      closingFromPopstate = true;
+      closeExpanded();
+      closingFromPopstate = false;
+    }
   });
 
   blocks.forEach(function (block) {
