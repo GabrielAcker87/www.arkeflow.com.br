@@ -513,6 +513,128 @@ a.ce-contact-item:hover .ce-ci-value { color: var(--electric-cyan); }
   line-height: 1.7;
 }
 
+/* ── Quem somos block — closed state ───────────────────────── */
+.qs-stacked-lines {
+  margin-top: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.qs-line {
+  font-size: 11px;
+  font-weight: 300;
+  color: #fff;
+  line-height: 1.45;
+}
+.qs-line-1 { opacity: 1;    }
+.qs-line-2 { opacity: 0.50; }
+.qs-line-3 { opacity: 0.28; }
+
+/* ── Quem somos block — expanded state ─────────────────────── */
+.qs-expanded {
+  display: none;
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  flex-direction: column;
+}
+.block.is-expanded .qs-expanded { display: flex; }
+
+.qs-header {
+  flex-shrink: 0;
+  padding: 26px 32px 18px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+.qs-header-cat {
+  display: block;
+  font-size: 9px;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #2A7A8A;
+  margin-bottom: 6px;
+}
+.qs-header-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.2;
+}
+
+.qs-body {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  overflow: hidden;
+}
+
+.qs-col {
+  flex: 1;
+  min-width: 0;
+  padding: 22px 28px 24px;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+.qs-col:first-child {
+  border-right: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.qs-col-label {
+  display: block;
+  font-size: 9px;
+  font-weight: 400;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.30);
+  margin-bottom: 14px;
+}
+
+.qs-text {
+  font-size: 13px;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.72);
+  line-height: 1.8;
+  margin-bottom: 16px;
+}
+.qs-text:last-of-type { margin-bottom: 0; }
+
+.qs-italic {
+  font-size: 12px;
+  font-weight: 300;
+  font-style: italic;
+  color: rgba(0, 200, 220, 0.67);
+  line-height: 1.6;
+  margin-top: auto;
+  padding-top: 18px;
+}
+
+/* ── Ticker ─────────────────────────────────────────────────── */
+@keyframes qs-ticker-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+.qs-ticker {
+  flex-shrink: 0;
+  overflow: hidden;
+  padding: 7px 0;
+  border-top:    1px solid rgba(0, 200, 220, 0.12);
+  border-bottom: 1px solid rgba(0, 200, 220, 0.12);
+}
+.qs-ticker-inner {
+  display: inline-flex;
+  white-space: nowrap;
+  animation: qs-ticker-scroll 25s linear infinite;
+}
+.qs-ticker-inner span {
+  font-size: 9px;
+  font-weight: 400;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(0, 200, 220, 0.38);
+}
+
 /* ── Mobile (portrait phones + narrow tablets) ──────────────── */
 @media (max-width: 767px) {
 
@@ -573,6 +695,26 @@ a.ce-contact-item:hover .ce-ci-value { color: var(--electric-cyan); }
     overflow-y: visible !important;
     height: auto !important;
   }
+
+  /* Quem somos expanded — mobile */
+  .qs-expanded {
+    position: relative !important;
+    inset: unset !important;
+    min-height: 100% !important;
+    overflow: visible !important;
+  }
+  .qs-header { padding: 20px 18px 14px; }
+  .qs-body { flex-direction: column; overflow: visible; }
+  .qs-col {
+    width: 100%;
+    padding: 16px 18px;
+    overflow-y: visible;
+  }
+  .qs-col:first-child {
+    border-right: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  }
+  .qs-ticker { overflow: hidden; }
 
   .intro-phrase { font-size: clamp(18px, 5vw, 28px); }
 
