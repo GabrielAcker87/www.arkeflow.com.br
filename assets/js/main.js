@@ -211,7 +211,7 @@
   var phraseA     = document.getElementById('intro-phrase-a');
   var phraseB     = document.getElementById('intro-phrase-b');
   var introLogoEl = document.getElementById('intro-logo');
-  var skipBtn     = document.getElementById('skip-btn');
+  var skipBtn     = document.getElementById('skip-wrap');
   var navbarEl    = document.getElementById('navbar');
   var gridEl      = document.getElementById('grid');
 
