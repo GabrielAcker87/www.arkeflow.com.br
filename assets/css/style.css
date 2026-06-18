@@ -392,7 +392,13 @@ html, body {
   font-size: 12px;
   font-weight: 300;
   color: #C8DDE8;
+  transition: color 0.2s ease;
 }
+a.ce-contact-item {
+  text-decoration: none;
+  color: inherit;
+}
+a.ce-contact-item:hover .ce-ci-value { color: var(--electric-cyan); }
 .ce-divider {
   height: 1px;
   background: rgba(255, 255, 255, 0.06);
@@ -428,7 +434,6 @@ html, body {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  flex: 1;
 }
 .ce-row { display: flex; gap: 10px; }
 .ce-input {
@@ -447,7 +452,7 @@ html, body {
 }
 .ce-input::placeholder { color: rgba(91, 138, 168, 0.6); }
 .ce-input:focus { border-color: rgba(0, 200, 220, 0.3); }
-.ce-textarea { height: 54px; resize: none; }
+.ce-textarea { height: 72px; resize: none; }
 .ce-pill-row { display: flex; flex-direction: column; gap: 6px; }
 .ce-pill-label {
   font-size: 9px;
@@ -477,7 +482,7 @@ html, body {
 .ce-submit {
   padding: 11px 22px;
   align-self: flex-start;
-  margin-top: 4px;
+  margin-top: 16px;
   background: var(--electric-cyan);
   color: var(--midnight);
   font-family: var(--font);

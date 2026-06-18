@@ -537,8 +537,8 @@
 
     // Next frame: CSS transition applies, animate block to center
     requestAnimationFrame(function () {
-      var tw = window.innerWidth  - 228;
-      var th = window.innerHeight - 220;
+      var tw = Math.min(1060, window.innerWidth  - 280);
+      var th = Math.min(660,  window.innerHeight - 240);
       el.classList.add('is-expanded');
       el.style.top    = ((window.innerHeight - th) / 2) + 'px';
       el.style.left   = ((window.innerWidth  - tw) / 2) + 'px';
@@ -581,7 +581,12 @@
   }
 
   backdrop.addEventListener('click', function (e) {
-    if (e.target !== backdrop) return;
+    if (expandedBlock) {
+      if (expandedBlock.contains(e.target)) return;
+      var r = expandedBlock.getBoundingClientRect();
+      if (e.clientX >= r.left && e.clientX <= r.right &&
+          e.clientY >= r.top  && e.clientY <= r.bottom) return;
+    }
     closeExpanded();
   });
   document.addEventListener('keydown', function (e) {
