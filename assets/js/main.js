@@ -270,7 +270,7 @@
 
   function triggerBlockExpansion() {
     var blks = document.querySelectorAll('.block');
-    var skipR = skipBtn.getBoundingClientRect();
+    var skipR = document.getElementById('skip-btn').getBoundingClientRect();
     var skipCx = skipR.left + skipR.width  / 2;
     var skipCy = skipR.top  + skipR.height / 2;
 
@@ -290,7 +290,8 @@
       b.style.opacity    = '0';
     });
 
-    // Fade out skip button
+    // Fade out skip button (stop animation first so it doesn't override opacity)
+    skipBtn.style.animation     = 'none';
     skipBtn.style.transition    = 'opacity 0.3s ease';
     skipBtn.style.opacity       = '0';
     skipBtn.style.pointerEvents = 'none';
