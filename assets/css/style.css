@@ -293,6 +293,7 @@ html, body {
   position: fixed !important;
   z-index: 20;
   cursor: default;
+  overflow: visible;
   transform: none !important;
   background: rgba(9, 22, 38, 0.97) !important;
   box-shadow: 0 24px 80px rgba(0, 0, 0, 0.6);
@@ -307,8 +308,8 @@ html, body {
 /* ── Modal close button ─────────────────────────────────────────── */
 .modal-close-btn {
   position: absolute;
-  top: calc(14px * var(--scale));
-  right: calc(14px * var(--scale));
+  top: calc(-16px * var(--scale));
+  right: calc(-16px * var(--scale));
   width: calc(28px * var(--scale));
   height: calc(28px * var(--scale));
   background: rgba(255,255,255,0.06);
@@ -756,16 +757,27 @@ a.ce-contact-item:hover .ce-ci-value { color: var(--mint-green); }
   color: rgba(255,255,255,0.35);
 }
 .ark-exp-arrow {
-  background: none;
-  border: none;
-  color: rgba(255,255,255,0.4);
-  font-size: calc(18px * var(--scale));
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 32px;
+  height: 32px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 50%;
+  color: rgba(255,255,255,0.6);
+  font-size: 16px;
   line-height: 1;
   cursor: pointer;
-  padding: 4px 8px;
-  transition: color 0.2s ease, opacity 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  transition: color 0.2s ease, opacity 0.2s ease, background 0.2s ease;
 }
-.ark-exp-arrow:hover { color: #fff; }
+.ark-exp-prev { left: calc(12px * var(--scale)); }
+.ark-exp-next { right: calc(12px * var(--scale)); }
+.ark-exp-arrow:hover { color: #fff; background: rgba(255,255,255,0.12); }
 
 .ark-exp-body {
   flex: 1;
@@ -827,16 +839,23 @@ a.ce-contact-item:hover .ce-ci-value { color: var(--mint-green); }
 }
 .ark-exp-text:last-of-type { margin-bottom: 0; }
 .ark-exp-link {
-  display: block;
+  display: inline-block;
+  align-self: flex-start;
   font-size: calc(13px * var(--scale));
   font-weight: 400;
   color: rgba(38,255,147,0.8);
   text-decoration: none;
   margin-top: auto;
-  padding-top: 16px;
-  transition: color 0.2s ease;
+  padding: calc(7px * var(--scale)) calc(18px * var(--scale));
+  border: 1px solid rgba(38,255,147,0.35);
+  border-radius: 999px;
+  background: transparent;
+  transition: color 0.2s ease, border-color 0.2s ease;
 }
-.ark-exp-link:hover { color: var(--mint-green); }
+.ark-exp-link:hover {
+  color: #26FF93;
+  border-color: #26FF93;
+}
 
 /* ── Mobile (portrait phones + narrow tablets) ──────────────── */
 @media (max-width: 767px) and (hover: none) {
@@ -942,6 +961,7 @@ a.ce-contact-item:hover .ce-ci-value { color: var(--mint-green); }
   .ark-exp-col { overflow-y: visible; }
   .ark-exp-col:first-child { width: 100%; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.05); }
   .ark-exp-nav { display: none; }
+  .ark-exp-arrow { display: none; }
 
   .intro-phrase { font-size: clamp(18px, 5vw, 28px); }
 
