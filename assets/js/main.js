@@ -736,7 +736,7 @@
     arkStopRotation();
     arkRotateTimer = setInterval(function () {
       arkShowSlide((arkCurrentSlide + 1) % arkSlideEls.length, true);
-    }, 4000);
+    }, 7000);
   }
 
   function arkExpGoTo(idx, instant) {

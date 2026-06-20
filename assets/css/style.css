@@ -686,9 +686,11 @@ a.ce-contact-item:hover .ce-ci-value { color: var(--mint-green); }
 }
 .ark-slide-tagline {
   font-size: calc(13px * var(--scale));
-  font-weight: 300;
+  font-weight: 700;
   color: var(--steel);
   line-height: 1.5;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
 }
 .ark-dots {
   display: flex;
