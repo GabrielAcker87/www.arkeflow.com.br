@@ -118,7 +118,7 @@ html, body {
 .wm-flow {
   font-size: 20px;
   font-weight: 300;
-  color: var(--electric-cyan);
+  color: var(--mint-green);
 }
 .wm-sub {
   display: block;
@@ -248,7 +248,7 @@ html, body {
   font-weight: 400;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: #2A7A8A;
+  color: rgba(38, 255, 147, 0.55);
   margin-bottom: 7px;
 }
 .block-title {
@@ -570,7 +570,7 @@ a.ce-contact-item:hover .ce-ci-value { color: var(--mint-green); }
   font-weight: 400;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: #2A7A8A;
+  color: rgba(38, 255, 147, 0.55);
   margin-bottom: 6px;
 }
 .qs-header-title {
