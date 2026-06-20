@@ -760,12 +760,12 @@ a.ce-contact-item:hover .ce-ci-value { color: var(--mint-green); }
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  width: 32px;
-  height: 32px;
-  background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(255,255,255,0.12);
+  width: 42px;
+  height: 42px;
+  background: #0d2235;
+  border: 0.5px solid rgba(255,255,255,0.25);
   border-radius: 50%;
-  color: rgba(255,255,255,0.6);
+  color: rgba(255,255,255,0.7);
   font-size: 16px;
   line-height: 1;
   cursor: pointer;
@@ -773,11 +773,12 @@ a.ce-contact-item:hover .ce-ci-value { color: var(--mint-green); }
   align-items: center;
   justify-content: center;
   z-index: 2;
-  transition: color 0.2s ease, opacity 0.2s ease, background 0.2s ease;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.5);
+  transition: color 0.2s ease, background 0.2s ease;
 }
-.ark-exp-prev { left: calc(12px * var(--scale)); }
-.ark-exp-next { right: calc(12px * var(--scale)); }
-.ark-exp-arrow:hover { color: #fff; background: rgba(255,255,255,0.12); }
+.ark-exp-prev { left: -21px; }
+.ark-exp-next { right: -21px; }
+.ark-exp-arrow:hover { color: #fff; }
 
 .ark-exp-body {
   flex: 1;
@@ -855,6 +856,12 @@ a.ce-contact-item:hover .ce-ci-value { color: var(--mint-green); }
 .ark-exp-link:hover {
   color: #26FF93;
   border-color: #26FF93;
+}
+.ark-exp-logo {
+  font-size: calc(22px * var(--scale));
+  line-height: 1;
+  margin-bottom: calc(14px * var(--scale));
+  letter-spacing: 0;
 }
 
 /* ── Mobile (portrait phones + narrow tablets) ──────────────── */

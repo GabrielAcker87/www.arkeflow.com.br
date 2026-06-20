@@ -713,7 +713,8 @@
   var arkCurrentSlide = 0;
   var arkRotateTimer = null;
   var arkExpCurrent = 0;
-  var arkSlideEls, arkDotEls, arkExpTrack, arkExpPrev, arkExpNext, arkExpCounterEl;
+  var arkSlideEls, arkDotEls, arkExpTrack, arkExpPrev, arkExpNext, arkExpCounterEl, arkExpTitleEl;
+  var ARK_TITLES = ['ARKEvest', 'PDV+', 'LinkSis'];
 
   function arkShowSlide(idx, animate) {
     if (!arkBlock) return;
@@ -741,7 +742,7 @@
 
   function arkExpGoTo(idx, instant) {
     if (!arkBlock) return;
-    idx = Math.max(0, Math.min(2, idx));
+    idx = ((idx % 3) + 3) % 3;
     arkExpCurrent = idx;
     if (arkExpTrack) {
       if (instant) { arkExpTrack.style.transition = 'none'; arkExpTrack.getBoundingClientRect(); }
@@ -749,8 +750,7 @@
       if (instant) arkExpTrack.style.transition = '';
     }
     if (arkExpCounterEl) arkExpCounterEl.textContent = String(idx + 1);
-    if (arkExpPrev) arkExpPrev.style.opacity = idx === 0 ? '0.2' : '1';
-    if (arkExpNext) arkExpNext.style.opacity = idx === 2 ? '0.2' : '1';
+    if (arkExpTitleEl) arkExpTitleEl.textContent = ARK_TITLES[idx];
   }
 
   if (arkBlock) {
@@ -760,6 +760,7 @@
     arkExpPrev      = arkBlock.querySelector('.ark-exp-prev');
     arkExpNext      = arkBlock.querySelector('.ark-exp-next');
     arkExpCounterEl = arkBlock.querySelector('.ark-exp-current');
+    arkExpTitleEl   = arkBlock.querySelector('.ark-exp-title');
 
     arkDotEls.forEach(function (dot) {
       dot.addEventListener('click', function (e) {
