@@ -312,15 +312,16 @@ html, body {
   flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
+  padding-top: calc(22px * var(--scale));
 }
 .fc-statement {
-  font-size: calc(24px * var(--scale));
+  font-size: calc(20px * var(--scale));
   font-weight: 800;
   color: #fff;
   line-height: 1.1;
   letter-spacing: 0.03em;
-  margin-bottom: calc(14px * var(--scale));
+  margin-bottom: calc(12px * var(--scale));
   text-transform: uppercase;
 }
 .fc-channels {
@@ -490,8 +491,8 @@ a.ce-contact-item:hover .ce-ci-value { color: var(--mint-green); }
 }
 .ce-submit {
   padding: 11px 22px;
-  align-self: flex-start;
-  margin-top: 16px;
+  align-self: flex-end;
+  margin-top: auto;
   background: var(--mint-green);
   color: var(--midnight);
   font-family: var(--font);
@@ -522,7 +523,7 @@ a.ce-contact-item:hover .ce-ci-value { color: var(--mint-green); }
   align-items: center;
 }
 .qs-statement-text {
-  font-size: calc(28px * var(--scale));
+  font-size: calc(20px * var(--scale));
   font-weight: 800;
   color: #fff;
   line-height: 1.1;
