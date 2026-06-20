@@ -1,6 +1,16 @@
 (function () {
   'use strict';
 
+  // ── Proportional scale ───────────────────────────────────────
+  var BASE_W = 1380;
+  var BASE_H = 912;
+  function rescale() {
+    var s = Math.min(window.innerWidth / BASE_W, window.innerHeight / BASE_H);
+    document.documentElement.style.setProperty('--scale', s);
+  }
+  rescale();
+  window.addEventListener('resize', rescale, { passive: true });
+
   // ── Canvas: bubble system ────────────────────────────────────
   var canvas = document.getElementById('bg');
   var ctx    = canvas.getContext('2d');

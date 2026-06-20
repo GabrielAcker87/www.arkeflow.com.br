@@ -9,6 +9,7 @@
   --steel:         #5B8AA8;
   --mint-green:    #26FF93;
   --font: 'Inter', sans-serif;
+  --scale: 1;
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -162,8 +163,8 @@ html, body {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr;
-  column-gap: 35px;
-  row-gap: 35px;
+  column-gap: calc(35px * var(--scale));
+  row-gap: calc(35px * var(--scale));
   padding: 7% 8.3% 5% 8.3%;
   perspective: 1100px;
   opacity: 0;
@@ -173,7 +174,6 @@ html, body {
 
 /* ── Blocks ─────────────────────────────────────────────────── */
 .block {
-  container-type: size;
   position: relative;
   background: rgba(9, 22, 38, 0.86);
   border: 1px solid rgba(255, 255, 255, 0.06);
@@ -183,7 +183,7 @@ html, body {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  padding: 16px 18px;
+  padding: calc(16px * var(--scale)) calc(18px * var(--scale));
   transform: translateZ(0);
   transition:
     transform       0.38s cubic-bezier(0.15, 0.85, 0.3, 1),
@@ -243,7 +243,7 @@ html, body {
 }
 
 .block-cat {
-  font-size: 2.5cqw;
+  font-size: calc(9px * var(--scale));
   font-weight: 400;
   letter-spacing: 0.2em;
   text-transform: uppercase;
@@ -251,13 +251,13 @@ html, body {
   margin-bottom: 7px;
 }
 .block-title {
-  font-size: 4.8cqw;
+  font-size: calc(17px * var(--scale));
   font-weight: 700;
   color: #fff;
   line-height: 1.2;
 }
 .block-sub {
-  font-size: 3.1cqw;
+  font-size: calc(11px * var(--scale));
   font-weight: 300;
   color: var(--steel);
   margin-top: 5px;
@@ -527,7 +527,7 @@ a.ce-contact-item:hover .ce-ci-value { color: var(--electric-cyan); }
   gap: 2px;
 }
 .qs-line {
-  font-size: 11px;
+  font-size: calc(11px * var(--scale));
   font-weight: 300;
   color: #fff;
   line-height: 1.45;
@@ -649,7 +649,7 @@ a.ce-contact-item:hover .ce-ci-value { color: var(--electric-cyan); }
 }
 
 /* ── Mobile (portrait phones + narrow tablets) ──────────────── */
-@media (max-width: 767px) {
+@media (max-width: 767px) and (hover: none) {
 
   #grid {
     inset: 0;
