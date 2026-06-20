@@ -486,8 +486,8 @@
         b.classList.add('is-active');
         b.classList.remove('is-pushed');
         b.style.transform   = 'translateX(' + cx + 'px) translateY(' + cy + 'px) translateZ(50px) scale(1.16)';
-        b.style.borderColor = 'rgba(0,200,220,0.32)';
-        b.style.boxShadow   = '0 20px 60px rgba(0,0,0,0.55), inset 0 0 40px rgba(0,200,220,0.04)';
+        b.style.borderColor = 'rgba(38,255,147,0.25)';
+        b.style.boxShadow   = '0 20px 60px rgba(0,0,0,0.55), inset 0 0 40px rgba(38,255,147,0.04)';
         b.style.filter      = 'brightness(1.1)';
         b.style.zIndex      = '10';
         b.style.opacity     = '1';
@@ -583,8 +583,8 @@
         expandTop   = 60;
         expandLeft  = 16;
       } else {
-        tw          = Math.min(1120, window.innerWidth  - 200);
-        th          = Math.min(710,  viewportH - 180);
+        tw          = Math.min(1000, window.innerWidth  - 240);
+        th          = Math.min(650,  viewportH - 200);
         expandTop   = (viewportH - th) / 2;
         expandLeft  = (window.innerWidth  - tw) / 2;
       }

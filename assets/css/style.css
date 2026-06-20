@@ -98,7 +98,7 @@ html, body {
 .skip-sq {
   width: 18px;
   height: 18px;
-  border: 1px solid rgba(0, 200, 220, 0.85);
+  border: 1px solid rgba(38, 255, 147, 0.85);
   border-radius: 2px;
 }
 
@@ -213,12 +213,12 @@ html, body {
 }
 .block.is-active::before { opacity: 1; }
 
-.block[data-r="0"][data-c="0"]::before { background: radial-gradient(circle at 85% 85%, rgba(0, 200, 220, 0.10) 0%, transparent 55%); }
-.block[data-r="0"][data-c="1"]::before { background: radial-gradient(circle at 50% 98%, rgba(0, 200, 220, 0.10) 0%, transparent 55%); }
-.block[data-r="0"][data-c="2"]::before { background: radial-gradient(circle at 15% 85%, rgba(0, 200, 220, 0.10) 0%, transparent 55%); }
-.block[data-r="1"][data-c="0"]::before { background: radial-gradient(circle at 85% 15%, rgba(0, 200, 220, 0.10) 0%, transparent 55%); }
-.block[data-r="1"][data-c="1"]::before { background: radial-gradient(circle at 50%  2%, rgba(0, 200, 220, 0.10) 0%, transparent 55%); }
-.block[data-r="1"][data-c="2"]::before { background: radial-gradient(circle at 15% 15%, rgba(0, 200, 220, 0.10) 0%, transparent 55%); }
+.block[data-r="0"][data-c="0"]::before { background: radial-gradient(circle at 85% 85%, rgba(38, 255, 147, 0.08) 0%, transparent 55%); }
+.block[data-r="0"][data-c="1"]::before { background: radial-gradient(circle at 50% 98%, rgba(38, 255, 147, 0.08) 0%, transparent 55%); }
+.block[data-r="0"][data-c="2"]::before { background: radial-gradient(circle at 15% 85%, rgba(38, 255, 147, 0.08) 0%, transparent 55%); }
+.block[data-r="1"][data-c="0"]::before { background: radial-gradient(circle at 85% 15%, rgba(38, 255, 147, 0.08) 0%, transparent 55%); }
+.block[data-r="1"][data-c="1"]::before { background: radial-gradient(circle at 50%  2%, rgba(38, 255, 147, 0.08) 0%, transparent 55%); }
+.block[data-r="1"][data-c="2"]::before { background: radial-gradient(circle at 15% 15%, rgba(38, 255, 147, 0.08) 0%, transparent 55%); }
 
 /* bottom accent line — expands on active block */
 .block::after {
@@ -228,7 +228,7 @@ html, body {
   left: 0;
   width: 0;
   height: 2px;
-  background: linear-gradient(90deg, var(--electric-cyan), var(--mint-green));
+  background: var(--mint-green);
   transition: width 0.38s ease;
   pointer-events: none;
 }
@@ -327,9 +327,9 @@ html, body {
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid rgba(0, 200, 220, 0.22);
+  border: 1px solid rgba(38, 255, 147, 0.22);
   border-radius: 5px;
-  background: rgba(0, 200, 220, 0.05);
+  background: rgba(38, 255, 147, 0.05);
   margin-bottom: 4px;
 }
 .cc-label {
@@ -392,9 +392,9 @@ html, body {
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid rgba(0, 200, 220, 0.22);
+  border: 1px solid rgba(38, 255, 147, 0.22);
   border-radius: 5px;
-  background: rgba(0, 200, 220, 0.05);
+  background: rgba(38, 255, 147, 0.05);
 }
 .ce-ci-text { display: flex; flex-direction: column; gap: 2px; padding-top: 3px; }
 .ce-ci-label {
@@ -414,7 +414,7 @@ a.ce-contact-item {
   text-decoration: none;
   color: inherit;
 }
-a.ce-contact-item:hover .ce-ci-value { color: var(--electric-cyan); }
+a.ce-contact-item:hover .ce-ci-value { color: var(--mint-green); }
 .ce-divider {
   height: 1px;
   background: rgba(255, 255, 255, 0.06);
@@ -467,7 +467,7 @@ a.ce-contact-item:hover .ce-ci-value { color: var(--electric-cyan); }
   transition: border-color 0.2s ease;
 }
 .ce-input::placeholder { color: rgba(91, 138, 168, 0.6); }
-.ce-input:focus { border-color: rgba(0, 200, 220, 0.3); }
+.ce-input:focus { border-color: rgba(38, 255, 147, 0.3); }
 .ce-textarea { height: 72px; resize: none; }
 .ce-pill-row { display: flex; flex-direction: column; gap: 6px; }
 .ce-pill-label {
@@ -491,15 +491,15 @@ a.ce-contact-item:hover .ce-ci-value { color: var(--electric-cyan); }
   transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease;
 }
 .ce-pill.active {
-  border-color: rgba(0, 200, 220, 0.45);
-  color: var(--electric-cyan);
-  background: rgba(0, 200, 220, 0.08);
+  border-color: rgba(38, 255, 147, 0.45);
+  color: var(--mint-green);
+  background: rgba(38, 255, 147, 0.08);
 }
 .ce-submit {
   padding: 11px 22px;
   align-self: flex-start;
   margin-top: 16px;
-  background: var(--electric-cyan);
+  background: var(--mint-green);
   color: var(--midnight);
   font-family: var(--font);
   font-size: 13px;
