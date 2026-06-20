@@ -748,7 +748,7 @@
   var ARK_LOGOS = [
     '<span style="font-family:\'Montserrat\',sans-serif;font-weight:800">ARKE</span><span style="font-family:\'DM Serif Display\',serif;font-style:italic;color:#D4A017">vest</span>',
     '<span style="font-family:\'Inter\',sans-serif;font-weight:800;color:#38BDF8">PDV+</span>',
-    '<img src="assets/img/linksis-logo.svg" style="height:1.3em;width:auto;border-radius:4px;opacity:0.85;vertical-align:middle">'
+    '<img src="assets/img/linksis-logo.svg" style="height:3em;max-width:120px;object-fit:contain;width:auto;border-radius:4px;opacity:0.85;vertical-align:middle">'
   ];
 
   function arkShowSlide(idx, animate) {

@@ -739,8 +739,10 @@ a.ce-contact-item:hover .ce-ci-value { color: var(--mint-green); }
   letter-spacing: 0;
 }
 .ark-exp-header-logo img {
-  height: 1.3em;
+  max-height: 3em;
+  max-width: 120px;
   width: auto;
+  object-fit: contain;
   border-radius: 4px;
   opacity: 0.85;
   vertical-align: middle;
@@ -774,8 +776,8 @@ a.ce-contact-item:hover .ce-ci-value { color: var(--mint-green); }
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  width: 42px;
-  height: 42px;
+  width: 32px;
+  height: 32px;
   background: #0d2235;
   border: 0.5px solid rgba(255,255,255,0.25);
   border-radius: 50%;
@@ -790,8 +792,8 @@ a.ce-contact-item:hover .ce-ci-value { color: var(--mint-green); }
   box-shadow: 0 2px 12px rgba(0,0,0,0.5);
   transition: color 0.2s ease, background 0.2s ease;
 }
-.ark-exp-prev { left: -21px; }
-.ark-exp-next { right: -21px; }
+.ark-exp-prev { left: -16px; }
+.ark-exp-next { right: -16px; }
 .ark-exp-arrow:hover { color: #fff; }
 
 .ark-exp-body {
