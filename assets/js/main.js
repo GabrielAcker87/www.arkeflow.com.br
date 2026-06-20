@@ -216,6 +216,23 @@
   }
   requestAnimationFrame(drawFrame);
 
+  canvas.addEventListener('mousemove', function (e) {
+    if (expandedBlock) return;
+    var cx = e.clientX, cy = e.clientY;
+    var closest = null, closestDist = Infinity;
+    for (var i = 0; i < bubbles.length; i++) {
+      var b = bubbles[i];
+      if (b.popping) continue;
+      var dx = b.x - cx, dy = b.y - cy;
+      var dist = Math.sqrt(dx * dx + dy * dy);
+      if (dist < b.r * 2.5 && dist < closestDist) {
+        closestDist = dist;
+        closest = b;
+      }
+    }
+    if (closest) startPop(closest);
+  }, { passive: true });
+
   // ── Intro sequence ───────────────────────────────────────────
   var introEl     = document.getElementById('intro');
   var phraseA     = document.getElementById('intro-phrase-a');
