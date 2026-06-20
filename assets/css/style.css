@@ -312,10 +312,10 @@ html, body {
   right: calc(-16px * var(--scale));
   width: calc(28px * var(--scale));
   height: calc(28px * var(--scale));
-  background: rgba(255,255,255,0.06);
-  border: 0.5px solid rgba(255,255,255,0.12);
+  background: rgba(13,34,53,0.95);
+  border: 0.5px solid rgba(255,255,255,0.35);
   border-radius: 50%;
-  color: rgba(255,255,255,0.5);
+  color: rgba(255,255,255,0.75);
   font-size: calc(16px * var(--scale));
   line-height: 1;
   cursor: pointer;
@@ -325,7 +325,8 @@ html, body {
   z-index: 30;
 }
 .modal-close-btn:hover {
-  background: rgba(255,255,255,0.12);
+  background: rgba(13,34,53,0.95);
+  border-color: rgba(255,255,255,0.5);
   color: #fff;
 }
 
@@ -731,6 +732,19 @@ a.ce-contact-item:hover .ce-ci-value { color: var(--mint-green); }
   justify-content: space-between;
 }
 .ark-exp-header-left { display: flex; flex-direction: column; }
+.ark-exp-header-logo {
+  font-size: calc(22px * var(--scale));
+  line-height: 1;
+  margin-bottom: calc(6px * var(--scale));
+  letter-spacing: 0;
+}
+.ark-exp-header-logo img {
+  height: 1.3em;
+  width: auto;
+  border-radius: 4px;
+  opacity: 0.85;
+  vertical-align: middle;
+}
 .ark-exp-cat {
   display: block;
   font-size: 9px;
@@ -772,7 +786,7 @@ a.ce-contact-item:hover .ce-ci-value { color: var(--mint-green); }
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 2;
+  z-index: 25;
   box-shadow: 0 2px 12px rgba(0,0,0,0.5);
   transition: color 0.2s ease, background 0.2s ease;
 }
@@ -782,9 +796,14 @@ a.ce-contact-item:hover .ce-ci-value { color: var(--mint-green); }
 
 .ark-exp-body {
   flex: 1;
-  overflow: hidden;
+  overflow: visible;
   position: relative;
   min-height: 0;
+}
+.ark-exp-viewport {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
 }
 .ark-exp-track {
   display: flex;
@@ -857,6 +876,12 @@ a.ce-contact-item:hover .ce-ci-value { color: var(--mint-green); }
   color: #26FF93;
   border-color: #26FF93;
 }
+.ark-exp-card-arkevest .ark-exp-link { color: rgba(212,160,23,0.8); border-color: rgba(212,160,23,0.35); }
+.ark-exp-card-arkevest .ark-exp-link:hover { color: #D4A017; border-color: #D4A017; }
+.ark-exp-card-pdvplus .ark-exp-link { color: rgba(56,189,248,0.8); border-color: rgba(56,189,248,0.35); }
+.ark-exp-card-pdvplus .ark-exp-link:hover { color: #38BDF8; border-color: #38BDF8; }
+.ark-exp-card-linksis .ark-exp-link { color: rgba(251,147,53,0.8); border-color: rgba(251,147,53,0.35); }
+.ark-exp-card-linksis .ark-exp-link:hover { color: #FB923C; border-color: #FB923C; }
 .ark-exp-logo {
   font-size: calc(22px * var(--scale));
   line-height: 1;
@@ -956,6 +981,7 @@ a.ce-contact-item:hover .ce-ci-value { color: var(--mint-green); }
     overflow: visible !important;
   }
   .ark-exp-body { overflow: visible; min-height: 0; }
+  .ark-exp-viewport { position: static; overflow: visible; width: 100%; }
   .ark-exp-track {
     width: 100%;
     height: auto;

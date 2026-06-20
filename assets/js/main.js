@@ -713,8 +713,14 @@
   var arkCurrentSlide = 0;
   var arkRotateTimer = null;
   var arkExpCurrent = 0;
-  var arkSlideEls, arkDotEls, arkExpTrack, arkExpPrev, arkExpNext, arkExpCounterEl, arkExpTitleEl;
+  var arkSlideEls, arkDotEls, arkExpTrack, arkExpPrev, arkExpNext, arkExpCounterEl, arkExpTitleEl, arkExpLogoEl;
   var ARK_TITLES = ['ARKEvest', 'PDV+', 'LinkSis'];
+  var ARK_ACCENT_COLORS = ['rgba(212,160,23,0.7)', 'rgba(56,189,248,0.7)', 'rgba(251,147,53,0.7)'];
+  var ARK_LOGOS = [
+    '<span style="font-family:\'Montserrat\',sans-serif;font-weight:800">ARKE</span><span style="font-family:\'DM Serif Display\',serif;font-style:italic;color:#D4A017">vest</span>',
+    '<span style="font-family:\'Inter\',sans-serif;font-weight:800;color:#38BDF8">PDV+</span>',
+    '<img src="assets/img/linksis-logo.svg" style="height:1.3em;width:auto;border-radius:4px;opacity:0.85;vertical-align:middle">'
+  ];
 
   function arkShowSlide(idx, animate) {
     if (!arkBlock) return;
@@ -725,6 +731,7 @@
     });
     arkDotEls.forEach(function (dot, i) {
       dot.classList.toggle('active', i === idx);
+      dot.style.background = (i === idx) ? ARK_ACCENT_COLORS[idx] : '';
     });
   }
 
@@ -751,6 +758,7 @@
     }
     if (arkExpCounterEl) arkExpCounterEl.textContent = String(idx + 1);
     if (arkExpTitleEl) arkExpTitleEl.textContent = ARK_TITLES[idx];
+    if (arkExpLogoEl) arkExpLogoEl.innerHTML = ARK_LOGOS[idx];
   }
 
   if (arkBlock) {
@@ -761,6 +769,7 @@
     arkExpNext      = arkBlock.querySelector('.ark-exp-next');
     arkExpCounterEl = arkBlock.querySelector('.ark-exp-current');
     arkExpTitleEl   = arkBlock.querySelector('.ark-exp-title');
+    arkExpLogoEl    = arkBlock.querySelector('.ark-exp-header-logo');
 
     arkDotEls.forEach(function (dot) {
       dot.addEventListener('click', function (e) {
