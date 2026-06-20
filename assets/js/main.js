@@ -717,6 +717,7 @@
 
   function arkShowSlide(idx, animate) {
     if (!arkBlock) return;
+    arkCurrentSlide = idx;
     arkSlideEls.forEach(function (slide, i) {
       slide.style.transition = animate ? 'opacity 600ms ease' : 'none';
       slide.style.opacity    = (i === idx) ? '1' : '0';
@@ -724,7 +725,6 @@
     arkDotEls.forEach(function (dot, i) {
       dot.classList.toggle('active', i === idx);
     });
-    arkCurrentSlide = idx;
   }
 
   function arkStopRotation() {
