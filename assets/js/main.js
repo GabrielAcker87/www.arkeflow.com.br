@@ -628,6 +628,11 @@
       if (el === arkBlock) {
         arkStopRotation();
         arkExpGoTo(arkCurrentSlide, true);
+        var arkHeader = el.querySelector('.ark-exp-header');
+        var headerH = arkHeader ? arkHeader.offsetHeight : 0;
+        var midY = headerH + (th - headerH) / 2;
+        if (arkExpPrev) { arkExpPrev.style.top = midY + 'px'; el.appendChild(arkExpPrev); }
+        if (arkExpNext) { arkExpNext.style.top = midY + 'px'; el.appendChild(arkExpNext); }
       }
     });
   }
@@ -643,7 +648,14 @@
     var existingBtn = el.querySelector('.modal-close-btn');
     if (existingBtn) el.removeChild(existingBtn);
 
-    if (el === arkBlock) arkStartRotation();
+    if (el === arkBlock) {
+      arkStartRotation();
+      var body = el.querySelector('.ark-exp-body');
+      if (body) {
+        if (arkExpPrev) { arkExpPrev.style.top = ''; body.insertBefore(arkExpPrev, body.firstChild); }
+        if (arkExpNext) { arkExpNext.style.top = ''; body.appendChild(arkExpNext); }
+      }
+    }
 
     if (!closingFromPopstate && history.state && history.state.arkeExpanded) {
       history.back();
@@ -730,7 +742,7 @@
   var arkCurrentSlide = 0;
   var arkRotateTimer = null;
   var arkExpCurrent = 0;
-  var arkSlideEls, arkDotEls, arkExpTrack, arkExpPrev, arkExpNext, arkExpCounterEl, arkExpTitleEl, arkExpLogoEl;
+  var arkSlideEls, arkDotEls, arkExpTrack, arkExpPrev, arkExpNext, arkExpCounterEl, arkExpLogoEl;
   var ARK_TITLES = ['ARKEvest', 'PDV+', 'LinkSis'];
   var ARK_ACCENT_COLORS = ['rgba(212,160,23,0.7)', 'rgba(56,189,248,0.7)', 'rgba(251,147,53,0.7)'];
   var ARK_LOGOS = [
@@ -774,7 +786,6 @@
       if (instant) arkExpTrack.style.transition = '';
     }
     if (arkExpCounterEl) arkExpCounterEl.textContent = String(idx + 1);
-    if (arkExpTitleEl) arkExpTitleEl.textContent = ARK_TITLES[idx];
     if (arkExpLogoEl) arkExpLogoEl.innerHTML = ARK_LOGOS[idx];
   }
 
@@ -785,7 +796,6 @@
     arkExpPrev      = arkBlock.querySelector('.ark-exp-prev');
     arkExpNext      = arkBlock.querySelector('.ark-exp-next');
     arkExpCounterEl = arkBlock.querySelector('.ark-exp-current');
-    arkExpTitleEl   = arkBlock.querySelector('.ark-exp-title');
     arkExpLogoEl    = arkBlock.querySelector('.ark-exp-header-logo');
 
     arkDotEls.forEach(function (dot) {
