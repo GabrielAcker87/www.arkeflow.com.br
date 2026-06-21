@@ -18,33 +18,44 @@
 html, body {
   width: 100%;
   height: 100%;
-  background: var(--midnight);
+  background: #FF0000;
   font-family: var(--font);
   overflow: hidden;
   color: white;
 }
 
+/* ── App container ───────────────────────────────────────── */
+
+#app {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 1366px;
+  height: 768px;
+  transform: translate(-50%, -50%) scale(var(--scale));
+  transform-origin: center center;
+  background: #0a2a1a;
+  overflow: hidden;
+  z-index: 1;
+}
+
 /* ── Grid ────────────────────────────────────────────────── */
 
 #grid {
-  position: fixed;
-  inset: 0;
-  margin: auto;
-  width: min(100vw, 150vh);
-  aspect-ratio: 3 / 2;
+  width: 100%;
+  height: 100%;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(2, 1fr);
-  gap: calc(6px * var(--scale));
-  padding: calc(60px * var(--scale)) calc(8% * var(--scale));
-  perspective: 1100px;
+  gap: 10px;
+  padding: 48px 60px;
 }
 
 /* ── Block base ──────────────────────────────────────────── */
 
 .block {
   position: relative;
-  background: rgba(255, 255, 255, 0.03);
+  background: #1a3a4a;
   border: 1px solid rgba(255, 255, 255, 0.06);
   border-radius: calc(7px * var(--scale));
   padding: calc(16px * var(--scale)) calc(18px * var(--scale));
@@ -191,9 +202,12 @@ html, body {
 /* ── Mobile ──────────────────────────────────────────────── */
 
 @media (max-width: 767px) and (hover: none) {
+  #app {
+    width: 390px;
+    height: 844px;
+  }
   #grid {
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(3, 1fr);
-    padding: calc(50px * var(--scale)) calc(4% * var(--scale));
   }
 }
