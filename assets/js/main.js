@@ -356,6 +356,66 @@
 
   runIntro();
 
+  // ── Modal overlay ─────────────────────────────────────────
+  var modalOverlay       = document.getElementById('modal-overlay');
+  var modalClose         = document.getElementById('modal-close');
+  var modalContent       = document.getElementById('modal-content');
+  var gridEl             = document.getElementById('grid');
+  var modalIsOpen        = false;
+  var closingFromHistory = false;
+
+  function openModal(blockEl) {
+    if (modalIsOpen) return;
+    modalIsOpen = true;
+    resetAll();
+    gridEl.classList.add('is-expanded-open');
+    modalContent.innerHTML = '';
+    modalOverlay.style.transition = 'opacity 320ms ease, transform 320ms ease';
+    modalOverlay.classList.add('is-open');
+    history.pushState({ arkeModal: true }, '');
+  }
+
+  function closeModal(fromHistory) {
+    if (!modalIsOpen) return;
+    modalIsOpen = false;
+    modalOverlay.style.transition = 'opacity 220ms ease, transform 220ms ease';
+    modalOverlay.classList.remove('is-open');
+    gridEl.classList.remove('is-expanded-open');
+    setTimeout(function () {
+      modalOverlay.style.transition = '';
+      modalContent.innerHTML = '';
+    }, 220);
+    if (!fromHistory) {
+      closingFromHistory = true;
+      history.back();
+      setTimeout(function () { closingFromHistory = false; }, 100);
+    }
+  }
+
+  // Block click → open modal
+  blocks.forEach(function (block) {
+    block.addEventListener('click', function () {
+      if (appEl.classList.contains('intro-playing')) return;
+      openModal(this);
+    });
+  });
+
+  // Close triggers
+  modalClose.addEventListener('click', function () { closeModal(false); });
+
+  modalOverlay.addEventListener('click', function (e) {
+    if (e.target === modalOverlay) closeModal(false);
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && modalIsOpen) closeModal(false);
+  });
+
+  window.addEventListener('popstate', function () {
+    if (closingFromHistory) { closingFromHistory = false; return; }
+    if (modalIsOpen) closeModal(true);
+  });
+
   // ── Block hover tilt ──────────────────────────────────────
   var isTouch = ('ontouchstart' in window) || navigator.maxTouchPoints > 0;
   var activeBlock = null;

@@ -208,16 +208,30 @@ html, body {
 /* ── Modal overlay ───────────────────────────────────────── */
 
 #modal-overlay {
-  position: fixed;
+  position: absolute;
+  left: 165px;
+  top: 125px;
+  width: 1036px;
+  height: 548px;
   z-index: 20;
   background: rgba(7, 24, 40, 0.97);
+  border: 1px solid rgba(255, 255, 255, 0.06);
   border-radius: 7px;
   overflow: hidden;
   opacity: 0;
   pointer-events: none;
+  transform: scale(0.96);
+  transform-origin: center center;
+  transition: opacity 320ms ease, transform 320ms ease;
 }
 
-.modal-close-btn {
+#modal-overlay.is-open {
+  opacity: 1;
+  pointer-events: auto;
+  transform: scale(1);
+}
+
+#modal-close {
   position: absolute;
   top: 14px;
   right: 14px;
@@ -238,14 +252,18 @@ html, body {
   transition: color 200ms ease;
 }
 
-.modal-close-btn:hover {
+#modal-close:hover {
   color: white;
 }
 
-#modal-inner {
+#modal-content {
   position: absolute;
   inset: 0;
   overflow: hidden;
+}
+
+#grid.is-expanded-open .block {
+  pointer-events: none;
 }
 
 /* ── Mobile ──────────────────────────────────────────────── */
