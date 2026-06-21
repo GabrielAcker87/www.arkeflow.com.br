@@ -357,4 +357,87 @@
 
   runIntro();
 
+  // ── Block hover tilt ──────────────────────────────────────
+  var isTouch = ('ontouchstart' in window) || navigator.maxTouchPoints > 0;
+  var activeBlock = null;
+  var leaveTimer  = null;
+
+  var BASE_TRANS =
+    'transform 380ms cubic-bezier(0.15,0.85,0.3,1),' +
+    'filter 380ms cubic-bezier(0.15,0.85,0.3,1),' +
+    'opacity 380ms cubic-bezier(0.15,0.85,0.3,1)';
+  var TILT_TRANS =
+    'filter 380ms cubic-bezier(0.15,0.85,0.3,1),' +
+    'opacity 380ms cubic-bezier(0.15,0.85,0.3,1)';
+
+  function activateBlock(el) {
+    if (leaveTimer) { clearTimeout(leaveTimer); leaveTimer = null; }
+    activeBlock = el;
+    var ar = parseInt(el.dataset.r, 10);
+    var ac = parseInt(el.dataset.c, 10);
+    var cx = ac === 0 ? 30 : ac === 2 ? -30 : 0;
+    var cy = ar === 0 ? 25 : -25;
+    blocks.forEach(function (b) {
+      b.style.transition = BASE_TRANS;
+      if (b === el) {
+        b.classList.add('is-active');
+        b.style.transform   = 'translateX(' + cx + 'px) translateY(' + cy + 'px) translateZ(50px) scale(1.16)';
+        b.style.filter      = 'brightness(1.1)';
+        b.style.opacity     = '1';
+        b.style.zIndex      = '10';
+      } else {
+        var br = parseInt(b.dataset.r, 10);
+        var bc = parseInt(b.dataset.c, 10);
+        b.classList.remove('is-active');
+        b.style.transform   = 'translateX(' + (bc - ac) * 20 + 'px) translateY(' + (br - ar) * 16 + 'px) translateZ(-65px) scale(0.85)';
+        b.style.filter      = 'brightness(0.48) saturate(0.6)';
+        b.style.opacity     = '0.65';
+        b.style.zIndex      = '';
+      }
+    });
+  }
+
+  function resetAll() {
+    activeBlock = null;
+    blocks.forEach(function (b) {
+      b.style.transition  = BASE_TRANS;
+      b.style.transform   = '';
+      b.style.filter      = '';
+      b.style.opacity     = '1';
+      b.style.zIndex      = '';
+      b.classList.remove('is-active');
+    });
+  }
+
+  blocks.forEach(function (block) {
+    block.addEventListener('mouseenter', function () {
+      if (appEl.classList.contains('intro-playing')) return;
+      activateBlock(this);
+    });
+
+    block.addEventListener('mousemove', function (e) {
+      if (isTouch) return;
+      if (appEl.classList.contains('intro-playing')) return;
+      if (activeBlock !== this) return;
+      var rect = this.getBoundingClientRect();
+      var dx = (e.clientX - rect.left  - rect.width  / 2) / (rect.width  / 2);
+      var dy = (e.clientY - rect.top   - rect.height / 2) / (rect.height / 2);
+      var mc = parseInt(this.dataset.c, 10);
+      var mr = parseInt(this.dataset.r, 10);
+      var cx = mc === 0 ? 30 : mc === 2 ? -30 : 0;
+      var cy = mr === 0 ? 25 : -25;
+      this.style.transition = TILT_TRANS;
+      this.style.transform  =
+        'rotateX(' + (-dy * 6).toFixed(2) + 'deg)' +
+        ' rotateY(' + (dx * 7).toFixed(2) + 'deg)' +
+        ' translateX(' + cx + 'px) translateY(' + cy + 'px)' +
+        ' translateZ(50px) scale(1.16)';
+    });
+
+    block.addEventListener('mouseleave', function () {
+      if (activeBlock !== this) return;
+      leaveTimer = setTimeout(resetAll, 12);
+    });
+  });
+
 }());
