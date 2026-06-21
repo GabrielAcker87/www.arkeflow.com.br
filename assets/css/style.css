@@ -34,7 +34,7 @@ html, body {
   height: 768px;
   transform: translate(-50%, -50%) scale(var(--scale));
   transform-origin: center center;
-  background: #071828;
+  background: transparent;
   overflow: hidden;
   z-index: 1;
 }
