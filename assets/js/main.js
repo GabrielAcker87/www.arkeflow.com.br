@@ -169,9 +169,9 @@
       if (b.popping) { drawPop(b); continue; }
       b.x += b.vx; b.y += b.vy;
       var margin = b.r * 6;
-      if (b.x < -margin)        b.x = W + margin;
+      if (b.x < -margin)         b.x = W + margin;
       else if (b.x > W + margin) b.x = -margin;
-      if (b.y < -margin)        b.y = H + margin;
+      if (b.y < -margin)         b.y = H + margin;
       else if (b.y > H + margin) b.y = -margin;
       b.phase += b.phaseSpd;
       var opacity = b.baseOpacity * (0.82 + 0.18 * Math.sin(b.phase));
@@ -182,5 +182,179 @@
     requestAnimationFrame(drawFrame);
   }
   requestAnimationFrame(drawFrame);
+
+  // ── Intro: references ─────────────────────────────────────
+  var introLogoEl  = document.getElementById('intro-logo');
+  var logoPerm     = document.getElementById('logo-permanent');
+  var phraseA      = document.getElementById('intro-phrase-a');
+  var phraseB      = document.getElementById('intro-phrase-b');
+  var skipWrap     = document.getElementById('skip-wrap');
+  var skipBtnEl    = document.getElementById('skip-btn');
+  var blocks       = Array.from(document.querySelectorAll('#grid .block'));
+
+  // Blocks invisible + no interaction during intro
+  appEl.classList.add('intro-playing');
+  blocks.forEach(function (b) { b.style.opacity = '0'; });
+
+  var P1 = 'Quando o negócio cresce, o <span style="color:#26FF93;font-weight:400">IMPROVISO</span> para de funcionar.';
+  var P2 = 'Do processo ao software. <span style="color:#26FF93;font-weight:400">CONSTRUÍDO</span> para o seu negócio.';
+
+  var EASE_PHRASE = 'cubic-bezier(0.25,0.46,0.45,0.94)';
+  var EASE_LOGO_IN = 'cubic-bezier(0.34,1.3,0.64,1)';
+  var EASE_LOGO_OUT = 'cubic-bezier(0.4,0,0.2,1)';
+
+  var skipped      = false;
+  var skipResolvers = [];
+
+  function safeWait(ms) {
+    if (skipped) return Promise.resolve();
+    return new Promise(function (resolve) {
+      var tid = setTimeout(resolve, ms);
+      skipResolvers.push(function () { clearTimeout(tid); resolve(); });
+    });
+  }
+
+  // Phrase positioned with left:50%/top:50%; JS drives translate offsets
+  function showPhrase(el, html, fromX, fromY) {
+    el.innerHTML = html;
+    el.style.transition = 'none';
+    el.style.opacity    = '0';
+    el.style.transform  = 'translate(calc(-50% + ' + fromX + 'px), calc(-50% + ' + fromY + 'px))';
+    el.getBoundingClientRect();
+    el.style.transition = 'transform 700ms ' + EASE_PHRASE + ', opacity 700ms ' + EASE_PHRASE;
+    el.style.opacity    = '1';
+    el.style.transform  = 'translate(-50%, -50%)';
+  }
+
+  function hidePhrase(el, toX, toY) {
+    el.style.transition = 'transform 700ms ' + EASE_PHRASE + ', opacity 700ms ' + EASE_PHRASE;
+    el.style.opacity    = '0';
+    el.style.transform  = 'translate(calc(-50% + ' + toX + 'px), calc(-50% + ' + toY + 'px))';
+  }
+
+  // Called by both runIntro() and doSkip() — runs steps 6-8
+  function doMorphAndFinish() {
+    skipWrap.style.opacity       = '0';
+    skipWrap.style.pointerEvents = 'none';
+
+    var s        = getScale();
+    var appRect  = appEl.getBoundingClientRect();
+    var skipRect = skipBtnEl.getBoundingClientRect();
+    var skipCX   = (skipRect.left + skipRect.width  / 2 - appRect.left) / s;
+    var skipCY   = (skipRect.top  + skipRect.height / 2 - appRect.top)  / s;
+    var morphSz  = 9;
+    var completed = 0;
+
+    var EASE_BLOCK = 'cubic-bezier(0.34,1.2,0.64,1)';
+
+    blocks.forEach(function (block, i) {
+      var bRect = block.getBoundingClientRect();
+      var bX = (bRect.left - appRect.left) / s;
+      var bY = (bRect.top  - appRect.top)  / s;
+      var bW = bRect.width  / s;
+      var bH = bRect.height / s;
+
+      var morph = document.createElement('div');
+      morph.style.cssText =
+        'position:absolute;z-index:5;border-radius:7px;pointer-events:none;transition:none;' +
+        'background:rgba(38,255,147,0.06);border:1px solid rgba(38,255,147,0.5);' +
+        'left:' + (skipCX - morphSz / 2) + 'px;' +
+        'top:'  + (skipCY - morphSz / 2) + 'px;' +
+        'width:' + morphSz + 'px;height:' + morphSz + 'px;opacity:1;';
+      appEl.appendChild(morph);
+      morph.getBoundingClientRect(); // force reflow
+
+      setTimeout(function () {
+        morph.style.transition =
+          'left 750ms '   + EASE_BLOCK + ',' +
+          'top 750ms '    + EASE_BLOCK + ',' +
+          'width 750ms '  + EASE_BLOCK + ',' +
+          'height 750ms ' + EASE_BLOCK + ',' +
+          'opacity 300ms ease 500ms';
+        morph.style.left   = bX + 'px';
+        morph.style.top    = bY + 'px';
+        morph.style.width  = bW + 'px';
+        morph.style.height = bH + 'px';
+        morph.style.opacity = '0';
+
+        // Block snaps visible as morph fades out
+        setTimeout(function () {
+          block.style.transition = 'none';
+          block.style.opacity    = '1';
+          morph.remove();
+          completed++;
+          if (completed === blocks.length) {
+            // Step 7: pause, then step 8
+            setTimeout(function () {
+              appEl.classList.remove('intro-playing');
+              logoPerm.style.opacity       = '1';
+              logoPerm.style.pointerEvents = '';
+            }, 1000);
+          }
+        }, 800);
+      }, i * 55);
+    });
+  }
+
+  function doSkip() {
+    if (skipped) return;
+    skipped = true;
+    skipResolvers.forEach(function (r) { r(); });
+    skipResolvers = [];
+
+    introLogoEl.style.transition = 'none'; introLogoEl.style.opacity = '0';
+    phraseA.style.transition     = 'none'; phraseA.style.opacity     = '0';
+    phraseB.style.transition     = 'none'; phraseB.style.opacity     = '0';
+
+    doMorphAndFinish();
+  }
+
+  skipWrap.addEventListener('click', doSkip);
+
+  // ── Intro: sequence (steps 1-5) ───────────────────────────
+  async function runIntro() {
+    // Step 1 — logo in center, fade in → hold → fade out
+    introLogoEl.style.opacity   = '0';
+    introLogoEl.style.transform = 'translate(-50%, -50%)';
+    introLogoEl.getBoundingClientRect();
+    introLogoEl.style.transition = 'opacity 400ms ease';
+    introLogoEl.style.opacity    = '1';
+    await safeWait(1900); // 400ms fade-in + 1500ms hold
+    if (skipped) return;
+
+    // Step 2 — logo fades, phrase 1 enters simultaneously (from below)
+    introLogoEl.style.opacity = '0';
+    showPhrase(phraseA, P1, 0, 160);
+    await safeWait(700 + 4500);
+    if (skipped) return;
+
+    // Step 3 — cross-transition: phrase 1 exits top, phrase 2 enters from right
+    hidePhrase(phraseA, 0, -160);
+    showPhrase(phraseB, P2, 200, 0);
+    await safeWait(700 + 4500);
+    if (skipped) return;
+
+    // Step 4 — phrase 2 exits left, logo re-enters from below
+    hidePhrase(phraseB, -200, 0);
+    introLogoEl.style.transition = 'none';
+    introLogoEl.style.opacity    = '0';
+    introLogoEl.style.transform  = 'translate(-50%, calc(-50% + 140px))';
+    introLogoEl.getBoundingClientRect();
+    introLogoEl.style.transition = 'transform 700ms ' + EASE_LOGO_IN + ', opacity 700ms ease';
+    introLogoEl.style.opacity    = '1';
+    introLogoEl.style.transform  = 'translate(-50%, -50%)';
+    await safeWait(700 + 2000);
+    if (skipped) return;
+
+    // Step 5 — logo exits toward top-left, fades mid-travel
+    introLogoEl.style.transition = 'transform 600ms ' + EASE_LOGO_OUT + ', opacity 350ms ease';
+    introLogoEl.style.transform  = 'translate(calc(-50% - 420px), calc(-50% - 260px))';
+    introLogoEl.style.opacity    = '0';
+
+    // Step 6 — morph starts simultaneously
+    doMorphAndFinish();
+  }
+
+  runIntro();
 
 }());
