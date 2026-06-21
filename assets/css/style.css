@@ -18,7 +18,7 @@
 html, body {
   width: 100%;
   height: 100%;
-  background: #FF0000;
+  background: #071828;
   font-family: var(--font);
   overflow: hidden;
   color: white;
@@ -34,31 +34,62 @@ html, body {
   height: 768px;
   transform: translate(-50%, -50%) scale(var(--scale));
   transform-origin: center center;
-  background: #0a2a1a;
+  background: #071828;
   overflow: hidden;
   z-index: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Navbar ──────────────────────────────────────────────── */
+
+#navbar {
+  width: 100%;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  padding: 0 32px;
+  flex-shrink: 0;
+}
+
+.wordmark {
+  font-family: var(--font);
+  font-size: 20px;
+  letter-spacing: 0.02em;
+}
+
+.wm-arke {
+  font-weight: 800;
+  color: #fff;
+  text-transform: uppercase;
+}
+
+.wm-flow {
+  font-weight: 300;
+  color: var(--mint);
+  text-transform: lowercase;
 }
 
 /* ── Grid ────────────────────────────────────────────────── */
 
 #grid {
+  flex: 1;
   width: 100%;
-  height: 100%;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(2, 1fr);
   gap: 10px;
-  padding: 48px 60px;
+  padding: 0 32px 24px 32px;
 }
 
 /* ── Block base ──────────────────────────────────────────── */
 
 .block {
   position: relative;
-  background: #1a3a4a;
+  background: rgba(255, 255, 255, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.06);
-  border-radius: calc(7px * var(--scale));
-  padding: calc(16px * var(--scale)) calc(18px * var(--scale));
+  border-radius: 7px;
+  padding: 16px 18px;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -89,24 +120,24 @@ html, body {
 
 .block-cat {
   display: block;
-  font-size: calc(9px * var(--scale));
+  font-size: 9px;
   font-weight: 400;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   color: rgba(38, 255, 147, 0.55);
-  margin-bottom: calc(5px * var(--scale));
+  margin-bottom: 5px;
 }
 
 .block-title {
-  font-size: calc(17px * var(--scale));
+  font-size: 17px;
   font-weight: 700;
   line-height: 1.2;
   color: white;
-  margin-bottom: calc(3px * var(--scale));
+  margin-bottom: 3px;
 }
 
 .block-sub {
-  font-size: calc(11px * var(--scale));
+  font-size: 11px;
   font-weight: 300;
   color: var(--steel);
 }
@@ -114,7 +145,7 @@ html, body {
 /* ── Shared modal content classes ────────────────────────── */
 
 .m-label {
-  font-size: calc(9px * var(--scale));
+  font-size: 9px;
   font-weight: 400;
   text-transform: uppercase;
   letter-spacing: 0.1em;
@@ -122,7 +153,7 @@ html, body {
 }
 
 .m-statement {
-  font-size: calc(20px * var(--scale));
+  font-size: 20px;
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.03em;
@@ -135,7 +166,7 @@ html, body {
 }
 
 .m-text {
-  font-size: calc(14px * var(--scale));
+  font-size: 14px;
   font-weight: 300;
   line-height: 1.6;
   color: rgba(255, 255, 255, 0.7);
@@ -145,8 +176,8 @@ html, body {
   display: flex;
   flex-direction: column;
   flex: 1;
-  padding: calc(20px * var(--scale));
-  gap: calc(14px * var(--scale));
+  padding: 20px;
+  gap: 14px;
 }
 
 .m-divider {
@@ -170,12 +201,12 @@ html, body {
 
 .modal-close-btn {
   position: absolute;
-  top: calc(14px * var(--scale));
-  right: calc(14px * var(--scale));
-  width: calc(28px * var(--scale));
-  height: calc(28px * var(--scale));
+  top: 14px;
+  right: 14px;
+  width: 28px;
+  height: 28px;
   font-family: inherit;
-  font-size: calc(14px * var(--scale));
+  font-size: 14px;
   line-height: 1;
   background: rgba(255, 255, 255, 0.06);
   border: 0.5px solid rgba(255, 255, 255, 0.12);
@@ -206,8 +237,16 @@ html, body {
     width: 390px;
     height: 844px;
   }
+  #navbar {
+    height: 48px;
+    padding: 0 20px;
+  }
+  .wordmark {
+    font-size: 18px;
+  }
   #grid {
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(3, 1fr);
+    padding: 0 20px 16px 20px;
   }
 }
