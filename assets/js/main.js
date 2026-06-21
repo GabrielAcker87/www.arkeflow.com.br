@@ -56,9 +56,8 @@
   }
 
   function initCanvas() {
-    var mobile = window.matchMedia('(max-width: 767px) and (hover: none)').matches;
-    W = canvas.width  = mobile ? 390  : 1366;
-    H = canvas.height = mobile ? 844  : 768;
+    W = canvas.width  = window.innerWidth;
+    H = canvas.height = window.innerHeight;
     buildBubbles();
   }
   initCanvas();
