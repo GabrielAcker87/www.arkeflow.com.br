@@ -269,17 +269,7 @@ html, body {
 
 /* ── Block expand ────────────────────────────────────────────── */
 #expand-backdrop {
-  position: fixed;
-  inset: 0;
-  z-index: 10;
-  background: rgba(7, 24, 40, 0.65);
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.4s ease;
-}
-#expand-backdrop.active {
-  opacity: 1;
-  pointer-events: auto;
+  display: none;
 }
 
 .block.is-receded {

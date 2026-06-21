@@ -600,10 +600,11 @@
         expandTop   = 60;
         expandLeft  = 16;
       } else {
-        tw          = Math.min(1000, window.innerWidth  - 240);
-        th          = Math.min(487,  viewportH - 200);
-        expandTop   = (viewportH - th) / 2;
-        expandLeft  = (window.innerWidth  - tw) / 2;
+        var gridRect = gridEl.getBoundingClientRect();
+        tw          = gridRect.width  * 0.84;
+        th          = gridRect.height * 0.80;
+        expandTop   = gridRect.top  + (gridRect.height - th) / 2;
+        expandLeft  = gridRect.left + (gridRect.width  - tw) / 2;
       }
       el.classList.add('is-expanded');
       el.style.top    = expandTop  + 'px';
@@ -613,7 +614,6 @@
       blocks.forEach(function (b) {
         if (b !== el) b.classList.add('is-receded');
       });
-      backdrop.classList.add('active');
 
       var closeBtn = document.createElement('button');
       closeBtn.className = 'modal-close-btn';
@@ -667,7 +667,6 @@
     el.style.width  = origin.width  + 'px';
     el.style.height = origin.height + 'px';
 
-    backdrop.classList.remove('active');
     blocks.forEach(function (b) {
       if (b !== el) b.classList.remove('is-receded');
     });
