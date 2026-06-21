@@ -678,7 +678,7 @@ a.ce-contact-item:hover .ce-ci-value { color: var(--mint-green); }
   pointer-events: none;
 }
 .ark-slide-name {
-  font-size: calc(20px * var(--scale));
+  font-size: calc(15px * var(--scale));
   font-weight: 800;
   color: #fff;
   text-transform: uppercase;
