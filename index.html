@@ -12,55 +12,75 @@
   <script src="assets/js/main.js" defer></script>
 </head>
 <body>
-  <div id="logo-permanent">
+
+  <div id="logo-permanent" style="opacity:0;pointer-events:none">
     <span class="wm-arke">ARKE</span><span class="wm-flow">flow</span>
   </div>
+
   <div id="app">
 
-  <div id="grid">
+    <canvas id="bg"></canvas>
 
-    <div class="block" data-r="0" data-c="0">
-      <span class="block-cat">PLATAFORMA</span>
-      <h2 class="block-title">Bitrix24</h2>
-      <p class="block-sub">Veja como integramos sua operação →</p>
+    <div id="intro-logo">
+      <span class="wm-arke">ARKE</span><span class="wm-flow">flow</span>
+      <span class="wm-sub">TECH SOLUTIONS</span>
     </div>
 
-    <div class="block" data-r="0" data-c="1">
-      <span class="block-cat">SERVIÇO</span>
-      <h2 class="block-title">Consultoria</h2>
-      <p class="block-sub">Entenda como trabalhamos →</p>
+    <p id="intro-phrase-a" class="intro-phrase"></p>
+    <p id="intro-phrase-b" class="intro-phrase"></p>
+
+    <div id="skip-wrap">
+      <div id="skip-btn">
+        <div class="skip-sq"></div><div class="skip-sq"></div><div class="skip-sq"></div>
+        <div class="skip-sq"></div><div class="skip-sq"></div><div class="skip-sq"></div>
+      </div>
     </div>
 
-    <div class="block" data-r="0" data-c="2" style="--block-accent:#FB923C">
-      <span class="block-cat">SOFTWARES</span>
-      <h2 class="block-title">ARK Softwares</h2>
-      <p class="block-sub">Conheça nossa linha de produtos →</p>
-    </div>
+    <div id="grid">
 
-    <div class="block" data-r="1" data-c="0">
-      <span class="block-cat">EMPRESA</span>
-      <h2 class="block-title">Quem somos</h2>
-      <p class="block-sub">Conheça a empresa →</p>
-    </div>
+      <div class="block" data-r="0" data-c="0">
+        <span class="block-cat">PLATAFORMA</span>
+        <h2 class="block-title">Bitrix24</h2>
+        <p class="block-sub">Veja como integramos sua operação →</p>
+      </div>
 
-    <div class="block" data-r="1" data-c="1">
-      <span class="block-cat">TIME</span>
-      <h2 class="block-title">Equipe</h2>
-      <p class="block-sub">Veja quem está por trás →</p>
-    </div>
+      <div class="block" data-r="0" data-c="1">
+        <span class="block-cat">SERVIÇO</span>
+        <h2 class="block-title">Consultoria</h2>
+        <p class="block-sub">Entenda como trabalhamos →</p>
+      </div>
 
-    <div class="block" data-r="1" data-c="2">
-      <span class="block-cat">CONTATO</span>
-      <h2 class="block-title">Fale conosco</h2>
-      <p class="block-sub">Fale com a gente →</p>
-    </div>
+      <div class="block" data-r="0" data-c="2" style="--block-accent:#FB923C">
+        <span class="block-cat">SOFTWARES</span>
+        <h2 class="block-title">ARK Softwares</h2>
+        <p class="block-sub">Conheça nossa linha de produtos →</p>
+      </div>
 
-    <div id="modal-overlay">
-      <button id="modal-close" class="modal-close-btn">&times;</button>
-      <div id="modal-inner"></div>
-    </div>
+      <div class="block" data-r="1" data-c="0">
+        <span class="block-cat">EMPRESA</span>
+        <h2 class="block-title">Quem somos</h2>
+        <p class="block-sub">Conheça a empresa →</p>
+      </div>
 
+      <div class="block" data-r="1" data-c="1">
+        <span class="block-cat">TIME</span>
+        <h2 class="block-title">Equipe</h2>
+        <p class="block-sub">Veja quem está por trás →</p>
+      </div>
+
+      <div class="block" data-r="1" data-c="2">
+        <span class="block-cat">CONTATO</span>
+        <h2 class="block-title">Fale conosco</h2>
+        <p class="block-sub">Fale com a gente →</p>
+      </div>
+
+      <div id="modal-overlay">
+        <button id="modal-close" class="modal-close-btn">&times;</button>
+        <div id="modal-inner"></div>
+      </div>
+
+    </div>
   </div>
-  </div>
+
 </body>
 </html>
