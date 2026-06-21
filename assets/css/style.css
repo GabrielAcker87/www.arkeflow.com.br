@@ -60,6 +60,7 @@ html, body {
 .wm-flow {
   font-weight: 300;
   color: var(--mint);
+  text-transform: lowercase;
 }
 
 /* ── Grid ────────────────────────────────────────────────── */
