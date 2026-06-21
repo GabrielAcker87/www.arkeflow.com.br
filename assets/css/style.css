@@ -273,8 +273,6 @@ html, body {
 }
 
 .block.is-receded {
-  opacity: 0.38;
-  transform: translateZ(-80px) scale(0.88) !important;
   pointer-events: none;
   transition: opacity 0.4s ease, transform 0.4s ease;
 }

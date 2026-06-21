@@ -607,8 +607,8 @@
         var contentTop    = firstBlock.top;
         var contentWidth  = lastBlock.right  - firstBlock.left;
         var contentHeight = lastBlock.bottom - firstBlock.top;
-        tw          = contentWidth  * 0.92;
-        th          = contentHeight * 0.92;
+        tw          = contentWidth  * 0.88;
+        th          = Math.min(contentHeight * 0.75, tw * 0.52);
         expandLeft  = contentLeft + (contentWidth  - tw) / 2;
         expandTop   = contentTop  + (contentHeight - th) / 2;
       }
