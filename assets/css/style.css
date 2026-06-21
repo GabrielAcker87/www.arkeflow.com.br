@@ -49,6 +49,9 @@ html, body {
   font-family: var(--font);
   font-size: 20px;
   letter-spacing: 0.02em;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 600ms ease;
 }
 
 .wm-arke {
@@ -66,6 +69,8 @@ html, body {
 /* ── Grid ────────────────────────────────────────────────── */
 
 #grid {
+  position: relative;
+  z-index: 1;
   width: 100%;
   height: 100%;
   display: grid;
@@ -73,6 +78,7 @@ html, body {
   grid-template-rows: repeat(2, 1fr);
   gap: 35px;
   padding: 90px 130px 60px 130px;
+  perspective: 1100px;
 }
 
 /* ── Block base ──────────────────────────────────────────── */
@@ -242,3 +248,104 @@ html, body {
     gap: 10px;
   }
 }
+
+/* ── Canvas (inside #app) ────────────────────────────────── */
+
+#bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── Intro: logo ─────────────────────────────────────────── */
+
+#intro-logo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 10;
+  font-family: var(--font);
+  font-size: 52px;
+  letter-spacing: 0.02em;
+  opacity: 0;
+  pointer-events: none;
+  white-space: nowrap;
+  text-align: center;
+}
+
+#intro-logo .wm-sub {
+  display: block;
+  font-size: 9px;
+  font-weight: 400;
+  letter-spacing: 0.22em;
+  color: var(--steel);
+  text-transform: uppercase;
+  margin-top: 8px;
+}
+
+/* ── Intro: phrases ──────────────────────────────────────── */
+
+.intro-phrase {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 66%;
+  z-index: 10;
+  font-family: var(--font);
+  font-size: 26px;
+  font-weight: 300;
+  line-height: 1.35;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  text-align: center;
+  color: white;
+  opacity: 0;
+  pointer-events: none;
+}
+
+@media (max-width: 767px) and (hover: none) {
+  .intro-phrase { font-size: 18px; }
+  #intro-logo   { font-size: 38px; }
+}
+
+/* ── Intro: skip button ──────────────────────────────────── */
+
+#skip-wrap {
+  position: absolute;
+  bottom: 28px;
+  right: 28px;
+  z-index: 15;
+  cursor: pointer;
+}
+
+#skip-btn {
+  display: grid;
+  grid-template-columns: repeat(3, 9px);
+  grid-template-rows: repeat(2, 9px);
+  gap: 4px;
+}
+
+.skip-sq {
+  width: 9px;
+  height: 9px;
+  border: 1px solid rgba(38, 255, 147, 0.85);
+  border-radius: 1px;
+  animation: skip-balloon 1.4s ease-in-out infinite alternate;
+}
+.skip-sq:nth-child(2) { animation-delay: 0.10s; }
+.skip-sq:nth-child(3) { animation-delay: 0.20s; }
+.skip-sq:nth-child(4) { animation-delay: 0.15s; }
+.skip-sq:nth-child(5) { animation-delay: 0.25s; }
+.skip-sq:nth-child(6) { animation-delay: 0.35s; }
+
+@keyframes skip-balloon {
+  from { opacity: 0.3; transform: scale(0.85); }
+  to   { opacity: 0.9; transform: scale(1.05); }
+}
+
+/* ── Intro: block interactivity guard ────────────────────── */
+
+#app.intro-playing .block { pointer-events: none; }
