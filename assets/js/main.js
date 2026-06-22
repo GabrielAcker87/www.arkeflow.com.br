@@ -364,12 +364,17 @@
   var modalIsOpen        = false;
   var closingFromHistory = false;
 
+  var MODAL_QUEM_SOMOS = '<div class="modal-header"><span class="modal-cat">EMPRESA</span><h2 class="modal-title">Quem somos</h2></div><div class="modal-body modal-two-col"><div class="modal-col"><span class="modal-col-label">A EMPRESA</span><p class="modal-col-statement">Tecnologia que se molda ao negócio,<span style="color:#26FF93"> não o negócio que se molda à tecnologia.</span></p><p class="modal-text">A empresa é nova. A especialidade, não.</p><p class="modal-text">Quase trinta anos de experiência em consultoria e gestão de processos aplicados a cada projeto, em <span style="color:#fff;font-weight:700">Bitrix24</span>, automação e softwares próprios para cada setor.</p><p class="modal-text modal-text-italic">ARKE, do grego arche: origem. O princípio sobre o qual tudo é construído.</p></div><div class="modal-col"><span class="modal-col-label">COMO TRABALHAMOS</span><p class="modal-col-statement">Diagnóstico antes de <span style="color:#26FF93">qualquer solução.</span></p><p class="modal-text">Entendemos o processo, o fluxo e o problema real antes de propor qualquer ferramenta.</p><p class="modal-text">Usamos o que o mercado oferece de melhor e adaptamos o que cada empresa precisa de único. <span style="color:#fff;font-weight:700">Sempre sob medida.</span></p><p class="modal-text">Cada entrega é documentada e transferida com clareza. O objetivo não é vender horas, é garantir que o processo funcione sem depender de nós.</p></div></div>';
+
   function openModal(blockEl) {
     if (modalIsOpen) return;
     modalIsOpen = true;
     resetAll();
     gridEl.classList.add('is-expanded-open');
     modalContent.innerHTML = '';
+    var r = blockEl.dataset.r;
+    var c = blockEl.dataset.c;
+    if (r === '1' && c === '0') modalContent.innerHTML = MODAL_QUEM_SOMOS;
     modalOverlay.style.transition = 'opacity 320ms ease, transform 320ms ease';
     modalOverlay.classList.add('is-open');
     history.pushState({ arkeModal: true }, '');

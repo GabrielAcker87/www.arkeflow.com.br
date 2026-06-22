@@ -260,6 +260,8 @@ html, body {
   position: absolute;
   inset: 0;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 #grid.is-expanded-open .block {
@@ -386,3 +388,105 @@ html, body {
 /* ── Intro: block interactivity guard ────────────────────── */
 
 #app.intro-playing .block { pointer-events: none; }
+
+/* ── Block statement (closed-state phrase) ───────────────── */
+
+.block-statement {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.block-statement-text {
+  font-size: calc(22px * var(--scale));
+  font-weight: 800;
+  text-transform: uppercase;
+  color: #fff;
+  line-height: 1.15;
+  letter-spacing: 0.03em;
+  margin: 0;
+}
+
+/* ── Modal design system — layout ────────────────────────── */
+
+.modal-header {
+  flex-shrink: 0;
+  padding: calc(22px * var(--scale)) calc(32px * var(--scale)) calc(18px * var(--scale));
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.modal-cat {
+  display: block;
+  font-size: calc(11px * var(--scale));
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #26FF93;
+}
+
+.modal-title {
+  font-size: calc(26px * var(--scale));
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.2;
+  margin-top: calc(4px * var(--scale));
+}
+
+.modal-body {
+  display: flex;
+  padding-top: calc(24px * var(--scale));
+  gap: calc(32px * var(--scale));
+}
+
+.modal-two-col {
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+}
+
+/* ── Modal design system — typography ────────────────────── */
+
+.modal-col {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  padding: 0 calc(24px * var(--scale)) calc(20px * var(--scale));
+}
+
+.modal-col-label {
+  display: block;
+  font-size: calc(10px * var(--scale));
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.10em;
+  color: rgba(255, 255, 255, 0.40);
+  margin-bottom: calc(12px * var(--scale));
+}
+
+.modal-col-statement {
+  font-size: calc(15px * var(--scale));
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.35;
+  margin-bottom: calc(14px * var(--scale));
+}
+
+.modal-text {
+  font-size: calc(13px * var(--scale));
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.72);
+  line-height: 1.65;
+  margin-bottom: calc(10px * var(--scale));
+}
+
+.modal-text:last-child {
+  margin-bottom: 0;
+}
+
+.modal-text-italic {
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.40);
+  margin-top: auto;
+}
