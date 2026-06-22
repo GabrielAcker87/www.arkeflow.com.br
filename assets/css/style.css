@@ -584,7 +584,11 @@ html, body {
 .fc-form-col {
   display: flex;
   flex-direction: column;
-  gap: calc(7px * var(--scale));
+  gap: calc(5px * var(--scale));
+}
+
+.fc-form-col .modal-col-label {
+  margin-bottom: calc(4px * var(--scale));
 }
 
 .fc-row {
