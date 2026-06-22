@@ -1,0 +1,1071 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#bd3911">
+  <title>PDV+ — Ponto de Venda | ARKEflow</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
+
+  <!-- Bootstrap 4 -->
+  <link rel="stylesheet" type="text/css" href="https://cervantestecnologia.com.br/assets/bootstrap4.3.1/css/bootstrap.css">
+
+  <!-- AOS animations -->
+  <link rel="stylesheet" href="https://cervantestecnologia.com.br/assets/css/aos.css">
+
+  <!-- GLightbox for video lightboxes -->
+  <link rel="stylesheet" href="https://cervantestecnologia.com.br/assets/css/glightbox.css">
+  <script src="https://cervantestecnologia.com.br/assets/js/glightbox.min.js"></script>
+
+  <!-- Cervantes layout styles -->
+  <link rel="stylesheet" type="text/css" href="https://cervantestecnologia.com.br/assets/css/main.css?v=1782105779">
+
+  <!-- jQuery (required by Cervantes main.js nav-sequence) -->
+  <script src="https://cervantestecnologia.com.br/assets/js/jquery-3.3.1.min.js"></script>
+
+  <style>
+    /* ── ARKEflow header ───────────────────────────────────── */
+    .lk-header {
+      background: #bd3911;
+      padding: 14px 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .lk-header-inner {
+      display: flex;
+      align-items: center;
+    }
+    .lk-sep {
+      width: 1px;
+      height: 20px;
+      background: rgba(255,255,255,0.30);
+      margin: 0 16px;
+      flex-shrink: 0;
+    }
+    .lk-wordmark {
+      font-family: 'Inter', sans-serif;
+      font-size: 20px;
+      letter-spacing: -0.02em;
+    }
+
+    /* Check fix — sky blue for PDV+ */
+    body .item-list::before {
+      content: "✓" !important;
+      font-family: inherit !important;
+      font-style: normal !important;
+      font-size: inherit !important;
+      color: #38BDF8;
+    }
+
+    /* ── ARKEflow CTA section ──────────────────────────────── */
+    .lk-cta {
+      background: #071828;
+      padding: 64px 0;
+      text-align: center;
+      font-family: 'Inter', sans-serif;
+    }
+    .lk-cta h2 {
+      color: white;
+      font-size: 26px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+    .lk-cta p {
+      color: rgba(255,255,255,0.65);
+      font-size: 15px;
+      margin-bottom: 32px;
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .lk-cta-btn {
+      display: inline-block;
+      background: #26FF93;
+      color: #071828;
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      font-size: 15px;
+      padding: 13px 36px;
+      border-radius: 6px;
+      border: none;
+      text-decoration: none;
+      letter-spacing: 0.03em;
+      cursor: pointer;
+    }
+    .lk-cta-btn:hover {
+      background: #00e87e;
+      color: #071828;
+      text-decoration: none;
+    }
+
+    /* ── Footer ────────────────────────────────────────────── */
+    .lk-footer {
+      background: #1a1a1a;
+      padding: 40px 0 24px;
+      font-family: 'Inter', sans-serif;
+      text-align: center;
+    }
+    .lk-footer-logo {
+      font-size: 20px;
+      color: white;
+      text-decoration: none;
+      display: inline-block;
+      margin-bottom: 16px;
+      letter-spacing: -0.02em;
+    }
+    .lk-footer-logo .arke { font-weight: 800; }
+    .lk-footer-logo .flow { font-weight: 400; font-style: italic; color: #26FF93; }
+    .lk-footer-logo:hover { text-decoration: none; }
+    .lk-footer-copy {
+      color: rgba(255,255,255,0.35);
+      font-size: 12px;
+      margin: 0;
+    }
+
+    /* ── Contact modal — form elements ─────────────────────── */
+    .lk-finput {
+      background: #f5f5f5;
+      border: 1px solid #e0e0e0;
+      border-radius: 4px;
+      padding: 8px 10px;
+      font-size: 12px;
+      color: #333;
+      font-family: 'Inter', sans-serif;
+      width: 100%;
+      outline: none;
+    }
+    .lk-finput::placeholder { color: #aaa; }
+    .lk-finput:focus { border-color: #bd3911; }
+    .lk-dt-btn {
+      text-align: left;
+      cursor: pointer;
+      color: #aaa;
+      background: #f5f5f5;
+      border: 1px solid #e0e0e0;
+      border-radius: 4px;
+      padding: 8px 10px;
+      font-size: 12px;
+      font-family: 'Inter', sans-serif;
+      width: 100%;
+    }
+    .lk-dt-btn.lk-dt-selected {
+      color: #bd3911;
+      border-color: #bd3911;
+    }
+    .lk-dt-section {
+      display: none;
+      background: #fafafa;
+      border: 1px solid #e0e0e0;
+      border-radius: 4px;
+      padding: 12px;
+      gap: 10px;
+    }
+    .lk-dt-section.open { display: grid; grid-template-columns: 1fr 1fr; }
+    .lk-dt-section label {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #999;
+      display: block;
+      margin-bottom: 5px;
+    }
+    .lk-dt-section input[type="date"],
+    .lk-dt-section select {
+      background: #f5f5f5;
+      border: 1px solid #e0e0e0;
+      border-radius: 4px;
+      padding: 7px 10px;
+      font-size: 12px;
+      color: #333;
+      font-family: inherit;
+      width: 100%;
+      outline: none;
+    }
+    .lk-dt-section select option { background: white; }
+
+    /* ── PDV+ specific styles ───────────────────────────────── */
+    .pdv-section-title {
+      font-size: 22px;
+      font-weight: 700;
+      color: #333;
+      text-align: center;
+      margin-bottom: 32px;
+    }
+    .pdv-pos-row {
+      display: flex;
+      gap: 16px;
+      overflow-x: auto;
+      padding-bottom: 12px;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: thin;
+    }
+    .pdv-pos-col {
+      flex: 0 0 190px;
+    }
+    .pdv-pos-card {
+      background: white;
+      border: 1px solid #e8e8e8;
+      border-radius: 10px;
+      padding: 18px 14px 14px;
+      text-align: center;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .pdv-pos-card .pos-img {
+      height: 110px;
+      width: auto;
+      object-fit: contain;
+      margin-bottom: 10px;
+    }
+    .pdv-pos-card .logo-img {
+      height: 26px;
+      width: auto;
+      object-fit: contain;
+      margin-bottom: 10px;
+    }
+    .pdv-pos-card ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      text-align: left;
+      width: 100%;
+    }
+    .pdv-pos-card ul li {
+      font-size: 11px;
+      color: #666;
+      padding: 3px 0;
+      border-bottom: 1px solid #f0f0f0;
+    }
+    .pdv-pos-card ul li:last-child { border-bottom: none; }
+
+    /* Feature tabs */
+    .pdv-feat-media {
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .pdv-feat-media img,
+    .pdv-feat-media iframe {
+      width: 100%;
+      border-radius: 8px;
+      display: block;
+    }
+
+    /* Payment logos strip */
+    .pdv-pay-logos {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 16px;
+      align-items: center;
+    }
+    .pdv-pay-logos img {
+      height: 22px;
+      width: auto;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══ ARKEflow Header ══════════════════════════════════════ -->
+<header class="lk-header">
+  <div class="container">
+    <div class="lk-header-inner">
+      <span style="font-family:'Inter',sans-serif;font-weight:800;font-size:22px;color:#38BDF8;letter-spacing:-0.02em;">PDV+</span>
+      <div class="lk-sep"></div>
+      <span class="lk-wordmark"><span style="font-weight:700;color:white;">ARKE</span><span style="font-weight:300;font-style:italic;color:#26FF93;">flow</span></span>
+    </div>
+  </div>
+</header>
+
+<!-- ══ 1. Hero ══════════════════════════════════════════════ -->
+<section class="list grey">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-sm-12 col-md-6 order-last">
+                <div class="image" data-aos="zoom-in-top">
+                    <img src="/assets/img/pdvmais/img-wl-animacao-devices.gif" alt="PDV+ em dispositivos">
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-6 order-first">
+                <div class="textContainer" data-aos="zoom-in-top">
+                    <h2>PDV personalizável para controle de vendas e emissão de NFC-e.</h2>
+                    <p>Ideal para quem busca uma solução móvel com os principais recursos para gestão de um comércio. Otimizado para micro e pequenas empresas, MEI e Simples do varejo aos bares e restaurantes.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ══ 2. Adquirentes compatíveis ════════════════════════════ -->
+<section class="grey" style="padding:48px 0;">
+    <div class="container">
+        <h3 class="pdv-section-title">Adquirentes e maquininhas compatíveis</h3>
+        <div class="pdv-pos-row">
+
+            <div class="pdv-pos-col">
+                <div class="pdv-pos-card">
+                    <img class="pos-img" src="/assets/img/pdvmais/PDV-POS-Azulzinha.webp" alt="Azulzinha POS">
+                    <img class="logo-img" src="/assets/img/pdvmais/logo-azulzinha.svg" alt="Azulzinha">
+                    <ul>
+                        <li>Clover Flex</li>
+                        <li>Clover Mini</li>
+                        <li>Ingenico DX8000</li>
+                        <li>Sunmi P2</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="pdv-pos-col">
+                <div class="pdv-pos-card">
+                    <img class="pos-img" src="/assets/img/pdvmais/PDV-POS-Bin.webp" alt="Bin POS">
+                    <img class="logo-img" src="/assets/img/pdvmais/logo-bin.svg" alt="Bin">
+                    <ul>
+                        <li>Clover Flex</li>
+                        <li>Clover Mini</li>
+                        <li>Ingenico DX8000</li>
+                        <li>Sunmi P2</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="pdv-pos-col">
+                <div class="pdv-pos-card">
+                    <img class="pos-img" src="/assets/img/pdvmais/PDV-POS-Cielo.webp" alt="Cielo POS">
+                    <img class="logo-img" src="/assets/img/pdvmais/logo-cielo.svg" alt="Cielo">
+                    <ul>
+                        <li>Ingenico DX8000</li>
+                        <li>LIO V1</li>
+                        <li>LIO V2</li>
+                        <li>Positivo L300</li>
+                        <li>Positivo L400</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="pdv-pos-col">
+                <div class="pdv-pos-card">
+                    <img class="pos-img" src="/assets/img/pdvmais/PDV-POS-Clover.webp" alt="Clover POS">
+                    <img class="logo-img" src="/assets/img/pdvmais/logo-clover.svg" alt="Clover">
+                    <ul>
+                        <li>Clover Flex</li>
+                        <li>Clover Mini</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="pdv-pos-col">
+                <div class="pdv-pos-card">
+                    <img class="pos-img" src="/assets/img/pdvmais/PDV-POS-Getnet.webp" alt="Getnet POS">
+                    <img class="logo-img" src="/assets/img/pdvmais/logo-getnet.svg" alt="Getnet">
+                    <ul>
+                        <li>Ingenico A8</li>
+                        <li>Ingenico DX8000</li>
+                        <li>Newland N910</li>
+                        <li>Sunmi P2 e P3</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="pdv-pos-col">
+                <div class="pdv-pos-card">
+                    <img class="pos-img" src="/assets/img/pdvmais/PDV-POS-PagSeguro.webp" alt="PagBank POS">
+                    <img class="logo-img" src="/assets/img/pdvmais/logo-pagbank.svg" alt="PagBank">
+                    <ul>
+                        <li>Gertec GPOS760</li>
+                        <li>Gertec GPOS780</li>
+                        <li>Moderninha X</li>
+                        <li>Moderninha Smart</li>
+                        <li>Moderninha Smart2</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="pdv-pos-col">
+                <div class="pdv-pos-card">
+                    <img class="pos-img" src="/assets/img/pdvmais/PDV-POS-PicPay.webp" alt="PicPay POS">
+                    <img class="logo-img" src="/assets/img/pdvmais/logo-picpay.svg" alt="PicPay">
+                    <ul>
+                        <li>Sunmi P2</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="pdv-pos-col">
+                <div class="pdv-pos-card">
+                    <img class="pos-img" src="/assets/img/pdvmais/PDV-POS-Rede.webp" alt="Rede POS">
+                    <img class="logo-img" src="/assets/img/pdvmais/logo-rede.svg" alt="Rede">
+                    <ul>
+                        <li>Positivo L400</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="pdv-pos-col">
+                <div class="pdv-pos-card">
+                    <img class="pos-img" src="/assets/img/pdvmais/PDV-POS-Safrapay.webp" alt="Safrapay POS">
+                    <img class="logo-img" src="/assets/img/pdvmais/logo-safrapay.svg" alt="Safrapay">
+                    <ul>
+                        <li>PAX A910</li>
+                        <li>Ingenico A8</li>
+                        <li>Sunmi P2</li>
+                        <li>Sunmi P3</li>
+                        <li>Sunmi P3HK</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="pdv-pos-col">
+                <div class="pdv-pos-card">
+                    <img class="pos-img" src="/assets/img/pdvmais/PDV-POS-Sicredi.webp" alt="Sicredi POS">
+                    <img class="logo-img" src="/assets/img/pdvmais/logo-sicredi.svg" alt="Sicredi">
+                    <ul>
+                        <li>Clover Flex</li>
+                        <li>Clover Mini</li>
+                        <li>Ingenico DX8000</li>
+                        <li>Sunmi P2</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="pdv-pos-col">
+                <div class="pdv-pos-card">
+                    <img class="pos-img" src="/assets/img/pdvmais/PDV-POS-Stone.webp" alt="Stone POS">
+                    <img class="logo-img" src="/assets/img/pdvmais/logo-stone.svg" alt="Stone">
+                    <ul>
+                        <li>Ingenico A8</li>
+                        <li>Positivo L300</li>
+                        <li>Positivo L400</li>
+                        <li>Sunmi P2</li>
+                        <li>Sunmi P2 A11</li>
+                        <li>Tectoy T8</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="pdv-pos-col">
+                <div class="pdv-pos-card">
+                    <img class="pos-img" src="/assets/img/pdvmais/PDV-POS-Vero.webp" alt="Vero POS">
+                    <img class="logo-img" src="/assets/img/pdvmais/logo-vero.svg" alt="Vero">
+                    <ul>
+                        <li>Gertec GPOS700</li>
+                        <li>Newland N950</li>
+                        <li>Newland N950K</li>
+                        <li>Positivo L300</li>
+                        <li>Sunmi P2</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ══ 3. Funcionalidades ════════════════════════════════════ -->
+<section id="flyer" class="grey">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-sm-12 col-md-4">
+                <div class="item-flyer" data-aos="zoom-in-top">
+                    <div class="image">
+                        <img src="/assets/img/pdvmais/icon-flyer-01.png" alt="">
+                    </div>
+                    <div class="text">
+                        <div class="title">Venda offline</div>
+                        <div class="description">Com o Gerenciamento de Notas pendentes é possível vender mesmo offline e transmitir as notas assim que restabelecer a conexão.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-12 col-md-4">
+                <div class="item-flyer" data-aos="zoom-in-top">
+                    <div class="image">
+                        <img src="/assets/img/pdvmais/icon-flyer-02.png" alt="">
+                    </div>
+                    <div class="text">
+                        <div class="title">PDV compacto</div>
+                        <div class="description">Pode ser conectado a equipamentos como leitores de código de barra, impressoras não fiscais, teclados e gavetas de dinheiro.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-12 col-md-4">
+                <div class="item-flyer" data-aos="zoom-in-top">
+                    <div class="image">
+                        <img src="/assets/img/pdvmais/icon-flyer-03.png" alt="">
+                    </div>
+                    <div class="text">
+                        <div class="title">Busca Inteligente</div>
+                        <div class="description">Fácil de buscar produtos bastando digitar partes da descrição em qualquer ordem das palavras.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-12 col-md-4">
+                <div class="item-flyer" data-aos="zoom-in-top">
+                    <div class="image">
+                        <img src="/assets/img/pdvmais/icon-flyer-04.png" alt="">
+                    </div>
+                    <div class="text">
+                        <div class="title">Servidores</div>
+                        <div class="description">Para utilização em multidispositivos simultâneos, com opção de comunicação local ou em nuvem.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-12 col-md-4">
+                <div class="item-flyer" data-aos="zoom-in-top">
+                    <div class="image">
+                        <img src="/assets/img/pdvmais/icon-flyer-05.png" alt="">
+                    </div>
+                    <div class="text">
+                        <div class="title">Exportação de arquivos</div>
+                        <div class="description">Visualização, impressão e download de relatórios no formato .csv e exportação de arquivo XML pronto para a contabilidade.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-12 col-md-4">
+                <div class="item-flyer" data-aos="zoom-in-top">
+                    <div class="image">
+                        <img src="/assets/img/pdvmais/icon-flyer-06.png" alt="">
+                    </div>
+                    <div class="text">
+                        <div class="title">Relatórios</div>
+                        <div class="description">Contas a receber, totais em caixa, margem bruta, evolução de vendas, estoque e estoque mínimo.</div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ══ 4. Feature Tabs ══════════════════════════════════════ -->
+<section id="caracteristicasTecnicas" class="grey">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-md-7">
+                <div class="pdv-feat-media" data-aos="zoom-in-top">
+                    <img id="pdv-feat-img" src="/assets/img/pdvmais/img-gif-cadastro.gif" alt="">
+                    <iframe id="pdv-feat-video" style="display:none;width:100%;height:360px;border:none;border-radius:8px;"
+                        src="" frameborder="0" allow="autoplay" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-5">
+                <ul class="nav-content pdv-tabs">
+                    <li class="nav-content-item">
+                        <a class="nav-link active" href="#"
+                           data-img="/assets/img/pdvmais/img-gif-cadastro.gif">
+                            <div class="titulo">Cadastro automático de produtos</div>
+                            <div class="sub-titulo">Usando o leitor de código de barras para cadastrar itens, o comerciante tem acesso ao nosso banco online com milhares de produtos em constante atualização. Produtos com foto, descrição e tributação.</div>
+                        </a>
+                    </li>
+                    <li class="nav-content-item">
+                        <a class="nav-link" href="#"
+                           data-img="/assets/img/pdvmais/img-navi-users.png">
+                            <div class="titulo">Cadastro de Usuários</div>
+                            <div class="sub-titulo">Cadastro ilimitado de usuários. Perfis 'Administrador', 'Caixa', 'Atendente' e Supervisor. Acessos disponíveis de acordo com o perfil. Mais segurança para o estabelecimento.</div>
+                        </a>
+                    </li>
+                    <li class="nav-content-item">
+                        <a class="nav-link" href="#"
+                           data-img="/assets/img/pdvmais/img-navi-mesas.png">
+                            <div class="titulo">Mesas e comandas</div>
+                            <div class="sub-titulo">Transferência de itens de uma mesa para outra. Legendas coloridas para status do atendimento. Abertura de atendimentos avulsos. Cadastro de taxas de serviço.</div>
+                        </a>
+                    </li>
+                    <li class="nav-content-item">
+                        <a class="nav-link" href="#"
+                           data-img="/assets/img/pdvmais/img-navi-delivery.png">
+                            <div class="titulo">Controle de Delivery</div>
+                            <div class="sub-titulo">Controle de status do pedido. Cadastro de cliente e taxas de entrega. Impressão de conferência do pedido. Integração com Catálogo Online e iFood.</div>
+                        </a>
+                    </li>
+                    <li class="nav-content-item">
+                        <a class="nav-link" href="#"
+                           data-img="/assets/img/pdvmais/img-navi-autoatendimento.png"
+                           data-video="AmQFDoRj-0E">
+                            <div class="titulo">Autoatendimento</div>
+                            <div class="sub-titulo">O PDV+ também pode ser utilizado como terminal de autoatendimento, permitindo ao cliente realizar compras diretamente de um dispositivo no estabelecimento. Aceita cartão (via Pagamento Integrado) e Pix (via Conta Digital). Para Windows, tablets, smartphones Android ou iOS, e totens dedicados.</div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ══ 5. ARKEflow CTA #1 ════════════════════════════════════ -->
+<section class="lk-cta">
+    <div class="container">
+        <h2>Quer saber mais sobre o PDV+?</h2>
+        <p>Fale com a equipe ARKEflow e saiba como podemos implantar esta solução para você.</p>
+        <button type="button" class="lk-cta-btn lk-open-modal">Fale conosco →</button>
+    </div>
+</section>
+
+<!-- ══ 6. Consulta Preço ════════════════════════════════════ -->
+<section class="list grey">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-sm-12 col-md-7">
+                <div class="videoPlay" data-aos="zoom-in-top">
+                    <iframe class="youtube-video" type="text/html" width="640" height="360"
+                        src="https://www.youtube.com/embed/MzvLQCIV69o?modestbranding=0&rel=0&iv_load_policy=3&showinfo=0&enablejsapi=1"
+                        frameborder="0" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-5">
+                <div class="textContainer" data-aos="zoom-in-top">
+                    <h2>Consulta Preço</h2>
+                    <p>Aplicativo para consulta dos preços de mercadorias em gôndolas de lojas e mercados.</p>
+                    <p class="item-list">Disponível para Windows, Android (tablets e terminais de consulta) e iPadOS.</p>
+                    <p class="item-list">Mostra preço, foto e descrição conforme cadastro do produto.</p>
+                    <p class="item-list">Opção de colocar imagens promocionais na tela de consulta.</p>
+                    <p class="item-list">Atualização instantânea com as informações cadastradas no sistema ERP.</p>
+                    <p class="item-list">Funciona em conjunto com o PDV+.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ══ 7. Conecta Entregador ════════════════════════════════ -->
+<section class="list grey">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-sm-12 col-md-6">
+                <div class="textContainer" data-aos="zoom-in-top">
+                    <h2>Conecta Entregador</h2>
+                    <p>Aplicativo para controle de entregas.</p>
+                    <p class="item-list">Visualização do pedido e rota para entrega.</p>
+                    <p class="item-list">Vinculável a mais de um estabelecimento.</p>
+                    <p class="item-list">Cobrança por Pix.</p>
+                    <p class="item-list">Finalização pelo aplicativo.</p>
+                    <p class="item-list">Acompanhamento de entrega direto do sistema.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ══ 8. Sistemas Auxiliares ════════════════════════════════ -->
+
+<!-- Catálogo Online -->
+<section class="list grey">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-sm-12 col-md-7">
+                <div class="videoPlay" data-aos="zoom-in-top">
+                    <iframe class="youtube-video" type="text/html" width="640" height="360"
+                        src="https://www.youtube.com/embed/z1KAM21stmg?modestbranding=0&rel=0&iv_load_policy=3&showinfo=0&enablejsapi=1"
+                        frameborder="0" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-5">
+                <div class="textContainer" data-aos="zoom-in-top">
+                    <h2>Catálogo Online</h2>
+                    <p class="item-list">Página para pedidos de produtos via delivery, retirada e consumo no local.</p>
+                    <p class="item-list">Banner, cores e logo personalizáveis.</p>
+                    <p class="item-list">Pedidos realizados no Catálogo vão para o PDV+ e, se desejar, para o WhatsApp do estabelecimento.</p>
+                    <p class="item-list">Cadastro de taxas de entrega.</p>
+                    <p class="item-list">Com opção de pagamento antecipado via Cartão de crédito e Pix.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Menu Digital -->
+<section class="list grey">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-sm-12 col-md-5 order-md-first">
+                <div class="textContainer" data-aos="zoom-in-top">
+                    <h2>Menu Digital</h2>
+                    <p class="item-list">Página para cardápio e pedidos dentro do estabelecimento.</p>
+                    <p class="item-list">Com QR Code vinculado à mesa ou à comanda — o cliente usa o próprio smartphone.</p>
+                    <p class="item-list">Cardápio do estabelecimento sempre atualizado.</p>
+                    <p class="item-list">Banner, cores e logo personalizáveis.</p>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-7 order-md-last">
+                <div class="videoPlay" data-aos="zoom-in-top">
+                    <iframe class="youtube-video" type="text/html" width="640" height="360"
+                        src="https://www.youtube.com/embed/QZEMZinIsEc?modestbranding=0&rel=0&iv_load_policy=3&showinfo=0&enablejsapi=1"
+                        frameborder="0" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Ordem de Pagamento -->
+<section class="list grey">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-sm-12 col-md-7">
+                <div class="videoPlay" data-aos="zoom-in-top">
+                    <iframe class="youtube-video" type="text/html" width="640" height="360"
+                        src="https://www.youtube.com/embed/MJ6bmSYUbsg?modestbranding=0&rel=0&iv_load_policy=3&showinfo=0&enablejsapi=1"
+                        frameborder="0" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-5">
+                <div class="textContainer" data-aos="zoom-in-top">
+                    <h2>Ordem de Pagamento</h2>
+                    <p>Aplicativo para gestão de múltiplos pagamentos em smart POS.</p>
+                    <p class="item-list">As ordens de pagamento são recebidas na maquininha e o operador faz a cobrança onde e quando quiser.</p>
+                    <p class="item-list">Permite conferir detalhes como itens, quantidades e valores antes de realizar a cobrança.</p>
+                    <p class="item-list">Pode ser utilizado por entregadores, garçons e outros que realizem cobranças a clientes.</p>
+                    <p class="item-list">Disponível nas principais adquirentes e equipamentos POS do mercado.</p>
+                    <div class="pdv-pay-logos">
+                        <img src="/assets/img/pdvmais/logo-azulzinha.svg" alt="Azulzinha">
+                        <img src="/assets/img/pdvmais/logo-bin.svg" alt="Bin">
+                        <img src="/assets/img/pdvmais/logo-cielo.svg" alt="Cielo">
+                        <img src="/assets/img/pdvmais/logo-clover.svg" alt="Clover">
+                        <img src="/assets/img/pdvmais/logo-getnet.svg" alt="Getnet">
+                        <img src="/assets/img/pdvmais/logo-pagbank.svg" alt="PagBank">
+                        <img src="/assets/img/pdvmais/logo-picpay.svg" alt="PicPay">
+                        <img src="/assets/img/pdvmais/logo-rede.svg" alt="Rede">
+                        <img src="/assets/img/pdvmais/logo-safrapay.svg" alt="Safrapay">
+                        <img src="/assets/img/pdvmais/logo-sicredi.svg" alt="Sicredi">
+                        <img src="/assets/img/pdvmais/logo-stone.svg" alt="Stone">
+                        <img src="/assets/img/pdvmais/logo-vero.svg" alt="Vero">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Pagamento Integrado -->
+<section class="list grey">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-sm-12 col-md-5 order-md-first">
+                <div class="textContainer" data-aos="zoom-in-top">
+                    <h2>Pagamento Integrado</h2>
+                    <p>Aplicativo para smart POS que integra a venda ao pagamento.</p>
+                    <p class="item-list">Processo de venda e pagamento totalmente integrado e automatizado.</p>
+                    <p class="item-list">Preenchimento automático das informações do pagamento nos documentos fiscais.</p>
+                    <p class="item-list">Possibilidade de integrar mais de um PDV por maquininha.</p>
+                    <p class="item-list">Alternativa ao TEF tradicional.</p>
+                    <div class="pdv-pay-logos">
+                        <img src="/assets/img/pdvmais/logo-azulzinha.svg" alt="Azulzinha">
+                        <img src="/assets/img/pdvmais/logo-bin.svg" alt="Bin">
+                        <img src="/assets/img/pdvmais/logo-cielo.svg" alt="Cielo">
+                        <img src="/assets/img/pdvmais/logo-clover.svg" alt="Clover">
+                        <img src="/assets/img/pdvmais/logo-getnet.svg" alt="Getnet">
+                        <img src="/assets/img/pdvmais/logo-pagbank.svg" alt="PagBank">
+                        <img src="/assets/img/pdvmais/logo-picpay.svg" alt="PicPay">
+                        <img src="/assets/img/pdvmais/logo-rede.svg" alt="Rede">
+                        <img src="/assets/img/pdvmais/logo-safrapay.svg" alt="Safrapay">
+                        <img src="/assets/img/pdvmais/logo-sicredi.svg" alt="Sicredi">
+                        <img src="/assets/img/pdvmais/logo-stone.svg" alt="Stone">
+                        <img src="/assets/img/pdvmais/logo-vero.svg" alt="Vero">
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-7 order-md-last">
+                <div class="videoPlay" data-aos="zoom-in-top">
+                    <iframe class="youtube-video" type="text/html" width="640" height="360"
+                        src="https://www.youtube.com/embed/cBrqzeNPlow?modestbranding=0&rel=0&iv_load_policy=3&showinfo=0&enablejsapi=1"
+                        frameborder="0" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Monitor de Cozinha -->
+<section class="list grey">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-sm-12 col-md-7">
+                <div class="videoPlay" data-aos="zoom-in-top">
+                    <iframe class="youtube-video" type="text/html" width="640" height="360"
+                        src="https://www.youtube.com/embed/QpYVPWg9mDc?modestbranding=0&rel=0&iv_load_policy=3&showinfo=0&enablejsapi=1"
+                        frameborder="0" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-5">
+                <div class="textContainer" data-aos="zoom-in-top">
+                    <h2>Monitor de Cozinha</h2>
+                    <p>Aplicativo para gerenciar o preparo dos pedidos.</p>
+                    <p class="item-list">Para computador, tablet e iPad dentro da cozinha, substituindo o pedido no papel.</p>
+                    <p class="item-list">Recebe os pedidos dos módulos Delivery e Atendimento.</p>
+                    <p class="item-list">Organiza os pedidos em cards com informações da plataforma, atendente e tempo decorrido.</p>
+                    <p class="item-list">Exibe detalhes dos itens com imagem, descrição, ingredientes e modo de preparo.</p>
+                    <p class="item-list">Funciona em conjunto com o PDV+.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Pesagem Automática -->
+<section class="list grey">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-sm-12 col-md-5 order-md-first">
+                <div class="textContainer" data-aos="zoom-in-top">
+                    <h2>Pesagem Automática</h2>
+                    <p>Aplicativo para o cliente pesar o prato em buffet a quilo.</p>
+                    <p class="item-list">Para computador ou tablet que fica junto à balança do restaurante.</p>
+                    <p class="item-list">Após visualizar peso e preço no monitor, o cliente retira sua comanda.</p>
+                    <p class="item-list">Não há necessidade de um colaborador dedicado à balança.</p>
+                    <p class="item-list">Envio automático do consumo ao sistema.</p>
+                    <p class="item-list">Funciona em conjunto com o PDV+.</p>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-7 order-md-last">
+                <div class="videoPlay" data-aos="zoom-in-top">
+                    <iframe class="youtube-video" type="text/html" width="640" height="360"
+                        src="https://www.youtube.com/embed/2xnVrB6ApVc?modestbranding=0&rel=0&iv_load_policy=3&showinfo=0&enablejsapi=1"
+                        frameborder="0" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ══ 9. iFood Integration ══════════════════════════════════ -->
+<section class="list grey">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-sm-12 col-md-7">
+                <div class="image" data-aos="zoom-in-top">
+                    <img src="/assets/img/pdvmais/img-navi-integra-ifood.png" alt="Integração iFood">
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-5">
+                <div class="textContainer" data-aos="zoom-in-top">
+                    <h2>Integração iFood</h2>
+                    <p class="item-list">O cardápio do PDV+ é disponibilizado no iFood.</p>
+                    <p class="item-list">Pedidos feitos no iFood são recebidos no sistema.</p>
+                    <p class="item-list">Informações sobre cliente, itens e complementos são recebidas com o pedido.</p>
+                    <p class="item-list">É possível ver cupons de desconto usados no pedido.</p>
+                    <p class="item-list">Informações de entrega e troco.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ══ 10. ARKEflow CTA #2 ═══════════════════════════════════ -->
+<section class="lk-cta">
+    <div class="container">
+        <h2>Quer saber mais sobre o PDV+?</h2>
+        <p>Fale com a equipe ARKEflow e saiba como podemos implantar esta solução para você.</p>
+        <button type="button" class="lk-cta-btn lk-open-modal">Fale conosco →</button>
+    </div>
+</section>
+
+<!-- ══ ARKEflow Footer ════════════════════════════════════════ -->
+<footer class="lk-footer">
+    <div class="container">
+        <a href="https://www.arkeflow.com.br" class="lk-footer-logo">
+            <span class="arke">ARKE</span><span class="flow">flow</span>
+        </a>
+        <p class="lk-footer-copy">© 2026 ARKEflow Tech Solutions. Todos os direitos reservados.</p>
+    </div>
+</footer>
+
+<!-- Contact Modal — custom overlay (copied from linksis) -->
+<div id="lkOverlay" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.45);z-index:1050;align-items:center;justify-content:center;">
+  <div id="lkBox" style="max-width:660px;width:90vw;background:white;border:1px solid rgba(189,57,17,0.25);border-radius:10px;overflow:hidden;font-family:'Inter',sans-serif;">
+
+    <!-- Modal header -->
+    <div style="padding:18px 24px 14px;background:#bd3911;display:flex;align-items:flex-start;justify-content:space-between;">
+      <div>
+        <span style="display:block;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.12em;color:rgba(255,255,255,0.75);">CONTATO</span>
+        <h2 style="font-size:17px;font-weight:500;color:white;margin:4px 0 0 0;font-family:'Inter',sans-serif;">Agende uma conversa</h2>
+      </div>
+      <button id="lk-close-btn" style="width:26px;height:26px;border-radius:50%;border:none;background:rgba(255,255,255,0.15);color:white;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;line-height:1;padding:0;">&times;</button>
+    </div>
+
+    <!-- Modal body: two columns -->
+    <div style="display:grid;grid-template-columns:1fr 1.4fr;">
+
+      <!-- Left: contact info -->
+      <div style="padding:20px;background:#fafafa;border-right:1px solid rgba(0,0,0,0.07);display:flex;flex-direction:column;gap:14px;">
+        <div>
+          <span style="display:block;font-size:9px;text-transform:uppercase;letter-spacing:0.10em;color:#bd3911;font-weight:600;margin-bottom:3px;">TELEFONE</span>
+          <span style="font-size:13px;color:#222;">(00) 00000-0000</span>
+        </div>
+        <div>
+          <span style="display:block;font-size:9px;text-transform:uppercase;letter-spacing:0.10em;color:#bd3911;font-weight:600;margin-bottom:3px;">WHATSAPP</span>
+          <span style="font-size:13px;color:#222;">(00) 00000-0000</span>
+        </div>
+        <div>
+          <span style="display:block;font-size:9px;text-transform:uppercase;letter-spacing:0.10em;color:#bd3911;font-weight:600;margin-bottom:3px;">INSTAGRAM</span>
+          <span style="font-size:13px;color:#222;">@arkeflow</span>
+        </div>
+        <div>
+          <span style="display:block;font-size:9px;text-transform:uppercase;letter-spacing:0.10em;color:#bd3911;font-weight:600;margin-bottom:3px;">LINKEDIN</span>
+          <span style="font-size:13px;color:#222;">ARKEflow</span>
+        </div>
+        <p style="margin-top:auto;margin-bottom:0;font-size:10px;font-style:italic;color:#888;border-left:2px solid #bd3911;padding-left:8px;line-height:1.55;">Fale direto com quem vai implementar a solução.</p>
+      </div>
+
+      <!-- Right: form -->
+      <div style="padding:20px;background:white;display:flex;flex-direction:column;gap:8px;">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+          <input id="lk-nome"  class="lk-finput" type="text"  placeholder="Nome">
+          <input id="lk-tel"   class="lk-finput" type="tel"   placeholder="Telefone">
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+          <input id="lk-email" class="lk-finput" type="email" placeholder="E-mail">
+          <input id="lk-cnpj"  class="lk-finput" type="text"  placeholder="CNPJ">
+        </div>
+        <button type="button" class="lk-dt-btn" id="lk-dt-toggle">Escolher data e horário →</button>
+        <div class="lk-dt-section" id="lk-dt-section">
+          <div>
+            <label>Data</label>
+            <input type="date" id="lk-date">
+          </div>
+          <div>
+            <label>Horário</label>
+            <select id="lk-time">
+              <option value="">Selecione</option>
+              <option value="09:00">09h00</option>
+              <option value="10:00">10h00</option>
+              <option value="11:00">11h00</option>
+              <option value="13:00">13h00</option>
+              <option value="14:00">14h00</option>
+              <option value="15:00">15h00</option>
+              <option value="16:00">16h00</option>
+              <option value="17:00">17h00</option>
+            </select>
+          </div>
+        </div>
+        <textarea id="lk-obs" class="lk-finput" style="min-height:72px;resize:none;" placeholder="Observações"></textarea>
+        <div style="display:flex;justify-content:flex-end;margin-top:4px;">
+          <button type="button" id="lk-submit-btn" style="background:#bd3911;border:none;border-radius:4px;padding:8px 22px;font-size:13px;font-weight:600;color:white;cursor:pointer;letter-spacing:0.04em;font-family:'Inter',sans-serif;">Agendar →</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- JS -->
+<script src="https://cervantestecnologia.com.br/assets/js/aos.js"></script>
+<script src="https://www.youtube.com/iframe_api"></script>
+<script src="https://cervantestecnologia.com.br/assets/js/main.js?v=1782105779"></script>
+<script>
+  const lb = GLightbox({
+    selector: '*[data-glightbox]',
+    openEffect: 'fade',
+    closeEffect: 'fade',
+    plyr: {
+      config: {
+        ratio: '16:9',
+        hideControls: true
+      }
+    }
+  });
+</script>
+
+<script src="https://cervantestecnologia.com.br/assets/js/jquery.mask.js"></script>
+<script>
+  // ── Feature tabs (image/video switcher) ─────────────────────
+  document.querySelectorAll('.pdv-tabs .nav-link').forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      e.preventDefault();
+      document.querySelectorAll('.pdv-tabs .nav-link').forEach(function (l) {
+        l.classList.remove('active');
+      });
+      this.classList.add('active');
+      var imgSrc   = this.getAttribute('data-img');
+      var videoId  = this.getAttribute('data-video');
+      var imgEl    = document.getElementById('pdv-feat-img');
+      var videoEl  = document.getElementById('pdv-feat-video');
+      if (videoId) {
+        imgEl.style.display   = 'none';
+        videoEl.style.display = 'block';
+        videoEl.src = 'https://www.youtube.com/embed/' + videoId +
+                      '?modestbranding=0&rel=0&iv_load_policy=3&showinfo=0&enablejsapi=1&autoplay=1';
+      } else {
+        videoEl.style.display = 'none';
+        videoEl.src           = '';
+        imgEl.style.display   = 'block';
+        if (imgSrc) imgEl.src = imgSrc;
+      }
+    });
+  });
+
+  // ── Contact modal ────────────────────────────────────────────
+  $(function () {
+    $('#lk-tel').mask('(00) 00000-0000');
+    $('#lk-cnpj').mask('00.000.000/0000-00');
+
+    function openModal() {
+      document.getElementById('lkOverlay').style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+    }
+    function closeModal() {
+      document.getElementById('lkOverlay').style.display = 'none';
+      document.body.style.overflow = '';
+    }
+
+    $(document).on('click', '.lk-open-modal', function () {
+      openModal();
+    });
+
+    $('#lk-close-btn').on('click', function () {
+      closeModal();
+    });
+
+    document.getElementById('lkOverlay').addEventListener('click', function (e) {
+      if (e.target === this) closeModal();
+    });
+
+    $(document).on('keydown', function (e) {
+      if (e.key === 'Escape') closeModal();
+    });
+
+    $('#lk-dt-toggle').on('click', function () {
+      $('#lk-dt-section').toggleClass('open');
+    });
+
+    function updateDtBtn() {
+      var d = $('#lk-date').val();
+      var t = $('#lk-time').val();
+      if (d && t) {
+        var parts = d.split('-');
+        var label = parts[2] + '/' + parts[1] + '/' + parts[0] + ' às ' + t.replace(':', 'h');
+        $('#lk-dt-toggle').text(label).addClass('lk-dt-selected');
+        $('#lk-dt-section').removeClass('open');
+      } else {
+        $('#lk-dt-toggle').removeClass('lk-dt-selected');
+      }
+    }
+    $('#lk-date, #lk-time').on('change', updateDtBtn);
+
+    $('#lk-submit-btn').on('click', function () {
+      var nome  = $('#lk-nome').val().trim();
+      var tel   = $('#lk-tel').val().trim();
+      var email = $('#lk-email').val().trim();
+      if (!nome || !tel || !email) {
+        alert('Por favor, preencha nome, telefone e e-mail.');
+        return;
+      }
+      closeModal();
+      alert('Mensagem recebida! Entraremos em contato em breve.');
+    });
+  });
+</script>
+
+</body>
+</html>
