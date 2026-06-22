@@ -40,24 +40,26 @@
       display: flex;
       align-items: center;
     }
-    .lk-logo {
-      font-family: 'Inter', sans-serif;
-      font-size: 22px;
-      color: white;
-      text-decoration: none;
-      letter-spacing: -0.02em;
-      display: flex;
-      align-items: center;
-      gap: 14px;
+    .lk-sep {
+      width: 1px;
+      height: 20px;
+      background: rgba(255,255,255,0.30);
+      margin: 0 16px;
+      flex-shrink: 0;
     }
-    .lk-logo .arke { font-weight: 800; }
-    .lk-logo .flow { font-weight: 400; font-style: italic; }
-    .lk-logo:hover { color: white; text-decoration: none; }
+    .lk-wordmark {
+      font-family: 'Inter', sans-serif;
+      font-size: 20px;
+      letter-spacing: -0.02em;
+    }
 
-    /* Fix: Cervantes icon font renders "check" as literal text — override with ✓ */
-    .item-list::before {
-      content: "✓";
+    /* Cervantes icon font renders "check" literal text — override with high specificity */
+    body .item-list::before {
+      content: "✓" !important;
       font-family: inherit !important;
+      font-style: normal !important;
+      font-size: inherit !important;
+      color: #bd3911;
     }
 
     .lk-cta {
@@ -123,83 +125,42 @@
       margin: 0;
     }
 
-    /* ── Contact modal ─────────────────────────────────────── */
-    #lkModal .modal-content {
-      background: #0D2235;
-      border: 1px solid rgba(255,255,255,0.10);
-      border-radius: 8px;
-      color: white;
-      font-family: 'Inter', sans-serif;
-    }
-    #lkModal .modal-header {
-      border-bottom: 1px solid rgba(255,255,255,0.08);
-      padding: 20px 24px 14px;
-    }
-    #lkModal .modal-title {
-      font-family: 'Inter', sans-serif;
-      font-size: 17px;
-      font-weight: 700;
-      color: white;
-    }
-    #lkModal .close {
-      color: rgba(255,255,255,0.55);
-      text-shadow: none;
-      opacity: 1;
-      font-size: 22px;
-    }
-    #lkModal .close:hover { color: white; opacity: 1; }
-    #lkModal .modal-body { padding: 20px 24px 24px; }
-    .modal-backdrop { background: #000; }
-    .modal-backdrop.show { opacity: 0.65; }
-    .lk-input-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-      margin-bottom: 10px;
-    }
+    /* ── Contact modal — form elements ─────────────────────── */
     .lk-finput {
       background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.10);
+      border: 1px solid rgba(189,57,17,0.25);
       border-radius: 4px;
-      padding: 8px 12px;
-      font-size: 13px;
-      color: white;
+      padding: 8px 10px;
+      font-size: 12px;
+      color: rgba(255,255,255,0.80);
       font-family: 'Inter', sans-serif;
       width: 100%;
       outline: none;
     }
     .lk-finput::placeholder { color: rgba(255,255,255,0.28); }
-    .lk-finput:focus { border-color: rgba(38,255,147,0.35); }
-    .lk-finput.lk-obs {
-      display: block;
-      min-height: 72px;
-      resize: none;
-      margin-bottom: 0;
-    }
+    .lk-finput:focus { border-color: rgba(189,57,17,0.60); }
     .lk-dt-btn {
       text-align: left;
       cursor: pointer;
       color: rgba(255,255,255,0.35);
       background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.10);
+      border: 1px solid rgba(189,57,17,0.25);
       border-radius: 4px;
-      padding: 8px 12px;
-      font-size: 13px;
+      padding: 8px 10px;
+      font-size: 12px;
       font-family: 'Inter', sans-serif;
       width: 100%;
-      margin-bottom: 10px;
     }
     .lk-dt-btn.lk-dt-selected {
-      color: #26FF93;
-      border-color: rgba(38,255,147,0.35);
+      color: #FB923C;
+      border-color: rgba(189,57,17,0.55);
     }
     .lk-dt-section {
       display: none;
       background: rgba(0,0,0,0.20);
-      border: 1px solid rgba(255,255,255,0.08);
+      border: 1px solid rgba(189,57,17,0.15);
       border-radius: 4px;
-      padding: 14px;
-      margin-bottom: 10px;
+      padding: 12px;
       gap: 10px;
     }
     .lk-dt-section.open { display: grid; grid-template-columns: 1fr 1fr; }
@@ -214,34 +175,17 @@
     .lk-dt-section input[type="date"],
     .lk-dt-section select {
       background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.10);
+      border: 1px solid rgba(189,57,17,0.20);
       border-radius: 4px;
       padding: 7px 10px;
-      font-size: 13px;
-      color: white;
+      font-size: 12px;
+      color: rgba(255,255,255,0.80);
       font-family: inherit;
       width: 100%;
       outline: none;
       color-scheme: dark;
     }
-    .lk-dt-section select option { background: #0D2235; }
-    .lk-submit-row {
-      display: flex;
-      justify-content: flex-end;
-      margin-top: 16px;
-    }
-    .lk-submit {
-      background: transparent;
-      border: 1px solid rgba(255,255,255,0.22);
-      border-radius: 4px;
-      padding: 9px 24px;
-      font-size: 13px;
-      color: white;
-      cursor: pointer;
-      letter-spacing: 0.04em;
-      font-family: 'Inter', sans-serif;
-    }
-    .lk-submit:hover { border-color: rgba(255,255,255,0.50); }
+    .lk-dt-section select option { background: #1f1108; }
   </style>
 </head>
 <body>
@@ -250,10 +194,9 @@
 <header class="lk-header">
   <div class="container">
     <div class="lk-header-inner">
-      <a href="https://www.arkeflow.com.br" class="lk-logo">
-        <span class="arke">ARKE</span><span class="flow">flow</span>
-        <img src="/assets/img/linksis/linksis-logo.svg" alt="LinkSis" style="height:28px;width:auto;vertical-align:middle;">
-      </a>
+      <img src="/assets/img/linksis/linksis-logo.svg" alt="LinkSis" height="32" style="display:block;">
+      <div class="lk-sep"></div>
+      <span class="lk-wordmark"><span style="font-weight:700;color:white;">ARKE</span><span style="font-weight:300;font-style:italic;color:#26FF93;">flow</span></span>
     </div>
   </div>
 </header>
@@ -1293,24 +1236,52 @@
   </div>
 </footer>
 
-<!-- Contact Modal -->
-<div class="modal fade" id="lkModal" tabindex="-1" role="dialog" aria-labelledby="lkModalTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document" style="max-width:520px;">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="lkModalTitle">Fale conosco</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
-          <span aria-hidden="true">&times;</span>
-        </button>
+<!-- Contact Modal — custom overlay -->
+<div id="lkOverlay" style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.60);z-index:1050;align-items:center;justify-content:center;">
+  <div id="lkBox" style="max-width:660px;width:90vw;background:#1f1108;border:1px solid rgba(189,57,17,0.30);border-radius:10px;overflow:hidden;font-family:'Inter',sans-serif;">
+
+    <!-- Modal header -->
+    <div style="padding:18px 24px 14px;border-bottom:1px solid rgba(189,57,17,0.20);display:flex;align-items:flex-start;justify-content:space-between;">
+      <div>
+        <span style="display:block;font-size:10px;font-weight:400;text-transform:uppercase;letter-spacing:0.12em;color:#FB923C;">CONTATO</span>
+        <h2 style="font-size:17px;font-weight:500;color:white;margin:4px 0 0 0;font-family:'Inter',sans-serif;">Agende uma conversa</h2>
       </div>
-      <div class="modal-body">
-        <div class="lk-input-row">
-          <input id="lk-nome"     class="lk-finput" type="text"  placeholder="Nome">
-          <input id="lk-tel"      class="lk-finput" type="tel"   placeholder="Telefone">
+      <button id="lk-close-btn" style="width:26px;height:26px;border-radius:50%;border:1px solid rgba(255,255,255,0.18);background:transparent;color:rgba(255,255,255,0.55);font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;line-height:1;padding:0;">&times;</button>
+    </div>
+
+    <!-- Modal body: two columns -->
+    <div style="display:grid;grid-template-columns:1fr 1.4fr;">
+
+      <!-- Left: contact info -->
+      <div style="padding:20px;border-right:1px solid rgba(189,57,17,0.18);display:flex;flex-direction:column;gap:14px;">
+        <div>
+          <span style="display:block;font-size:9px;text-transform:uppercase;letter-spacing:0.10em;color:rgba(255,255,255,0.35);margin-bottom:3px;">TELEFONE</span>
+          <span style="font-size:13px;color:rgba(255,255,255,0.85);">(00) 00000-0000</span>
         </div>
-        <div class="lk-input-row">
-          <input id="lk-email"    class="lk-finput" type="email" placeholder="E-mail">
-          <input id="lk-cnpj"     class="lk-finput" type="text"  placeholder="CNPJ">
+        <div>
+          <span style="display:block;font-size:9px;text-transform:uppercase;letter-spacing:0.10em;color:rgba(255,255,255,0.35);margin-bottom:3px;">WHATSAPP</span>
+          <span style="font-size:13px;color:rgba(255,255,255,0.85);">(00) 00000-0000</span>
+        </div>
+        <div>
+          <span style="display:block;font-size:9px;text-transform:uppercase;letter-spacing:0.10em;color:rgba(255,255,255,0.35);margin-bottom:3px;">INSTAGRAM</span>
+          <span style="font-size:13px;color:rgba(255,255,255,0.85);">@arkeflow</span>
+        </div>
+        <div>
+          <span style="display:block;font-size:9px;text-transform:uppercase;letter-spacing:0.10em;color:rgba(255,255,255,0.35);margin-bottom:3px;">LINKEDIN</span>
+          <span style="font-size:13px;color:rgba(255,255,255,0.85);">ARKEflow</span>
+        </div>
+        <p style="margin-top:auto;margin-bottom:0;font-size:10px;font-style:italic;color:rgba(255,255,255,0.30);border-left:2px solid rgba(189,57,17,0.40);padding-left:8px;line-height:1.55;">Fale direto com quem vai implementar a solução.</p>
+      </div>
+
+      <!-- Right: form -->
+      <div style="padding:20px;display:flex;flex-direction:column;gap:8px;">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+          <input id="lk-nome"  class="lk-finput" type="text"  placeholder="Nome">
+          <input id="lk-tel"   class="lk-finput" type="tel"   placeholder="Telefone">
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+          <input id="lk-email" class="lk-finput" type="email" placeholder="E-mail">
+          <input id="lk-cnpj"  class="lk-finput" type="text"  placeholder="CNPJ">
         </div>
         <button type="button" class="lk-dt-btn" id="lk-dt-toggle">Escolher data e horário →</button>
         <div class="lk-dt-section" id="lk-dt-section">
@@ -1333,17 +1304,17 @@
             </select>
           </div>
         </div>
-        <textarea id="lk-obs" class="lk-finput lk-obs" placeholder="Observações"></textarea>
-        <div class="lk-submit-row">
-          <button type="button" class="lk-submit" id="lk-submit-btn">Agendar →</button>
+        <textarea id="lk-obs" class="lk-finput" style="min-height:72px;resize:none;" placeholder="Observações"></textarea>
+        <div style="display:flex;justify-content:flex-end;margin-top:4px;">
+          <button type="button" id="lk-submit-btn" style="background:transparent;border:1px solid rgba(189,57,17,0.50);border-radius:4px;padding:8px 22px;font-size:13px;color:white;cursor:pointer;letter-spacing:0.04em;font-family:'Inter',sans-serif;">Agendar →</button>
         </div>
       </div>
+
     </div>
   </div>
 </div>
 
 <!-- JS -->
-<script src="https://cervantestecnologia.com.br/assets/bootstrap4.3.1/js/bootstrap.bundle.js"></script>
 <script src="https://cervantestecnologia.com.br/assets/js/aos.js"></script>
 <script src="https://www.youtube.com/iframe_api"></script>
 <script src="https://cervantestecnologia.com.br/assets/js/main.js?v=1782105779"></script>
@@ -1368,9 +1339,34 @@
     $('#lk-tel').mask('(00) 00000-0000');
     $('#lk-cnpj').mask('00.000.000/0000-00');
 
-    // Open modal from both CTA buttons
+    // Modal open / close helpers
+    function openModal() {
+      document.getElementById('lkOverlay').style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+    }
+    function closeModal() {
+      document.getElementById('lkOverlay').style.display = 'none';
+      document.body.style.overflow = '';
+    }
+
+    // Open from any CTA button
     $(document).on('click', '.lk-open-modal', function () {
-      $('#lkModal').modal('show');
+      openModal();
+    });
+
+    // Close via X button
+    $('#lk-close-btn').on('click', function () {
+      closeModal();
+    });
+
+    // Close when clicking the overlay background (not the box)
+    document.getElementById('lkOverlay').addEventListener('click', function (e) {
+      if (e.target === this) closeModal();
+    });
+
+    // Close on Escape key
+    $(document).on('keydown', function (e) {
+      if (e.key === 'Escape') closeModal();
     });
 
     // Date/time toggle
@@ -1378,7 +1374,7 @@
       $('#lk-dt-section').toggleClass('open');
     });
 
-    // Update button label when date or time changes
+    // Update button label when date and time are both chosen
     function updateDtBtn() {
       var d = $('#lk-date').val();
       var t = $('#lk-time').val();
@@ -1387,13 +1383,13 @@
         var label = parts[2] + '/' + parts[1] + '/' + parts[0] + ' às ' + t.replace(':', 'h');
         $('#lk-dt-toggle').text(label).addClass('lk-dt-selected');
         $('#lk-dt-section').removeClass('open');
-      } else if (d || t) {
+      } else {
         $('#lk-dt-toggle').removeClass('lk-dt-selected');
       }
     }
     $('#lk-date, #lk-time').on('change', updateDtBtn);
 
-    // Submit (placeholder — send via email/API as needed)
+    // Submit with basic validation
     $('#lk-submit-btn').on('click', function () {
       var nome  = $('#lk-nome').val().trim();
       var tel   = $('#lk-tel').val().trim();
@@ -1402,7 +1398,7 @@
         alert('Por favor, preencha nome, telefone e e-mail.');
         return;
       }
-      $('#lkModal').modal('hide');
+      closeModal();
       alert('Mensagem recebida! Entraremos em contato em breve.');
     });
   });
