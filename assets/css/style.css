@@ -286,6 +286,17 @@ html, body {
     padding: 72px 24px 24px 24px;
     gap: 10px;
   }
+  #modal-overlay {
+    left: 12px;
+    top: 70px;
+    width: calc(390px - 24px);
+    height: calc(844px - 82px);
+  }
+  .modal-cat        { font-size: 10px; }
+  .modal-title      { font-size: 20px; }
+  .modal-col-label  { font-size: 10px; }
+  .modal-col-statement { font-size: 14px; }
+  .modal-text       { font-size: 12px; line-height: 1.55; }
 }
 
 /* ── Canvas (full viewport, outside #app) ────────────────── */
@@ -398,13 +409,23 @@ html, body {
 }
 
 .block-statement-text {
-  font-size: calc(22px * var(--scale));
+  font-size: calc(16px * var(--scale));
   font-weight: 800;
   text-transform: uppercase;
   color: #fff;
   line-height: 1.15;
   letter-spacing: 0.03em;
   margin: 0;
+}
+
+/* ── Block separator ─────────────────────────────────────── */
+
+.block-sep {
+  width: 100%;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.10);
+  margin-bottom: calc(12px * var(--scale));
+  flex-shrink: 0;
 }
 
 /* ── Modal design system — layout ────────────────────────── */
