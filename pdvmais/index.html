@@ -197,54 +197,83 @@
       text-align: center;
       margin-bottom: 32px;
     }
-    .pdv-pos-row {
+    /* ── Acquirers carousel ──────────────────────────────────── */
+    .acq-logo-strip {
       display: flex;
-      gap: 16px;
-      overflow-x: auto;
-      padding-bottom: 12px;
-      -webkit-overflow-scrolling: touch;
-      scrollbar-width: thin;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 8px 14px;
+      margin-bottom: 36px;
     }
-    .pdv-pos-col {
-      flex: 0 0 190px;
+    .acq-logo-btn {
+      background: none;
+      border: none;
+      padding: 6px 10px;
+      cursor: pointer;
+      border-radius: 6px;
+      opacity: 0.35;
+      transition: opacity 0.18s;
     }
-    .pdv-pos-card {
-      background: white;
-      border: 1px solid #e8e8e8;
-      border-radius: 10px;
-      padding: 18px 14px 14px;
-      text-align: center;
-      height: 100%;
+    .acq-logo-btn:hover     { opacity: 0.70; }
+    .acq-logo-btn.active    { opacity: 1; }
+    .acq-logo-btn.active:hover { opacity: 1; }
+    .acq-logo-btn img       { height: 26px; width: auto; display: block; }
+    .acq-panel {
+      max-width: 900px;
+      margin: 0 auto;
       display: flex;
-      flex-direction: column;
       align-items: center;
     }
-    .pdv-pos-card .pos-img {
+    .acq-arrow {
+      background: none;
+      border: none;
+      font-size: 56px;
+      line-height: 1;
+      color: #555;
+      cursor: pointer;
+      padding: 0 10px;
+      flex-shrink: 0;
+      transition: color 0.15s;
+      user-select: none;
+    }
+    .acq-arrow:hover { color: #38BDF8; }
+    .acq-img-col {
+      flex: 0 0 45%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .acq-img-col img {
+      max-height: 340px;
+      width: auto;
+      object-fit: contain;
+      transition: opacity 0.15s;
+    }
+    .acq-info-col {
+      flex: 1;
+      padding-left: 36px;
+    }
+    .acq-info-col > img {
       height: 110px;
       width: auto;
       object-fit: contain;
-      margin-bottom: 10px;
+      display: block;
+      margin-bottom: 20px;
     }
-    .pdv-pos-card .logo-img {
-      height: 26px;
-      width: auto;
-      object-fit: contain;
-      margin-bottom: 10px;
-    }
-    .pdv-pos-card ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-      text-align: left;
-      width: 100%;
-    }
-    .pdv-pos-card ul li {
+    .acq-equip-label {
       font-size: 11px;
-      color: #666;
-      padding: 3px 0;
-      border-bottom: 1px solid #f0f0f0;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      color: #999;
+      margin-bottom: 6px;
+      font-family: 'Inter', sans-serif;
+      font-weight: 600;
     }
-    .pdv-pos-card ul li:last-child { border-bottom: none; }
+    #acq-equip-list {
+      list-style: none;
+      padding-left: 0;
+      margin: 0;
+    }
 
     /* Feature tabs */
     .pdv-feat-media {
@@ -308,163 +337,45 @@
 <section class="grey" style="padding:48px 0;">
     <div class="container">
         <h3 class="pdv-section-title">Adquirentes e maquininhas compatíveis</h3>
-        <div class="pdv-pos-row">
 
-            <div class="pdv-pos-col">
-                <div class="pdv-pos-card">
-                    <img class="pos-img" src="/assets/img/pdvmais/PDV-POS-Azulzinha.webp" alt="Azulzinha POS">
-                    <img class="logo-img" src="/assets/img/pdvmais/logo-azulzinha.svg" alt="Azulzinha">
-                    <ul>
-                        <li>Clover Flex</li>
-                        <li>Clover Mini</li>
-                        <li>Ingenico DX8000</li>
-                        <li>Sunmi P2</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="pdv-pos-col">
-                <div class="pdv-pos-card">
-                    <img class="pos-img" src="/assets/img/pdvmais/PDV-POS-Bin.webp" alt="Bin POS">
-                    <img class="logo-img" src="/assets/img/pdvmais/logo-bin.svg" alt="Bin">
-                    <ul>
-                        <li>Clover Flex</li>
-                        <li>Clover Mini</li>
-                        <li>Ingenico DX8000</li>
-                        <li>Sunmi P2</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="pdv-pos-col">
-                <div class="pdv-pos-card">
-                    <img class="pos-img" src="/assets/img/pdvmais/PDV-POS-Cielo.webp" alt="Cielo POS">
-                    <img class="logo-img" src="/assets/img/pdvmais/logo-cielo.svg" alt="Cielo">
-                    <ul>
-                        <li>Ingenico DX8000</li>
-                        <li>LIO V1</li>
-                        <li>LIO V2</li>
-                        <li>Positivo L300</li>
-                        <li>Positivo L400</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="pdv-pos-col">
-                <div class="pdv-pos-card">
-                    <img class="pos-img" src="/assets/img/pdvmais/PDV-POS-Clover.webp" alt="Clover POS">
-                    <img class="logo-img" src="/assets/img/pdvmais/logo-clover.svg" alt="Clover">
-                    <ul>
-                        <li>Clover Flex</li>
-                        <li>Clover Mini</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="pdv-pos-col">
-                <div class="pdv-pos-card">
-                    <img class="pos-img" src="/assets/img/pdvmais/PDV-POS-Getnet.webp" alt="Getnet POS">
-                    <img class="logo-img" src="/assets/img/pdvmais/logo-getnet.svg" alt="Getnet">
-                    <ul>
-                        <li>Ingenico A8</li>
-                        <li>Ingenico DX8000</li>
-                        <li>Newland N910</li>
-                        <li>Sunmi P2 e P3</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="pdv-pos-col">
-                <div class="pdv-pos-card">
-                    <img class="pos-img" src="/assets/img/pdvmais/PDV-POS-PagSeguro.webp" alt="PagBank POS">
-                    <img class="logo-img" src="/assets/img/pdvmais/logo-pagbank.svg" alt="PagBank">
-                    <ul>
-                        <li>Gertec GPOS760</li>
-                        <li>Gertec GPOS780</li>
-                        <li>Moderninha X</li>
-                        <li>Moderninha Smart</li>
-                        <li>Moderninha Smart2</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="pdv-pos-col">
-                <div class="pdv-pos-card">
-                    <img class="pos-img" src="/assets/img/pdvmais/PDV-POS-PicPay.webp" alt="PicPay POS">
-                    <img class="logo-img" src="/assets/img/pdvmais/logo-picpay.svg" alt="PicPay">
-                    <ul>
-                        <li>Sunmi P2</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="pdv-pos-col">
-                <div class="pdv-pos-card">
-                    <img class="pos-img" src="/assets/img/pdvmais/PDV-POS-Rede.webp" alt="Rede POS">
-                    <img class="logo-img" src="/assets/img/pdvmais/logo-rede.svg" alt="Rede">
-                    <ul>
-                        <li>Positivo L400</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="pdv-pos-col">
-                <div class="pdv-pos-card">
-                    <img class="pos-img" src="/assets/img/pdvmais/PDV-POS-Safrapay.webp" alt="Safrapay POS">
-                    <img class="logo-img" src="/assets/img/pdvmais/logo-safrapay.svg" alt="Safrapay">
-                    <ul>
-                        <li>PAX A910</li>
-                        <li>Ingenico A8</li>
-                        <li>Sunmi P2</li>
-                        <li>Sunmi P3</li>
-                        <li>Sunmi P3HK</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="pdv-pos-col">
-                <div class="pdv-pos-card">
-                    <img class="pos-img" src="/assets/img/pdvmais/PDV-POS-Sicredi.webp" alt="Sicredi POS">
-                    <img class="logo-img" src="/assets/img/pdvmais/logo-sicredi.svg" alt="Sicredi">
-                    <ul>
-                        <li>Clover Flex</li>
-                        <li>Clover Mini</li>
-                        <li>Ingenico DX8000</li>
-                        <li>Sunmi P2</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="pdv-pos-col">
-                <div class="pdv-pos-card">
-                    <img class="pos-img" src="/assets/img/pdvmais/PDV-POS-Stone.webp" alt="Stone POS">
-                    <img class="logo-img" src="/assets/img/pdvmais/logo-stone.svg" alt="Stone">
-                    <ul>
-                        <li>Ingenico A8</li>
-                        <li>Positivo L300</li>
-                        <li>Positivo L400</li>
-                        <li>Sunmi P2</li>
-                        <li>Sunmi P2 A11</li>
-                        <li>Tectoy T8</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="pdv-pos-col">
-                <div class="pdv-pos-card">
-                    <img class="pos-img" src="/assets/img/pdvmais/PDV-POS-Vero.webp" alt="Vero POS">
-                    <img class="logo-img" src="/assets/img/pdvmais/logo-vero.svg" alt="Vero">
-                    <ul>
-                        <li>Gertec GPOS700</li>
-                        <li>Newland N950</li>
-                        <li>Newland N950K</li>
-                        <li>Positivo L300</li>
-                        <li>Sunmi P2</li>
-                    </ul>
-                </div>
-            </div>
-
+        <!-- Logo strip: click to navigate -->
+        <div class="acq-logo-strip">
+            <button class="acq-logo-btn active" data-idx="0"><img src="/assets/img/pdvmais/logo-azulzinha.svg" alt="Azulzinha"></button>
+            <button class="acq-logo-btn" data-idx="1"><img src="/assets/img/pdvmais/logo-bin.svg" alt="Bin"></button>
+            <button class="acq-logo-btn" data-idx="2"><img src="/assets/img/pdvmais/logo-cielo.svg" alt="Cielo"></button>
+            <button class="acq-logo-btn" data-idx="3"><img src="/assets/img/pdvmais/logo-clover.svg" alt="Clover"></button>
+            <button class="acq-logo-btn" data-idx="4"><img src="/assets/img/pdvmais/logo-getnet.svg" alt="Getnet"></button>
+            <button class="acq-logo-btn" data-idx="5"><img src="/assets/img/pdvmais/logo-pagbank.svg" alt="PagBank"></button>
+            <button class="acq-logo-btn" data-idx="6"><img src="/assets/img/pdvmais/logo-picpay.svg" alt="PicPay"></button>
+            <button class="acq-logo-btn" data-idx="7"><img src="/assets/img/pdvmais/logo-rede.svg" alt="Rede"></button>
+            <button class="acq-logo-btn" data-idx="8"><img src="/assets/img/pdvmais/logo-safrapay.svg" alt="Safrapay"></button>
+            <button class="acq-logo-btn" data-idx="9"><img src="/assets/img/pdvmais/logo-sicredi.svg" alt="Sicredi"></button>
+            <button class="acq-logo-btn" data-idx="10"><img src="/assets/img/pdvmais/logo-stone.svg" alt="Stone"></button>
+            <button class="acq-logo-btn" data-idx="11"><img src="/assets/img/pdvmais/logo-vero.svg" alt="Vero"></button>
         </div>
+
+        <!-- Featured panel: prev | device image | info | next -->
+        <div class="acq-panel">
+            <button class="acq-arrow" id="acq-prev">&#8249;</button>
+
+            <div class="acq-img-col">
+                <img id="acq-pos-img" src="/assets/img/pdvmais/PDV-POS-Azulzinha.webp" alt="">
+            </div>
+
+            <div class="acq-info-col">
+                <img id="acq-logo-big" src="/assets/img/pdvmais/logo-azulzinha.svg" alt="">
+                <div class="acq-equip-label">Equipamentos:</div>
+                <ul id="acq-equip-list">
+                    <li class="item-list">Clover Flex</li>
+                    <li class="item-list">Clover Mini</li>
+                    <li class="item-list">Ingenico DX8000</li>
+                    <li class="item-list">Sunmi P2</li>
+                </ul>
+            </div>
+
+            <button class="acq-arrow" id="acq-next">&#8250;</button>
+        </div>
+
     </div>
 </section>
 
@@ -1002,6 +913,56 @@
         imgEl.style.display   = 'block';
         if (imgSrc) imgEl.src = imgSrc;
       }
+    });
+  });
+
+  // ── Acquirers carousel ──────────────────────────────────────
+  var acqData = [
+    { name: 'Azulzinha', pos: '/assets/img/pdvmais/PDV-POS-Azulzinha.webp', logo: '/assets/img/pdvmais/logo-azulzinha.svg', equip: ['Clover Flex', 'Clover Mini', 'Ingenico DX8000', 'Sunmi P2'] },
+    { name: 'Bin',       pos: '/assets/img/pdvmais/PDV-POS-Bin.webp',       logo: '/assets/img/pdvmais/logo-bin.svg',       equip: ['Clover Flex', 'Clover Mini', 'Ingenico DX8000', 'Sunmi P2'] },
+    { name: 'Cielo',     pos: '/assets/img/pdvmais/PDV-POS-Cielo.webp',     logo: '/assets/img/pdvmais/logo-cielo.svg',     equip: ['Ingenico DX8000', 'LIO V1', 'LIO V2', 'Positivo L300', 'Positivo L400'] },
+    { name: 'Clover',    pos: '/assets/img/pdvmais/PDV-POS-Clover.webp',    logo: '/assets/img/pdvmais/logo-clover.svg',    equip: ['Clover Flex', 'Clover Mini'] },
+    { name: 'Getnet',    pos: '/assets/img/pdvmais/PDV-POS-Getnet.webp',    logo: '/assets/img/pdvmais/logo-getnet.svg',    equip: ['Ingenico A8', 'Ingenico DX8000', 'Newland N910', 'Sunmi P2 e P3'] },
+    { name: 'PagBank',   pos: '/assets/img/pdvmais/PDV-POS-PagSeguro.webp', logo: '/assets/img/pdvmais/logo-pagbank.svg',   equip: ['Gertec GPOS760', 'Gertec GPOS780', 'Moderninha X', 'Moderninha Smart', 'Moderninha Smart2'] },
+    { name: 'PicPay',    pos: '/assets/img/pdvmais/PDV-POS-PicPay.webp',    logo: '/assets/img/pdvmais/logo-picpay.svg',    equip: ['Sunmi P2'] },
+    { name: 'Rede',      pos: '/assets/img/pdvmais/PDV-POS-Rede.webp',      logo: '/assets/img/pdvmais/logo-rede.svg',      equip: ['Positivo L400'] },
+    { name: 'Safrapay',  pos: '/assets/img/pdvmais/PDV-POS-Safrapay.webp',  logo: '/assets/img/pdvmais/logo-safrapay.svg',  equip: ['PAX A910', 'Ingenico A8', 'Sunmi P2', 'Sunmi P3', 'Sunmi P3HK'] },
+    { name: 'Sicredi',   pos: '/assets/img/pdvmais/PDV-POS-Sicredi.webp',   logo: '/assets/img/pdvmais/logo-sicredi.svg',   equip: ['Clover Flex', 'Clover Mini', 'Ingenico DX8000', 'Sunmi P2'] },
+    { name: 'Stone',     pos: '/assets/img/pdvmais/PDV-POS-Stone.webp',     logo: '/assets/img/pdvmais/logo-stone.svg',     equip: ['Ingenico A8', 'Positivo L300', 'Positivo L400', 'Sunmi P2', 'Sunmi P2 A11', 'Tectoy T8'] },
+    { name: 'Vero',      pos: '/assets/img/pdvmais/PDV-POS-Vero.webp',      logo: '/assets/img/pdvmais/logo-vero.svg',      equip: ['Gertec GPOS700', 'Newland N950', 'Newland N950K', 'Positivo L300', 'Sunmi P2'] }
+  ];
+
+  var acqIdx = 0;
+  var acqBtns   = document.querySelectorAll('.acq-logo-btn');
+  var acqPosImg = document.getElementById('acq-pos-img');
+  var acqLogoBig = document.getElementById('acq-logo-big');
+  var acqList   = document.getElementById('acq-equip-list');
+
+  function acqSetActive(idx) {
+    if (idx === acqIdx) return;
+    acqIdx = (idx + acqData.length) % acqData.length;
+    var d = acqData[acqIdx];
+    acqPosImg.src    = d.pos;
+    acqPosImg.alt    = d.name + ' POS';
+    acqLogoBig.src   = d.logo;
+    acqLogoBig.alt   = d.name;
+    acqList.innerHTML = d.equip.map(function (e) {
+      return '<li class="item-list">' + e + '</li>';
+    }).join('');
+    acqBtns.forEach(function (b) { b.classList.remove('active'); });
+    acqBtns[acqIdx].classList.add('active');
+    acqBtns[acqIdx].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'nearest' });
+  }
+
+  document.getElementById('acq-prev').addEventListener('click', function () {
+    acqSetActive(acqIdx - 1);
+  });
+  document.getElementById('acq-next').addEventListener('click', function () {
+    acqSetActive(acqIdx + 1);
+  });
+  acqBtns.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      acqSetActive(parseInt(this.getAttribute('data-idx'), 10));
     });
   });
 
