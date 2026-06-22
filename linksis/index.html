@@ -39,7 +39,6 @@
     .lk-header-inner {
       display: flex;
       align-items: center;
-      justify-content: space-between;
     }
     .lk-logo {
       font-family: 'Inter', sans-serif;
@@ -47,17 +46,19 @@
       color: white;
       text-decoration: none;
       letter-spacing: -0.02em;
+      display: flex;
+      align-items: center;
+      gap: 14px;
     }
     .lk-logo .arke { font-weight: 800; }
     .lk-logo .flow { font-weight: 400; font-style: italic; }
     .lk-logo:hover { color: white; text-decoration: none; }
-    .lk-back {
-      font-family: 'Inter', sans-serif;
-      font-size: 14px;
-      color: rgba(255,255,255,0.85);
-      text-decoration: none;
+
+    /* Fix: Cervantes icon font renders "check" as literal text — override with ✓ */
+    .item-list::before {
+      content: "✓";
+      font-family: inherit !important;
     }
-    .lk-back:hover { color: white; text-decoration: none; }
 
     .lk-cta {
       background: #071828;
@@ -88,8 +89,10 @@
       font-size: 15px;
       padding: 13px 36px;
       border-radius: 6px;
+      border: none;
       text-decoration: none;
       letter-spacing: 0.03em;
+      cursor: pointer;
     }
     .lk-cta-btn:hover {
       background: #00e87e;
@@ -119,6 +122,126 @@
       font-size: 12px;
       margin: 0;
     }
+
+    /* ── Contact modal ─────────────────────────────────────── */
+    #lkModal .modal-content {
+      background: #0D2235;
+      border: 1px solid rgba(255,255,255,0.10);
+      border-radius: 8px;
+      color: white;
+      font-family: 'Inter', sans-serif;
+    }
+    #lkModal .modal-header {
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      padding: 20px 24px 14px;
+    }
+    #lkModal .modal-title {
+      font-family: 'Inter', sans-serif;
+      font-size: 17px;
+      font-weight: 700;
+      color: white;
+    }
+    #lkModal .close {
+      color: rgba(255,255,255,0.55);
+      text-shadow: none;
+      opacity: 1;
+      font-size: 22px;
+    }
+    #lkModal .close:hover { color: white; opacity: 1; }
+    #lkModal .modal-body { padding: 20px 24px 24px; }
+    .modal-backdrop { background: #000; }
+    .modal-backdrop.show { opacity: 0.65; }
+    .lk-input-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    .lk-finput {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.10);
+      border-radius: 4px;
+      padding: 8px 12px;
+      font-size: 13px;
+      color: white;
+      font-family: 'Inter', sans-serif;
+      width: 100%;
+      outline: none;
+    }
+    .lk-finput::placeholder { color: rgba(255,255,255,0.28); }
+    .lk-finput:focus { border-color: rgba(38,255,147,0.35); }
+    .lk-finput.lk-obs {
+      display: block;
+      min-height: 72px;
+      resize: none;
+      margin-bottom: 0;
+    }
+    .lk-dt-btn {
+      text-align: left;
+      cursor: pointer;
+      color: rgba(255,255,255,0.35);
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.10);
+      border-radius: 4px;
+      padding: 8px 12px;
+      font-size: 13px;
+      font-family: 'Inter', sans-serif;
+      width: 100%;
+      margin-bottom: 10px;
+    }
+    .lk-dt-btn.lk-dt-selected {
+      color: #26FF93;
+      border-color: rgba(38,255,147,0.35);
+    }
+    .lk-dt-section {
+      display: none;
+      background: rgba(0,0,0,0.20);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 4px;
+      padding: 14px;
+      margin-bottom: 10px;
+      gap: 10px;
+    }
+    .lk-dt-section.open { display: grid; grid-template-columns: 1fr 1fr; }
+    .lk-dt-section label {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: rgba(255,255,255,0.40);
+      display: block;
+      margin-bottom: 5px;
+    }
+    .lk-dt-section input[type="date"],
+    .lk-dt-section select {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.10);
+      border-radius: 4px;
+      padding: 7px 10px;
+      font-size: 13px;
+      color: white;
+      font-family: inherit;
+      width: 100%;
+      outline: none;
+      color-scheme: dark;
+    }
+    .lk-dt-section select option { background: #0D2235; }
+    .lk-submit-row {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 16px;
+    }
+    .lk-submit {
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.22);
+      border-radius: 4px;
+      padding: 9px 24px;
+      font-size: 13px;
+      color: white;
+      cursor: pointer;
+      letter-spacing: 0.04em;
+      font-family: 'Inter', sans-serif;
+    }
+    .lk-submit:hover { border-color: rgba(255,255,255,0.50); }
   </style>
 </head>
 <body>
@@ -129,8 +252,8 @@
     <div class="lk-header-inner">
       <a href="https://www.arkeflow.com.br" class="lk-logo">
         <span class="arke">ARKE</span><span class="flow">flow</span>
+        <img src="/assets/img/linksis/linksis-logo.svg" alt="LinkSis" style="height:28px;width:auto;vertical-align:middle;">
       </a>
-      <a href="https://www.arkeflow.com.br" class="lk-back">← Voltar</a>
     </div>
   </div>
 </header>
@@ -540,9 +663,9 @@
 <!-- ARKEflow CTA -->
 <section class="lk-cta">
   <div class="container">
-    <h2>Quer saber mais sobre o LinkSis?</h2>
+    <h2>Quer saber mais sobre o <img src="/assets/img/linksis/linksis-logo.svg" alt="LinkSis" style="height:0.85em;width:auto;vertical-align:middle;margin:0 2px;">?</h2>
     <p>Fale com a equipe ARKEflow e saiba como podemos implantar esta solução para você.</p>
-    <a href="https://www.arkeflow.com.br" class="lk-cta-btn">Fale conosco →</a>
+    <button type="button" class="lk-cta-btn lk-open-modal">Fale conosco →</button>
   </div>
 </section>
 
@@ -955,9 +1078,9 @@
 <!-- ARKEflow CTA -->
 <section class="lk-cta">
   <div class="container">
-    <h2>Quer saber mais sobre o LinkSis?</h2>
+    <h2>Quer saber mais sobre o <img src="/assets/img/linksis/linksis-logo.svg" alt="LinkSis" style="height:0.85em;width:auto;vertical-align:middle;margin:0 2px;">?</h2>
     <p>Fale com a equipe ARKEflow e saiba como podemos implantar esta solução para você.</p>
-    <a href="https://www.arkeflow.com.br" class="lk-cta-btn">Fale conosco →</a>
+    <button type="button" class="lk-cta-btn lk-open-modal">Fale conosco →</button>
   </div>
 </section>
 
@@ -1170,6 +1293,55 @@
   </div>
 </footer>
 
+<!-- Contact Modal -->
+<div class="modal fade" id="lkModal" tabindex="-1" role="dialog" aria-labelledby="lkModalTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document" style="max-width:520px;">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="lkModalTitle">Fale conosco</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="lk-input-row">
+          <input id="lk-nome"     class="lk-finput" type="text"  placeholder="Nome">
+          <input id="lk-tel"      class="lk-finput" type="tel"   placeholder="Telefone">
+        </div>
+        <div class="lk-input-row">
+          <input id="lk-email"    class="lk-finput" type="email" placeholder="E-mail">
+          <input id="lk-cnpj"     class="lk-finput" type="text"  placeholder="CNPJ">
+        </div>
+        <button type="button" class="lk-dt-btn" id="lk-dt-toggle">Escolher data e horário →</button>
+        <div class="lk-dt-section" id="lk-dt-section">
+          <div>
+            <label>Data</label>
+            <input type="date" id="lk-date">
+          </div>
+          <div>
+            <label>Horário</label>
+            <select id="lk-time">
+              <option value="">Selecione</option>
+              <option value="09:00">09h00</option>
+              <option value="10:00">10h00</option>
+              <option value="11:00">11h00</option>
+              <option value="13:00">13h00</option>
+              <option value="14:00">14h00</option>
+              <option value="15:00">15h00</option>
+              <option value="16:00">16h00</option>
+              <option value="17:00">17h00</option>
+            </select>
+          </div>
+        </div>
+        <textarea id="lk-obs" class="lk-finput lk-obs" placeholder="Observações"></textarea>
+        <div class="lk-submit-row">
+          <button type="button" class="lk-submit" id="lk-submit-btn">Agendar →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- JS -->
 <script src="https://cervantestecnologia.com.br/assets/bootstrap4.3.1/js/bootstrap.bundle.js"></script>
 <script src="https://cervantestecnologia.com.br/assets/js/aos.js"></script>
@@ -1186,6 +1358,53 @@
         hideControls: true
       }
     }
+  });
+</script>
+
+<script src="https://cervantestecnologia.com.br/assets/js/jquery.mask.js"></script>
+<script>
+  $(function () {
+    // Input masks
+    $('#lk-tel').mask('(00) 00000-0000');
+    $('#lk-cnpj').mask('00.000.000/0000-00');
+
+    // Open modal from both CTA buttons
+    $(document).on('click', '.lk-open-modal', function () {
+      $('#lkModal').modal('show');
+    });
+
+    // Date/time toggle
+    $('#lk-dt-toggle').on('click', function () {
+      $('#lk-dt-section').toggleClass('open');
+    });
+
+    // Update button label when date or time changes
+    function updateDtBtn() {
+      var d = $('#lk-date').val();
+      var t = $('#lk-time').val();
+      if (d && t) {
+        var parts = d.split('-');
+        var label = parts[2] + '/' + parts[1] + '/' + parts[0] + ' às ' + t.replace(':', 'h');
+        $('#lk-dt-toggle').text(label).addClass('lk-dt-selected');
+        $('#lk-dt-section').removeClass('open');
+      } else if (d || t) {
+        $('#lk-dt-toggle').removeClass('lk-dt-selected');
+      }
+    }
+    $('#lk-date, #lk-time').on('change', updateDtBtn);
+
+    // Submit (placeholder — send via email/API as needed)
+    $('#lk-submit-btn').on('click', function () {
+      var nome  = $('#lk-nome').val().trim();
+      var tel   = $('#lk-tel').val().trim();
+      var email = $('#lk-email').val().trim();
+      if (!nome || !tel || !email) {
+        alert('Por favor, preencha nome, telefone e e-mail.');
+        return;
+      }
+      $('#lkModal').modal('hide');
+      alert('Mensagem recebida! Entraremos em contato em breve.');
+    });
   });
 </script>
 
