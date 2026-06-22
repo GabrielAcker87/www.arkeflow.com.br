@@ -925,8 +925,8 @@ html, body {
   position: absolute;
   inset: 0;
   display: flex;
+  flex-direction: column;
   padding-top: calc(24px * var(--scale));
-  gap: calc(32px * var(--scale));
   opacity: 0;
   pointer-events: none;
   transition: opacity 300ms ease;
@@ -935,6 +935,37 @@ html, body {
 .ark-card.active {
   opacity: 1;
   pointer-events: auto;
+}
+
+.ark-cols {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+  gap: calc(32px * var(--scale));
+}
+
+.ark-saiba-row {
+  display: flex;
+  justify-content: flex-end;
+  padding: 0 calc(24px * var(--scale)) calc(20px * var(--scale));
+  margin-top: calc(12px * var(--scale));
+}
+
+.ark-saiba-btn {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.20);
+  border-radius: 4px;
+  padding: calc(7px * var(--scale)) calc(20px * var(--scale));
+  font-size: calc(12px * var(--scale));
+  color: #fff;
+  cursor: pointer;
+  letter-spacing: 0.04em;
+  font-family: inherit;
+}
+
+.ark-saiba-btn:hover {
+  border-color: rgba(255, 255, 255, 0.45);
 }
 
 /* ── ARKE Softwares — modal nav arrows ───────────────────── */
