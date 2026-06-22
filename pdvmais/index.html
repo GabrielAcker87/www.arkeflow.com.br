@@ -244,9 +244,11 @@
       align-items: center;
     }
     .acq-img-col img {
-      max-height: 340px;
+      height: 300px;
       width: auto;
+      max-width: 100%;
       object-fit: contain;
+      object-position: center bottom;
       transition: opacity 0.15s;
     }
     .acq-info-col {
@@ -254,11 +256,13 @@
       padding-left: 36px;
     }
     .acq-info-col > img {
-      height: 110px;
-      width: auto;
-      object-fit: contain;
       display: block;
+      height: 90px;
+      width: 220px;
+      object-fit: contain;
+      object-position: left center;
       margin-bottom: 20px;
+      flex-shrink: 0;
     }
     .acq-equip-label {
       font-size: 11px;
