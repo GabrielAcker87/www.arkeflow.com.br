@@ -368,6 +368,8 @@
 
   var MODAL_FALE_CONOSCO = '<div class="modal-header"><span class="modal-cat">CONTATO</span><h2 class="modal-title">Fale conosco</h2></div><div class="modal-body modal-two-col"><div class="modal-col"><div class="fc-channels"><div class="fc-ch-item"><div class="fc-ch-label">TELEFONE</div><div class="fc-ch-val">(00) 00000-0000</div></div><div class="fc-ch-item"><div class="fc-ch-label">WHATSAPP</div><div class="fc-ch-val">(00) 00000-0000</div></div><div class="fc-ch-item"><div class="fc-ch-label">INSTAGRAM</div><div class="fc-ch-val">@arkeflow</div></div><div class="fc-ch-item"><div class="fc-ch-label">LINKEDIN</div><div class="fc-ch-val">ARKEflow</div></div></div><p class="modal-text-italic">Fale direto com quem vai construir a solução.</p></div><div class="modal-col fc-form-col"><span class="modal-col-label">Agende uma conversa</span><div class="fc-row"><input class="fc-input" id="fc-nome" placeholder="Nome" autocomplete="off" /><input class="fc-input" id="fc-tel" placeholder="(00) 00000-0000" maxlength="15" autocomplete="off" /></div><div class="fc-row"><input class="fc-input fc-email" id="fc-email" placeholder="E-mail" type="email" autocomplete="off" /><input class="fc-input" id="fc-cnpj" placeholder="00.000.000/0000-00" maxlength="18" autocomplete="off" /></div><button class="fc-dt-btn" id="fc-dt-btn">Escolher data e horário →</button><div class="fc-pills-wrap"><div class="fc-pills-label">Produto de interesse</div><div class="fc-pills"><button type="button" class="fc-pill active">Consultoria Bitrix24</button><button type="button" class="fc-pill">ARKEvest</button><button type="button" class="fc-pill">PDV+</button><button type="button" class="fc-pill">LinkSis</button><button type="button" class="fc-pill">Outros</button></div></div><textarea class="fc-input fc-obs" placeholder="Observações (opcional)"></textarea><div class="fc-submit-row"><button type="button" class="fc-submit">Agendar →</button></div></div></div><div class="fc-picker-overlay" id="fc-picker-overlay"><div class="fc-picker"><div id="fc-cal-view"><div class="fc-picker-hdr"><button id="fc-prev">‹</button><span id="fc-month-label"></span><button id="fc-next">›</button></div><div class="fc-cal-dow"><span>DOM</span><span>SEG</span><span>TER</span><span>QUA</span><span>QUI</span><span>SEX</span><span>SÁB</span></div><div class="fc-cal-grid" id="fc-cal-grid"></div></div><div id="fc-slot-view" style="display:none"><button class="fc-back-btn" id="fc-back-btn">← voltar</button><div class="fc-slot-date" id="fc-slot-date"></div><div class="fc-slots" id="fc-slots"></div><button class="fc-confirm-btn" id="fc-confirm-btn" style="display:none">Confirmar</button></div></div></div>';
 
+  var MODAL_ARKE_SOFTWARES = '<div class="modal-header"><span class="modal-cat">SOFTWARES</span><div style="display:flex;align-items:center;justify-content:space-between;margin-top:calc(4px * var(--scale))"><h2 class="modal-title" id="ark-title" style="margin-top:0">ARKEvest</h2><span id="ark-counter" style="font-size:calc(11px * var(--scale));color:rgba(255,255,255,0.30);font-weight:400">1 / 3</span></div></div><div class="ark-cards-wrap" id="ark-cards-wrap"><div class="ark-card active" data-card="0"><div class="modal-col"><span class="modal-col-label">O sistema</span><p class="modal-col-statement">GESTÃO COMPLETA <span style="color:#D4A017">PARA QUEM VENDE MODA.</span></p><p class="modal-text">O <span style="color:#D4A017;font-weight:700">ARKEvest</span> é um ERP especializado no setor de vestuário e moda. Desenvolvido para varejistas e distribuidores que precisam de controle real de estoque com grades de cor e tamanho.</p><p class="modal-text">PDV integrado com emissão de cupom fiscal, entrada automática de NF-e e gestão completa de coleções.</p><p class="modal-text"><span style="color:#D4A017;cursor:pointer">Saiba mais →</span></p></div><div class="modal-col"><span class="modal-col-label">Diferenciais</span><p class="modal-col-statement">DO PEDIDO AO CAIXA. <span style="color:#D4A017">SEM PAPEL.</span></p><p class="modal-text">Controle de estoque por grade (cor × tamanho) com conferência automática na entrada de mercadoria.</p><p class="modal-text">Comissionamento de vendedores, metas por período e relatório de curva ABC do estoque.</p><p class="modal-text"><strong style="color:#fff">Emissão de NFC-e e NF-e</strong> integrada ao PDV, com transmissão offline e envio automático ao retomar conexão.</p></div></div><div class="ark-card" data-card="1"><div class="modal-col"><span class="modal-col-label">O sistema</span><p class="modal-col-statement">O ESSENCIAL PARA <span style="color:#38BDF8">VENDER BEM.</span></p><p class="modal-text">O PDV+ é a solução de ponto de venda para <span style="color:#38BDF8">MEI, microempresas e negócios do Simples Nacional</span>. Ágil, acessível e sem a complexidade de um ERP completo.</p><p class="modal-text">Disponível no celular (Android e iOS) e no computador (Windows). Vende mesmo <strong style="color:#fff">offline</strong> e emite a nota fiscal assim que a conexão for restabelecida.</p><p class="modal-text"><span style="color:#38BDF8;cursor:pointer">Saiba mais →</span></p></div><div class="modal-col"><span class="modal-col-label">Diferenciais</span><p class="modal-col-statement">TUDO QUE SEU NEGÓCIO PRECISA <span style="color:#38BDF8">NO DIA A DIA.</span></p><p class="modal-text">Cadastro automático de produtos com foto e tributação. Mesas, comandas, <span style="color:#38BDF8">delivery integrado com iFood</span> e catálogo online próprio.</p><p class="modal-text"><strong style="color:#fff">Totem de autoatendimento</strong>, monitor de cozinha e app para entregadores.</p><p class="modal-text">Aceita <strong style="color:#fff">Cielo, Stone, Getnet, PagBank, Rede</strong> e mais. Relatórios de vendas, estoque e margem bruta.</p></div></div><div class="ark-card" data-card="2"><div class="modal-col"><span class="modal-col-label">O sistema</span><p class="modal-col-statement">AUTOMAÇÃO COMPLETA. SEM MÓDULOS, <span style="color:#FB923C">SEM LIMITES.</span></p><p class="modal-text">O LinkSis é um sistema ERP que atende <span style="color:#FB923C">qualquer segmento do comércio</span> — do varejo ao restaurante, do mercado à distribuidora. Uma única licença dá acesso a todos os recursos, sem cobranças extras por módulo.</p><p class="modal-text"><strong style="color:#fff">PDV com emissão fiscal completa</strong> (NFC-e, NF-e, SPED), controle financeiro, multilojas e integração com as principais plataformas de delivery.</p><p class="modal-text"><span style="color:#FB923C;cursor:pointer">Saiba mais →</span></p></div><div class="modal-col"><span class="modal-col-label">Diferenciais</span><p class="modal-col-statement">ECOSSISTEMA DE APLICATIVOS <span style="color:#FB923C">INTEGRADOS.</span></p><p class="modal-text">Aceita <span style="color:#FB923C">todas as bandeiras</span> via TEF integrado ao PDV — sem retipos no pinpad. Funciona com Cielo, Stone, Getnet, Rede, PagBank e mais.</p><p class="modal-text">Suporte a <strong style="color:#fff">POS Android</strong>: venda, emita nota e processe pagamento em um único aparelho de mão, sem computador.</p></div></div></div>';
+
   function openModal(blockEl) {
     if (modalIsOpen) return;
     modalIsOpen = true;
@@ -377,6 +379,7 @@
     modalContent.innerHTML = '';
     var r = blockEl.dataset.r;
     var c = blockEl.dataset.c;
+    if (r === '0' && c === '2') { modalContent.innerHTML = MODAL_ARKE_SOFTWARES; initArkeModal(); }
     if (r === '1' && c === '0') modalContent.innerHTML = MODAL_QUEM_SOMOS;
     if (r === '1' && c === '2') { modalContent.innerHTML = MODAL_FALE_CONOSCO; initFaleConosco(); }
     modalOverlay.style.transition = 'opacity 320ms ease, transform 320ms ease';
@@ -387,6 +390,10 @@
   function closeModal(fromHistory) {
     if (!modalIsOpen) return;
     modalIsOpen = false;
+    var arkPrev = document.getElementById('ark-prev-btn');
+    var arkNext = document.getElementById('ark-next-btn');
+    if (arkPrev) arkPrev.remove();
+    if (arkNext) arkNext.remove();
     modalOverlay.style.transition = 'opacity 220ms ease, transform 220ms ease';
     modalOverlay.classList.remove('is-open');
     gridEl.classList.remove('is-expanded-open');
@@ -577,6 +584,58 @@
     renderCal();
   }
 
+  // ── ARKE Softwares: modal carousel ──────────────────────
+  function initArkeModal() {
+    var cards     = Array.from(modalContent.querySelectorAll('.ark-card'));
+    var titleEl   = document.getElementById('ark-title');
+    var counterEl = document.getElementById('ark-counter');
+    var current   = 0;
+    var total     = cards.length;
+
+    function updateHeader(idx) {
+      counterEl.textContent = (idx + 1) + ' / ' + total;
+      if (idx === 2) {
+        var s = getScale();
+        titleEl.innerHTML = '<img src="assets/img/linksis-logo.svg" style="height:' + Math.round(20 * s) + 'px;width:auto;border-radius:3px;opacity:0.85;vertical-align:middle">';
+      } else {
+        titleEl.textContent = idx === 0 ? 'ARKEvest' : 'PDV+';
+      }
+    }
+
+    function goTo(idx) {
+      cards[current].classList.remove('active');
+      current = (idx + total) % total;
+      cards[current].classList.add('active');
+      updateHeader(current);
+    }
+
+    var prevBtn = document.createElement('button');
+    prevBtn.id        = 'ark-prev-btn';
+    prevBtn.className = 'ark-nav-btn';
+    prevBtn.innerHTML = '&#8249;';
+    prevBtn.style.left = '-14px';
+
+    var nextBtn = document.createElement('button');
+    nextBtn.id        = 'ark-next-btn';
+    nextBtn.className = 'ark-nav-btn';
+    nextBtn.innerHTML = '&#8250;';
+    nextBtn.style.right = '-14px';
+
+    modalOverlay.appendChild(prevBtn);
+    modalOverlay.appendChild(nextBtn);
+
+    setTimeout(function () {
+      var headerEl = modalContent.querySelector('.modal-header');
+      var headerH  = headerEl ? headerEl.offsetHeight : 60;
+      var topPx    = headerH + (548 - headerH) / 2 - 14;
+      prevBtn.style.top = topPx + 'px';
+      nextBtn.style.top = topPx + 'px';
+    }, 0);
+
+    prevBtn.addEventListener('click', function () { goTo(current - 1); });
+    nextBtn.addEventListener('click', function () { goTo(current + 1); });
+  }
+
   // Block click → open modal
   blocks.forEach(function (block) {
     block.addEventListener('click', function () {
@@ -687,5 +746,39 @@
       leaveTimer = setTimeout(resetAll, 12);
     });
   });
+
+  // ── ARKE Softwares: closed block rotation ────────────────
+  var arkBlock = document.querySelector('.block[data-r="0"][data-c="2"]');
+  if (arkBlock) {
+    var arkSlides  = Array.from(arkBlock.querySelectorAll('.ark-slide'));
+    var arkDots    = Array.from(arkBlock.querySelectorAll('.ark-dot'));
+    var arkCurr    = 0;
+    var arkTimer   = null;
+
+    function arkGoTo(idx) {
+      arkSlides[arkCurr].classList.remove('active');
+      arkDots[arkCurr].classList.remove('active');
+      arkCurr = idx;
+      arkSlides[arkCurr].classList.add('active');
+      arkDots[arkCurr].classList.add('active');
+    }
+
+    function arkStartTimer() {
+      arkTimer = setInterval(function () {
+        arkGoTo((arkCurr + 1) % arkSlides.length);
+      }, 7000);
+    }
+
+    arkDots.forEach(function (dot, i) {
+      dot.addEventListener('click', function (e) {
+        e.stopPropagation();
+        clearInterval(arkTimer);
+        arkGoTo(i);
+        arkStartTimer();
+      });
+    });
+
+    arkStartTimer();
+  }
 
 }());
