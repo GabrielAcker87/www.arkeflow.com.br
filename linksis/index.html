@@ -1,0 +1,1193 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#bd3911">
+  <title>LinkSis — Automação Comercial | ARKEflow</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
+
+  <!-- Bootstrap 4 -->
+  <link rel="stylesheet" type="text/css" href="https://cervantestecnologia.com.br/assets/bootstrap4.3.1/css/bootstrap.css">
+
+  <!-- AOS animations -->
+  <link rel="stylesheet" href="https://cervantestecnologia.com.br/assets/css/aos.css">
+
+  <!-- GLightbox for video lightboxes -->
+  <link rel="stylesheet" href="https://cervantestecnologia.com.br/assets/css/glightbox.css">
+  <script src="https://cervantestecnologia.com.br/assets/js/glightbox.min.js"></script>
+
+  <!-- Cervantes layout styles -->
+  <link rel="stylesheet" type="text/css" href="https://cervantestecnologia.com.br/assets/css/main.css?v=1782105779">
+
+  <!-- jQuery (required by Cervantes main.js nav-sequence) -->
+  <script src="https://cervantestecnologia.com.br/assets/js/jquery-3.3.1.min.js"></script>
+
+  <style>
+    .lk-header {
+      background: #bd3911;
+      padding: 14px 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .lk-header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .lk-logo {
+      font-family: 'Inter', sans-serif;
+      font-size: 22px;
+      color: white;
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+    .lk-logo .arke { font-weight: 800; }
+    .lk-logo .flow { font-weight: 400; font-style: italic; }
+    .lk-logo:hover { color: white; text-decoration: none; }
+    .lk-back {
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      color: rgba(255,255,255,0.85);
+      text-decoration: none;
+    }
+    .lk-back:hover { color: white; text-decoration: none; }
+
+    .lk-cta {
+      background: #071828;
+      padding: 64px 0;
+      text-align: center;
+      font-family: 'Inter', sans-serif;
+    }
+    .lk-cta h2 {
+      color: white;
+      font-size: 26px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+    .lk-cta p {
+      color: rgba(255,255,255,0.65);
+      font-size: 15px;
+      margin-bottom: 32px;
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .lk-cta-btn {
+      display: inline-block;
+      background: #26FF93;
+      color: #071828;
+      font-family: 'Inter', sans-serif;
+      font-weight: 700;
+      font-size: 15px;
+      padding: 13px 36px;
+      border-radius: 6px;
+      text-decoration: none;
+      letter-spacing: 0.03em;
+    }
+    .lk-cta-btn:hover {
+      background: #00e87e;
+      color: #071828;
+      text-decoration: none;
+    }
+
+    .lk-footer {
+      background: #1a1a1a;
+      padding: 40px 0 24px;
+      font-family: 'Inter', sans-serif;
+      text-align: center;
+    }
+    .lk-footer-logo {
+      font-size: 20px;
+      color: white;
+      text-decoration: none;
+      display: inline-block;
+      margin-bottom: 16px;
+      letter-spacing: -0.02em;
+    }
+    .lk-footer-logo .arke { font-weight: 800; }
+    .lk-footer-logo .flow { font-weight: 400; font-style: italic; color: #26FF93; }
+    .lk-footer-logo:hover { text-decoration: none; }
+    .lk-footer-copy {
+      color: rgba(255,255,255,0.35);
+      font-size: 12px;
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ARKEflow Header -->
+<header class="lk-header">
+  <div class="container">
+    <div class="lk-header-inner">
+      <a href="https://www.arkeflow.com.br" class="lk-logo">
+        <span class="arke">ARKE</span><span class="flow">flow</span>
+      </a>
+      <a href="https://www.arkeflow.com.br" class="lk-back">← Voltar</a>
+    </div>
+  </div>
+</header>
+
+<section id="videoPublicitario" class="grey">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-sm-12 col-md-12">
+                <div class="videoPlay" data-aos="zoom-in-top">
+                    <iframe class="youtube-video" type="text/html" width="640" height="360" src="https://www.youtube.com/embed/7ACT8w2XD1E?modestbranding=0&rel=0&iv_load_policy=3&showinfo=0&enablejsapi=1&widgetid=1" frameborder="0" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="ofertas" class="list grey">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-sm-12 col-md-6 order-last">
+                <div class="image" data-aos="zoom-in-top">
+                    <img height="" src="/assets/img/linksis/img-telas.png" alt="">
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-6 order-first">
+                <div class="textContainer" data-aos="zoom-in-top">
+                    <h2>Um sistema completo</h2>
+                    <p class="item-list">O Link <b>não utiliza o conceito de módulos</b>. Todos os recursos desenvolvidos são disponibilizados para todos os clientes do sistema.</p>
+                    <p class="item-list">Se encaixa nos mais diversos segmentos do <b>varejo, serviços, bares e restaurantes</b>.</p>
+                    <p class="item-list"><b>Uma licença</b> do Link consiste em 1 computador habilitado <b>pelo período de 1 mês</b>.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="separatorSection grey" id="explicamos">
+    <div class="container" data-aos="zoom-in-top">
+        <h1>Características técnicas</h1>
+    </div>
+</section>
+
+<section id="caracteristicasTecnicas" class="grey">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-md-7">
+                <div class="video-iframe-js" data-aos="zoom-in-top">
+                    <iframe class="video-nav youtube-video youtube autoplay" width="640" height="360" src="https://www.youtube.com/embed/ELNQ92cO9Io?rel=0&amp;showinfo=0;modestbranding=1" frameborder="0" allow="autoplay" allowfullscreen></iframe>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-5">
+                <ul class="nav-content nav-sequence">
+                    <li class="nav-content-item">
+                        <a class="nav-link active" data-video="ELNQ92cO9Io">
+                            <div class="titulo">Busca inteligente</div>
+                            <div class="sub-titulo">Fácil de encontrar o que procura apenas digitando partes das palavras e em qualquer ordem.</div>
+                        </a>
+                    </li>
+                    <li class="nav-content-item">
+                        <a class="nav-link" data-video="bltheu0haAI">
+                            <div class="titulo">Cadastro rápido pelo XML</div>
+                            <div class="sub-titulo">Cadastro de produtos de maneira rápida e prática a partir do XML baixado do site da SEFAZ.</div>
+                        </a>
+                    </li>
+                    <li class="nav-content-item">
+                        <a class="nav-link" data-video="_614xEtAMdk">
+                            <div class="titulo">Consulta de variações</div>
+                            <div class="sub-titulo">Consulta da grade com as variações de cada produto diretamente da tela do caixa.</div>
+                        </a>
+                    </li>
+                    <li class="nav-content-item">
+                        <a class="nav-link" data-video="JsEEwc5tWVY">
+                            <div class="titulo">Consulta no Multilojas</div>
+                            <div class="sub-titulo">Consulta no estoque de outras lojas diretamente da tela do caixa.</div>
+                        </a>
+                    </li>
+                    <li class="nav-content-item">
+                        <a class="nav-link" data-video="C4oWKISVndc">
+                            <div class="titulo">Evolução de vendas</div>
+                            <div class="sub-titulo">Acompanhamento da evolução das vendas de maneira gráfica e intuitiva.</div>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="ofertas" class="list grey">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-sm-12 col-md-6 order-last">
+                <div class="image" data-aos="zoom-in-top">
+                    <img height="" src="/assets/img/linksis/img-caixa.png" alt="">
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-6 order-first">
+                <div class="textContainer" data-aos="zoom-in-top">
+                    <h2>PDV para o varejo</h2>
+                    <h5 class="py-md-2" style="color: #404041;"><b>Com diversos recursos sem precisar sair da tela do Caixa.</b></h5>
+                    <p class="item-list">Consulta de variações e busca de produtos do estoque das <b>outras lojas</b>.</p>
+                    <p class="item-list">Busca de <b>pré-vendas</b>, <b>pedido condicional</b> e <b>devoluções</b>.</p>
+                    <p class="item-list">Cadastro de clientes e autorizados a comprar em seu crediário.</p>
+                    <p class="item-list">Diversas <b>condições</b> e <b>formas de pagamento</b> em dinheiro, boleto, cartões, crediário e Pix.</p>
+                    <p class="item-list">Impressão de documentos fiscais e relatórios.</p>
+                    <p class="item-list"><b>Suprimento/sangria</b>, consulta de <b>movimentações</b>, emissão de <b>extrato financeiro</b> e <b>fechamento</b>.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="linkBalanco" class="list grey">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-sm-12 col-md-6 order-last">
+                <div class="image" data-aos="zoom-in-top">
+                    <a href="https://youtu.be/zx9oyY6EsN8" data-glightbox>
+                        <div class="youtubeIcon">
+                            <img src="https://cervantestecnologia.com.br/assets/images/img-appMov.png" alt="">
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-6 order-first">
+                <div class="textContainer" data-aos="zoom-in-top">
+                    <h2>Link Móvel</h2>
+                    <h5 class="py-md-2" style="color: #404041;"><b>Aplicativo para pré-vendas</b></h5>
+                    <p class="item-list">Envia pedidos que chegam como <b>pré-vendas</b> no Link.</p>
+                    <p class="item-list">Possui opção de selecionar <b>cliente</b> cadastrado.</p>
+                    <p class="item-list">Permite definir <b>formas de pagamento</b> e <b>vencimento de parcelas</b>.</p>
+                    <p class="item-list">Facilita a rotina de estabelecimentos e vendedores que precisam de uma <b>solução móvel</b> para <b>realizar pedidos</b>.</p>
+                    <p class="item-list">Disponível para smartphones e tablets Android e iOS.</p>
+                    <p class="item-list">Funciona em conjunto com o sistema Link.</p>
+                    <div class="s-banner-button mt-md-4 pt-md-3">
+                        <div class="row">
+                            <div class="col-sm-12 pt-2">
+                                <a href="https://apps.apple.com/br/app/link-m%C3%B3vel/id6502641978?platform=iphone" target="_blank"><img width="200px" alt="Disponível na App Store" src="/assets/img/linksis/img-down-ios.svg"></a>
+                            </div>
+                            <div class="col-sm-12 pt-2">
+                                <a href="https://play.google.com/store/apps/details?id=br.com.cervantestecnologia.link_movel" target="_blank"><img width="200px" alt="Disponível no Google Play" src="/assets/img/linksis/img-down-android.svg"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="linkBalanco" class="list grey">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-sm-12 col-md-6 order-first">
+                <div class="image" data-aos="zoom-in-top">
+                    <a href="https://youtu.be/sSDUtMAK1dY" data-glightbox>
+                        <div class="youtubeIcon">
+                            <img src="https://cervantestecnologia.com.br/assets/images/img-appBal.png" class="" alt="">
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-6 order-last">
+                <div class="textContainer" data-aos="zoom-in-top">
+                    <h2>Link Balanço</h2>
+                    <h5 class="py-md-2" style="color: #404041;"><b>Aplicativo para contagem de estoque</b></h5>
+                    <p class="item-list"><b>Com contagem do estoque</b> através do leitor de código de barras externo via USB, manualmente ou pela câmera do dispositivo.</p>
+                    <p class="item-list">Permite <b>inserir</b>, <b>selecionar</b> ou <b>excluir</b> 1 ou mais produtos de uma única vez.</p>
+                    <p class="item-list">Permite <b>transmitir a contagem</b> diretamente do seu dispositivo para o sistema Link.</p>
+                    <p class="item-list">Funciona em conjunto com o sistema Link.</p>
+                    <div class="s-banner-button mt-md-4 pt-md-3">
+                        <div class="row">
+                            <div class="col-sm-12 pt-2">
+                                <a href="https://apps.apple.com/br/app/link-balan%C3%A7o-estoque/id1586818695?platform=iphone" target="_blank"><img width="200px" alt="Disponível na App Store" src="/assets/img/linksis/img-down-ios.svg"></a>
+                            </div>
+                            <div class="col-sm-12 pt-2">
+                                <a href="https://play.google.com/store/apps/details?id=br.com.cervantestecnologia.appbalanco" target="_blank"><img width="200px" alt="Disponível no Google Play" src="/assets/img/linksis/img-down-android.svg"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="ofertas" class="list grey">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-sm-12 col-md-6 order-last">
+                <div class="image" data-aos="zoom-in-top">
+                    <a href="https://youtu.be/AmQFDoRj-0E" data-glightbox>
+                        <div class="youtubeIcon">
+                            <img height="" src="https://cervantestecnologia.com.br/assets/images/img-appCP.png" alt="">
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-6 order-first">
+                <div class="textContainer" data-aos="zoom-in-top">
+                    <h2>Consulta Preço</h2>
+                    <h5 class="py-md-2" style="color: #404041;"><b>Aplicativo para consulta dos preços de mercadorias em gôndolas de lojas e mercados.</b></h5>
+                    <p class="item-list">Disponível para Windows, Android (tablets e terminais de consulta) e iPadOS.</p>
+                    <p class="item-list">Deve ser combinado com um leitor de código de barras.</p>
+                    <p class="item-list">Mostra <b>preço</b>, <b>foto</b> e <b>descrição</b> conforme cadastro do produto.</p>
+                    <p class="item-list">Opção de colocar <b>imagens promocionais</b> na tela de consulta.</p>
+                    <p class="item-list"><b>Atualização instantânea</b> com as informações cadastrados no sistema ERP.</p>
+                    <p class="item-list">Funciona em conjunto com o sistema Link.</p>
+                    <div class="s-banner-button mt-md-4 pt-md-3">
+                        <div class="row">
+                            <div class="col-sm-12 pt-2">
+                                <a href="https://play.google.com/store/apps/details?id=br.com.cervantestecnologia.consulta_preco_app" target="_blank"><img width="200px" alt="Disponível no Google Play" src="/assets/img/linksis/img-down-android.svg"></a>
+                            </div>
+                            <div class="col-sm-12 pt-2">
+                                <a href="https://apps.apple.com/br/app/consulta-pre%C3%A7o-app/id6744981823" target="_blank"><img width="200px" alt="Disponível na App Store" src="/assets/img/linksis/img-down-ios.svg"></a>
+                            </div>
+                            <div class="col-sm-12 pt-2">
+                                <a href="https://portal-download-public-storage.s3.sa-east-1.amazonaws.com/Consulta%20Preco/Consulta%20Preco.exe" target="_blank"><img width="200px" alt="Disponível para Windows" src="/assets/img/linksis/img-down-windows.svg"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="ofertas" class="list grey">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-sm-12 col-md-6 order-first">
+                <div class="image" data-aos="zoom-in-top">
+                    <img height="" src="/assets/img/linksis/img-atendimento.png" alt="">
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-6 order-last">
+                <div class="textContainer" data-aos="zoom-in-top">
+                    <h2>PDV para bares e restaurantes</h2>
+                    <h5 class="py-md-2" style="color: #404041;"><b>Com controle de atendimento por mesas ou comandas</b></h5>
+                    <p class="item-list">Controle de pedidos por <b>mesas ou comandas</b>.</p>
+                    <p class="item-list">Com o <b>Multisabores</b> é possível acrescentar vários sabores em um produto.</p>
+                    <p class="item-list">Opção de criar <b>Combos</b> com 2 ou mais produtos. Ex: Lanche + bebida.</p>
+                    <p class="item-list">Envio de pedidos para <b>pontos de impressão</b>. Ex: para a cozinha.</p>
+                    <p class="item-list"><b>Divisão do pagamento</b> por cliente ou pedido, além de <b>controle de taxas</b>. Ex: Comissão.</p>
+                    <p class="item-list"><b>Controle de Delivery</b> com cadastro de entregador (motoboy).</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="ofertas" class="list grey">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-sm-12 col-md-6 order-last">
+                <div class="image" data-aos="zoom-in-top">
+                    <a href="https://youtu.be/QpYVPWg9mDc" data-glightbox>
+                        <div class="youtubeIcon">
+                            <img height="" src="https://cervantestecnologia.com.br/assets/images/img-appMC.png" alt="">
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-6 order-first">
+                <div class="textContainer" data-aos="zoom-in-top">
+                    <h2>Monitor de Cozinha</h2>
+                    <h5 class="py-md-2" style="color: #404041;"><b>Aplicativo para gerenciar o preparo dos pedidos</b></h5>
+                    <p class="item-list">Para computador, tablet e iPad <b>dentro da cozinha</b>, substituindo o pedido no papel.</p>
+                    <p class="item-list">Recebe os pedidos dos módulos <b>Delivery</b> e <b>Atendimento</b>.</p>
+                    <p class="item-list"><b>Organiza os pedidos em cards</b> com informações da plataforma onde foi realizado, atendente e tempo decorrente do preparo.</p>
+                    <p class="item-list">Mostra <b>observações individuais do item</b> e também <b>observações gerais do pedido</b>.</p>
+                    <p class="item-list">Exibe detalhes dos itens com <b>imagem</b>, <b>descrição</b>, <b>ingredientes</b> e <b>modo de preparo</b>.</p>
+                    <p class="item-list">Exibe atualizações no pedido <b>automaticamente</b>.</p>
+                    <p class="item-list">Funciona em conjunto com o sistema Link.</p>
+                    <div class="s-banner-button mt-md-4 pt-md-3">
+                        <div class="row">
+                            <div class="col-sm-12 pt-2">
+                                <a href="https://play.google.com/store/apps/details?id=br.com.cervantestecnologia.monitor_de_cozinha" target="_blank"><img width="200px" alt="Disponível no Google Play" src="/assets/img/linksis/img-down-android.svg"></a>
+                            </div>
+                            <div class="col-sm-12 pt-2">
+                                <a href="https://apps.apple.com/br/app/monitor-de-cozinha/id6738387087" target="_blank"><img width="200px" alt="Disponível na App Store" src="/assets/img/linksis/img-down-ios.svg"></a>
+                            </div>
+                            <div class="col-sm-12 pt-2">
+                                <a href="https://portal-download-public-storage.s3.sa-east-1.amazonaws.com/Monitor%20de%20Cozinha/Monitor%20de%20Cozinha.exe" target="_blank"><img width="200px" alt="Disponível para Windows" src="/assets/img/linksis/img-down-windows.svg"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="ofertas" class="list grey">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-sm-12 col-md-6 order-first">
+                <div class="image" data-aos="zoom-in-top">
+                    <a href="https://youtu.be/2xnVrB6ApVc" data-glightbox>
+                        <div class="youtubeIcon">
+                            <img height="" src="https://cervantestecnologia.com.br/assets/images/img-appPA.png" alt="">
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-6 order-last">
+                <div class="textContainer" data-aos="zoom-in-top">
+                    <h2>Pesagem Automática</h2>
+                    <h5 class="py-md-2" style="color: #404041;"><b>Aplicativo para o cliente pesar o prato em buffet a quilo</b></h5>
+                    <p class="item-list">Para computador ou tablet que fica <b>junto à balança</b> do restaurante.</p>
+                    <p class="item-list">Após visualizar peso e preço no monitor, <b>o cliente retira sua comanda</b>.</p>
+                    <p class="item-list">Não há necessidade de um colaborador dedicado à balança.</p>
+                    <p class="item-list"><b>Configurações de preços</b> do buffet.</p>
+                    <p class="item-list">Impressão personalizada na comanda para marcar itens que são pedidos posteriormente na mesa. Exemplo: Bebidas.</p>
+                    <p class="item-list"><b>Envio automático</b> do consumo ao sistema.</p>
+                    <p class="item-list">Funciona em conjunto com o sistema Link.</p>
+                    <div class="s-banner-button mt-md-4 pt-md-3">
+                        <div class="row">
+                            <div class="col-sm-12 pt-2">
+                                <a href="https://play.google.com/store/apps/details?id=br.com.cervantestecnologia.pesagem_automatica" target="_blank"><img width="200px" alt="Disponível no Google Play" src="/assets/img/linksis/img-down-android.svg"></a>
+                            </div>
+                            <div class="col-sm-12 pt-2">
+                                <a href="https://portal-download-public-storage.s3.sa-east-1.amazonaws.com/Pesagem%20Automatica/Pesagem%20Automatica.exe" target="_blank"><img width="200px" alt="Disponível para Windows" src="/assets/img/linksis/img-down-windows.svg"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="linkBalanco" class="list grey">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-sm-12 col-md-6 order-last">
+                <div class="image" data-aos="zoom-in-top">
+                    <a href="https://youtu.be/hHOizmTKzp0" data-glightbox>
+                        <div class="youtubeIcon">
+                            <img src="https://cervantestecnologia.com.br/assets/images/img-appGarcom.png" class="" alt="">
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-6 order-first">
+                <div class="textContainer" data-aos="zoom-in-top">
+                    <h2>Link Garçom</h2>
+                    <h5 class="py-md-2" style="color: #404041;"><b>Aplicativo para atendimento em bares e restaurantes</b></h5>
+                    <p class="item-list">Auxilia no atendimento à mesas e clientes, sendo <b>totalmente integrado ao Link</b>.</p>
+                    <p class="item-list">Controle de pedidos e gerenciamento de <b>mesas e comandas</b>.</p>
+                    <p class="item-list">Adição de <b>complementos</b> aos produtos e <b>observações</b> aos pedidos.</p>
+                    <p class="item-list">Envio do pedido direto para <b>pontos de impressão</b>.</p>
+                    <p class="item-list">Funciona em conjunto com o sistema Link.</p>
+                    <div class="s-banner-button mt-md-4 pt-md-3">
+                        <div class="row">
+                            <div class="col-sm-12 pt-2">
+                                <a href="https://apps.apple.com/br/app/link-gar%C3%A7om/id1626904261?platform=iphone" target="_blank"><img width="200px" alt="Disponível na App Store" src="/assets/img/linksis/img-down-ios.svg"></a>
+                            </div>
+                            <div class="col-sm-12 pt-2">
+                                <a href="https://play.google.com/store/apps/details?id=br.com.cervantes.linkgarcom" target="_blank"><img width="200px" alt="Disponível no Google Play" src="/assets/img/linksis/img-down-android.svg"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="ofertas" class="list grey">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-sm-12 col-md-6 order-first">
+                <div class="image" data-aos="zoom-in-top">
+                    <a href="https://youtu.be/NoTC3IjZrFc" data-glightbox>
+                        <div class="youtubeIcon">
+                            <img height="" src="https://cervantestecnologia.com.br/assets/images/img-appAA.png" alt="">
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-6 order-last">
+                <div class="textContainer" data-aos="zoom-in-top">
+                    <h2>Link Autoatendimento</h2>
+                    <h5 class="py-md-2" style="color: #404041;"><b>Aplicativo para pedido diretamente da mesa</b></h5>
+                    <p class="item-list">Para tablets que ficam na mesa dos bares e restaurantes.</p>
+                    <p class="item-list">O cliente consegue ver os produtos e pedir diretamente da mesa.</p>
+                    <p class="item-list">Produtos com <b>foto, preço, descrição e complementos</b>.</p>
+                    <p class="item-list"><b>Apenas produtos selecionados</b> vão para o Link AutoAtendimento.</p>
+                    <p class="item-list">Tela com o <b>resumo dos pedidos</b> e <b>divisão da conta</b> por pessoa.</p>
+                    <p class="item-list">Duas opções de <b>temas</b>.</p>
+                    <div class="s-banner-button mt-md-4 pt-md-3">
+                        <div class="row">
+                            <div class="col-sm-12 pt-2">
+                                <a href="https://play.google.com/store/apps/details?id=br.com.cervantestecnologia.linkautoatendimento" target="_blank"><img width="200px" alt="Disponível no Google Play" src="/assets/img/linksis/img-down-android.svg"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="separador grey"></div>
+
+<!-- ARKEflow CTA -->
+<section class="lk-cta">
+  <div class="container">
+    <h2>Quer saber mais sobre o LinkSis?</h2>
+    <p>Fale com a equipe ARKEflow e saiba como podemos implantar esta solução para você.</p>
+    <a href="https://www.arkeflow.com.br" class="lk-cta-btn">Fale conosco →</a>
+  </div>
+</section>
+
+<div class="separador grey"></div>
+
+<section id="ofertas" class="list grey">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-sm-12 col-md-6 order-last">
+                <div class="image" data-aos="zoom-in-top">
+                    <a href="https://youtu.be/MzvLQCIV69o" data-glightbox>
+                        <div class="youtubeIcon">
+                            <img height="" src="https://cervantestecnologia.com.br/assets/images/img-appCE.png" alt="">
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-6 order-first">
+                <div class="textContainer" data-aos="zoom-in-top">
+                    <h2>Conecta Entregador</h2>
+                    <h5 class="py-md-2" style="color: #404041;"><b>Aplicativo para controle de entregas.</b></h5>
+                    <p class="item-list">Visualização do <b>pedido</b> e <b>rota para entrega</b>.</p>
+                    <p class="item-list">Vinculável à <b>mais de um estabelecimento</b>.</p>
+                    <p class="item-list">Cobrança por <b>Pix</b>.</p>
+                    <p class="item-list"><b>Finalização</b> pelo aplicativo.</p>
+                    <p class="item-list"><b>Acompanhamento</b> de entrega direto do sistema.</p>
+                    <div class="s-banner-button mt-md-4 pt-md-3">
+                        <div class="row">
+                            <div class="col-sm-12 pt-2">
+                                <a href="https://play.google.com/store/apps/details?id=br.com.cervantestecnologia.conecta_entregador_app" target="_blank"><img width="200px" alt="Disponível no Google Play" src="/assets/img/linksis/img-down-android.svg"></a>
+                            </div>
+                            <div class="col-sm-12 pt-2">
+                                <a href="https://apps.apple.com/br/app/conecta-entregador/id6748468287" target="_blank"><img width="200px" alt="Disponível na App Store" src="/assets/img/linksis/img-down-ios.svg"></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="ofertas" class="list grey">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-sm-12 col-md-6 order-first">
+                <div class="image" data-aos="zoom-in-top">
+                    <a href="https://youtu.be/z1KAM21stmg" data-glightbox>
+                        <div class="youtubeIcon">
+                            <img height="" src="https://cervantestecnologia.com.br/assets/images/img-catalogo.png" alt="">
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-6 order-last">
+                <div class="textContainer" data-aos="zoom-in-top">
+                    <h2>Catálogo Online</h2>
+                    <h5 class="py-md-2" style="color: #404041;"><b>Página para pedidos de produtos via delivery, retirada e consumo no local.</b></h5>
+                    <p class="item-list">Banner, cores e logo <b>personalizáveis</b>.</p>
+                    <p class="item-list"><b>Apenas produtos selecionados</b> vão para o Catálogo Online.</p>
+                    <p class="item-list">Sincronia de <b>produtos multissabores</b>.</p>
+                    <p class="item-list">Pedidos realizados no Catálogo vão para o Link e, se desejar, para o <b>WhatsApp do estabelecimento</b>.</p>
+                    <p class="item-list">Cadastro de <b>Taxas de entrega</b>.</p>
+                    <p class="item-list">Com opção de pagamento antecipado via <b>Cartão de crédito</b> e <b>Pix</b>.</p>
+                    <p>Veja uma <a href="https://cervanteslojamodelo.comercio.net.br" target="_blank">loja modelo</a>.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="ofertas" class="list grey">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-sm-12 col-md-6 order-last">
+                <div class="image" data-aos="zoom-in-top">
+                    <a href="https://youtu.be/QZEMZinIsEc" data-glightbox>
+                        <div class="youtubeIcon">
+                            <img height="" src="https://cervantestecnologia.com.br/assets/images/img-menu-digital.png" alt="">
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-6 order-first">
+                <div class="textContainer" data-aos="zoom-in-top">
+                    <h2>Menu Digital</h2>
+                    <h5 class="py-md-2" style="color: #404041;"><b>Página para cardápio e pedidos dentro do estabelecimento</b></h5>
+                    <p class="item-list">Com <b>QR Code</b>, para acesso ao Menu e realização de pedidos, <b>vinculado à mesa ou à comanda</b>.</p>
+                    <p class="item-list">O cliente utiliza o <b>próprio smartphone</b> para acessar a página.</p>
+                    <p class="item-list">Cardápio do estabelecimento <b>sempre atualizado</b>.</p>
+                    <p class="item-list"><b>Apenas produtos selecionados</b> vão para o Menu Digital.</p>
+                    <p class="item-list">Banner, cores e logo <b>personalizáveis</b>.</p>
+                    <p>Veja um exemplo do <a href="https://cervanteslojamodelo.menudigital.net.br" target="_blank">Menu Digital</a>.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="ofertas" class="list grey">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-sm-12 col-md-6 order-first">
+                <div class="image" data-aos="zoom-in-top">
+                    <a href="https://youtu.be/r2PGqN66zjk" data-glightbox>
+                        <div class="youtubeIcon">
+                            <img height="" src="https://cervantestecnologia.com.br/assets/images/img-linkWeb.png" alt="">
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-6 order-last">
+                <div class="textContainer" data-aos="zoom-in-top">
+                    <h2>Link Web</h2>
+                    <h5 class="py-md-2" style="color: #404041;"><b>Sistema para visualizar informações do Link direto do navegador</b></h5>
+                    <p class="item-list">Visualização de <b>contas a Pagar/Receber</b> e <b>estoque de produtos</b>.</p>
+                    <p class="item-list">Registro de <b>inventário</b> e <b>sugestão de compras</b>.</p>
+                    <p class="item-list">Exportação em <b>arquivo XML</b>.</p>
+                    <p class="item-list">Relatórios de <b>Curva ABC</b>, <b>Evolução de vendas</b> e diversos outros.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="ofertas" class="list white">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-sm-12 col-md-6 order-last">
+                <div class="image" data-aos="zoom-in-top">
+                    <a href="https://youtu.be/cBrqzeNPlow" data-glightbox>
+                        <div class="youtubeIcon">
+                            <img height="" src="https://cervantestecnologia.com.br/assets/images/img-PagInt.png" alt="">
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-6 order-first">
+                <div class="textContainer" data-aos="zoom-in-top">
+                    <h2>Pagamento Integrado</h2>
+                    <h5 class="py-md-2" style="color: #404041;"><b>Aplicativo para smart POS que integra a venda ao pagamento</b></h5>
+                    <p class="item-list">Processo de venda e pagamento totalmente integrado e automatizado.</p>
+                    <p class="item-list">Preenchimento automático das informações do pagamento nos documentos fiscais.</p>
+                    <p class="item-list">Disponível nas principais adquirentes e equipamentos POS do mercado.</p>
+                    <p class="item-list">Possibilidade de integrar mais de um PDV por maquininha.</p>
+                    <p class="item-list">Alternativa ao TEF tradicional.</p>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="adquirentes-logo d-flex flex-wrap justify-content-center">
+                <img height="25px" width="" src="/assets/img/linksis/logo-azulzinha.svg" alt="">
+                <img height="25px" width="" src="/assets/img/linksis/logo-bin.svg" alt="">
+                <img height="25px" width="" src="/assets/img/linksis/logo-cielo.svg" alt="">
+                <img height="25px" width="" src="/assets/img/linksis/logo-clover.svg" alt="">
+                <img height="25px" width="" src="/assets/img/linksis/logo-getnet.svg" alt="">
+                <img height="25px" width="" src="/assets/img/linksis/logo-pagbank.svg" alt="">
+                <img height="25px" width="" src="/assets/img/linksis/logo-picpay.svg" alt="">
+                <img height="25px" width="" src="/assets/img/linksis/logo-rede.svg" alt="">
+                <img height="25px" width="" src="/assets/img/linksis/logo-safrapay.svg" alt="">
+                <img height="25px" width="" src="/assets/img/linksis/logo-sicredi.svg" alt="">
+                <img height="25px" width="" src="/assets/img/linksis/logo-stone.svg" alt="">
+                <img height="25px" width="" src="/assets/img/linksis/logo-vero.svg" alt="">
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="ofertas" class="list white">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-sm-12 col-md-6 order-first">
+                <div class="image" data-aos="zoom-in-top">
+                    <a href="https://youtu.be/MJ6bmSYUbsg" data-glightbox>
+                        <div class="youtubeIcon">
+                            <img height="" src="https://cervantestecnologia.com.br/assets/images/img-OrdPag.png" alt="">
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-6 order-first">
+                <div class="textContainer" data-aos="zoom-in-top">
+                    <h2>Ordem de Pagamento</h2>
+                    <h5 class="py-md-2" style="color: #404041;"><b>Aplicativo para gestão de múltiplos pagamentos na smart POS</b></h5>
+                    <p class="item-list">As ordens de pagamento são recebidas na maquininha e o operador faz a cobrança onde e quando quiser.</p>
+                    <p class="item-list">Permite conferir detalhes como itens, quantidades e valores antes de realizar a cobrança.</p>
+                    <p class="item-list">Pode ser utilizado por entregadores, garçons, e outros que realizem cobranças à clientes.</p>
+                    <p class="item-list">Disponível nas principais adquirentes e equipamentos POS do mercado.</p>
+                    <p class="item-list">Funciona integrado ao sistema Link e Link Garçom.</p>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="adquirentes-logo d-flex flex-wrap justify-content-center">
+                <img height="25px" width="" src="/assets/img/linksis/logo-azulzinha.svg" alt="">
+                <img height="25px" width="" src="/assets/img/linksis/logo-bin.svg" alt="">
+                <img height="25px" width="" src="/assets/img/linksis/logo-cielo.svg" alt="">
+                <img height="25px" width="" src="/assets/img/linksis/logo-clover.svg" alt="">
+                <img height="25px" width="" src="/assets/img/linksis/logo-getnet.svg" alt="">
+                <img height="25px" width="" src="/assets/img/linksis/logo-pagbank.svg" alt="">
+                <img height="25px" width="" src="/assets/img/linksis/logo-picpay.svg" alt="">
+                <img height="25px" width="" src="/assets/img/linksis/logo-rede.svg" alt="">
+                <img height="25px" width="" src="/assets/img/linksis/logo-safrapay.svg" alt="">
+                <img height="25px" width="" src="/assets/img/linksis/logo-sicredi.svg" alt="">
+                <img height="25px" width="" src="/assets/img/linksis/logo-stone.svg" alt="">
+                <img height="25px" width="" src="/assets/img/linksis/logo-vero.svg" alt="">
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="separatorSection white" id="appBalanco">
+    <div class="container" data-aos="zoom-in-top">
+        <h1>Integrações</h1>
+    </div>
+</section>
+
+<section id="ofertas" class="list white">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-sm-12 col-md-6 order-first">
+                <div class="image" data-aos="zoom-in-top">
+                    <img height="" src="/assets/img/linksis/img-integra-ifood.png" alt="">
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-6 order-last">
+                <div class="textContainer" data-aos="zoom-in-top">
+                    <h2>Integração com a plataforma de delivery iFood</h2>
+                    <p class="item-list">Os produtos do sistema Link agora no <b>iFood</b>.</p>
+                    <p class="item-list">Informações do cliente e do pedido, como <b>nome</b>, <b>local</b>, <b>horário</b> e <b>pagamento</b>.</p>
+                    <p class="item-list">Visualização dos <b>complementos</b> vindos no pedido.</p>
+                    <p class="item-list">Sincronia também de <b>produtos multissabores</b>.</p>
+                    <p class="item-list">Visualização de <b>Cupons de desconto</b> vindos no pedido.</p>
+                    <p class="item-list">Gestão do <b>status de andamento</b> do pedido.</p>
+                    <p class="item-list">Com opção de <b>entrega ou retirada</b> do pedido no local.</p>
+                    <p class="item-list"><b>Preços diferentes</b> para a plataforma.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="ofertas" class="list white">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-sm-12 col-md-6 order-last">
+                <div class="image" data-aos="zoom-in-top">
+                    <img height="" src="/assets/img/linksis/img-integra-tray.png" alt="">
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-6 order-first">
+                <div class="textContainer" data-aos="zoom-in-top">
+                    <h2>Integração com a plataforma de e-commerce Tray</h2>
+                    <p class="item-list">Os produtos do sistema Link agora na loja <b>Tray</b>.</p>
+                    <p class="item-list">Sincronia do cadastro dos produtos com <b>imagem</b>, <b>grupo</b>, <b>subgrupo</b> e <b>marca</b>.</p>
+                    <p class="item-list">Definição se é <b>produto físico</b> ou <b>infoproduto</b> (virtual).</p>
+                    <p class="item-list">Emissão e transmissão de <b>Nota Fiscal com base na venda</b>.</p>
+                    <p class="item-list">Lançamento dos pagamentos de pedidos realizados pela loja Tray no <b>financeiro do Link</b>.</p>
+                    <p class="item-list"><b>Preços diferentes</b> para a plataforma.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="separatorSection grey">
+    <div class="container" data-aos="zoom-in-top">
+        <h1>Funcionalidades</h1>
+    </div>
+</section>
+
+<section id="cardsVideoPublicitario" class="grey">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6 col-md-4">
+                <div class="card" data-aos="zoom-in-top">
+                    <div class="card-body">
+                        <div class="card-title">
+                            <img src="/assets/img/linksis/icon-func-01.png" alt="">
+                        </div>
+                        <h6 class="card-subtitle">Cadastros</h6>
+                        <p>Cadastros automáticos, gerência de estoque inteligente e multilojas.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-4">
+                <div class="card" data-aos="zoom-in-top">
+                    <div class="card-body">
+                        <div class="card-title">
+                            <img src="/assets/img/linksis/icon-func-02.png" alt="">
+                        </div>
+                        <h6 class="card-subtitle">Finanças</h6>
+                        <p>Controle financeiro e contábil completo.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-4">
+                <div class="card" data-aos="zoom-in-top">
+                    <div class="card-body">
+                        <div class="card-title">
+                            <img src="/assets/img/linksis/icon-func-03.png" alt="">
+                        </div>
+                        <h6 class="card-subtitle">Tributações</h6>
+                        <p>Apurações tributárias, homologado no PAF-ECF, SPED Fiscal e Contribuições.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-4">
+                <div class="card" data-aos="zoom-in-top">
+                    <div class="card-body">
+                        <div class="card-title">
+                            <img src="/assets/img/linksis/icon-func-04.png" alt="">
+                        </div>
+                        <h6 class="card-subtitle">Documentos Fiscais</h6>
+                        <p>NFC-e, NF-e, NFS-e, CF-e (SAT e MF-e), MDF-e e ECF (Cupom Fiscal).</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-4">
+                <div class="card" data-aos="zoom-in-top">
+                    <div class="card-body">
+                        <div class="card-title">
+                            <img src="/assets/img/linksis/icon-func-05.png" alt="">
+                        </div>
+                        <h6 class="card-subtitle">Boletos</h6>
+                        <p>Emissão de boletos e integração bancária.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-4">
+                <div class="card" data-aos="zoom-in-top">
+                    <div class="card-body">
+                        <div class="card-title">
+                            <img src="/assets/img/linksis/icon-func-06.png" alt="">
+                        </div>
+                        <h6 class="card-subtitle">TEF</h6>
+                        <p>PDV homologado pela Secretaria da Fazenda, com TEF integrado.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="separatorSection grey" id="disponibilizamos">
+    <div class="container" data-aos="zoom-in-top">
+        <h1>Benefícios</h1>
+    </div>
+</section>
+
+<section id="disponibilizamosParaParceiros" class="list grey">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-sm-12 col-md-6 order-last">
+                <div class="image" data-aos="zoom-in-top">
+                    <img src="/assets/img/linksis/img-performance.png" alt="">
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-6 order-first">
+                <div class="textContainer" data-aos="zoom-in-top">
+                    <h2>Performance</h2>
+                    <p>O Sistema Link não exige um Super computador. É instalável em um computador com configurações simples ou até mesmo naquele notebook que está parado.</p>
+                </div>
+            </div>
+        </div>
+        <div class="row align-items-center">
+            <div class="col-sm-12 col-md-6">
+                <div class="image" data-aos="zoom-in-top">
+                    <img src="/assets/img/linksis/img-confiabilidade.png" alt="">
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-6">
+                <div class="textContainer" data-aos="zoom-in-top">
+                    <h2>Confiabilidade</h2>
+                    <p>Um sistema testado, consolidado e elogiado pelos usuários. Tenha certeza de estar oferecendo um produto que não vai decepcionar seu cliente.</p>
+                </div>
+            </div>
+        </div>
+        <div class="row align-items-center">
+            <div class="col-sm-12 col-md-6 order-last">
+                <div class="image" data-aos="zoom-in-top">
+                    <img src="/assets/img/linksis/img-atualizacao.png" alt="">
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-6 order-first">
+                <div class="textContainer" data-aos="zoom-in-top">
+                    <h2>Atualização</h2>
+                    <p>Uma vez com a licença em dia, você e seus clientes têm acesso à todas as modificações e à versão mais atualizada do sistema, sem cobranças extras por isso.</p>
+                </div>
+            </div>
+        </div>
+        <div class="row align-items-center">
+            <div class="col-sm-12 col-md-6">
+                <div class="image" data-aos="zoom-in-top">
+                    <img src="/assets/img/linksis/img-seguranca.png" alt="">
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-6">
+                <div class="textContainer" data-aos="zoom-in-top">
+                    <h2>Segurança</h2>
+                    <p>Senhas de acesso, controle de usuários, logs, backup, controle de tolerância para licenças vencidas entre outras medidas que tornam um sistema mais seguro.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="separador grey"></div>
+
+<!-- ARKEflow CTA -->
+<section class="lk-cta">
+  <div class="container">
+    <h2>Quer saber mais sobre o LinkSis?</h2>
+    <p>Fale com a equipe ARKEflow e saiba como podemos implantar esta solução para você.</p>
+    <a href="https://www.arkeflow.com.br" class="lk-cta-btn">Fale conosco →</a>
+  </div>
+</section>
+
+<div class="separador grey"></div>
+
+<section class="separatorSection grey">
+    <div class="container" data-aos="zoom-in-top">
+        <h1>Segmentos atendidos</h1>
+    </div>
+</section>
+
+<section id="cardSegmentos" class="grey">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3 col-md-2">
+                <div class="card" data-aos="zoom-in-top">
+                    <div class="card-body">
+                        <div class="card-title"><img src="/assets/img/linksis/icon-vestuario.png" alt=""></div>
+                        <h6 class="card-subtitle">Vestuário</h6>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3 col-md-2">
+                <div class="card" data-aos="zoom-in-top">
+                    <div class="card-body">
+                        <div class="card-title"><img src="/assets/img/linksis/icon-calcados.png" alt=""></div>
+                        <h6 class="card-subtitle">Calçados</h6>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3 col-md-2">
+                <div class="card" data-aos="zoom-in-top">
+                    <div class="card-body">
+                        <div class="card-title"><img src="/assets/img/linksis/icon-cosmeticos.png" alt=""></div>
+                        <h6 class="card-subtitle">Cosméticos</h6>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3 col-md-2">
+                <div class="card" data-aos="zoom-in-top">
+                    <div class="card-body">
+                        <div class="card-title"><img src="/assets/img/linksis/icon-perfumarias.png" alt=""></div>
+                        <h6 class="card-subtitle">Perfumarias</h6>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3 col-md-2">
+                <div class="card" data-aos="zoom-in-top">
+                    <div class="card-body">
+                        <div class="card-title"><img src="/assets/img/linksis/icon-oticas.png" alt=""></div>
+                        <h6 class="card-subtitle">Óticas</h6>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-2">
+                <div class="card" data-aos="zoom-in-top">
+                    <div class="card-body">
+                        <div class="card-title"><img src="/assets/img/linksis/icon-papelarias.png" alt=""></div>
+                        <h6 class="card-subtitle">Papelarias</h6>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3 col-md-2">
+                <div class="card" data-aos="zoom-in-top">
+                    <div class="card-body">
+                        <div class="card-title"><img src="/assets/img/linksis/icon-padarias.png" alt=""></div>
+                        <h6 class="card-subtitle">Padarias</h6>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3 col-md-2">
+                <div class="card" data-aos="zoom-in-top">
+                    <div class="card-body">
+                        <div class="card-title"><img src="/assets/img/linksis/icon-lancherias.png" alt=""></div>
+                        <h6 class="card-subtitle">Lancherias</h6>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3 col-md-2">
+                <div class="card" data-aos="zoom-in-top">
+                    <div class="card-body">
+                        <div class="card-title"><img src="/assets/img/linksis/icon-restaurantes.png" alt=""></div>
+                        <h6 class="card-subtitle">Restaurantes</h6>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-2">
+                <div class="card" data-aos="zoom-in-top">
+                    <div class="card-body">
+                        <div class="card-title"><img src="/assets/img/linksis/icon-super.png" alt=""></div>
+                        <h6 class="card-subtitle">Supermercados</h6>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-2">
+                <div class="card" data-aos="zoom-in-top">
+                    <div class="card-body">
+                        <div class="card-title"><img src="/assets/img/linksis/icon-acougues.png" alt=""></div>
+                        <h6 class="card-subtitle">Açougues</h6>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-2">
+                <div class="card" data-aos="zoom-in-top">
+                    <div class="card-body">
+                        <div class="card-title"><img src="/assets/img/linksis/icon-produtos.png" alt=""></div>
+                        <h6 class="card-subtitle">Produtos naturais</h6>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-2">
+                <div class="card" data-aos="zoom-in-top">
+                    <div class="card-body">
+                        <div class="card-title"><img src="/assets/img/linksis/icon-ferragens.png" alt=""></div>
+                        <h6 class="card-subtitle">Ferragens</h6>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-2">
+                <div class="card" data-aos="zoom-in-top">
+                    <div class="card-body">
+                        <div class="card-title"><img src="/assets/img/linksis/icon-tintas.png" alt=""></div>
+                        <h6 class="card-subtitle">Loja de tintas</h6>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-2">
+                <div class="card" data-aos="zoom-in-top">
+                    <div class="card-body">
+                        <div class="card-title"><img src="/assets/img/linksis/icon-materiais.png" alt=""></div>
+                        <h6 class="card-subtitle">Materiais de construção</h6>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-2">
+                <div class="card" data-aos="zoom-in-top">
+                    <div class="card-body">
+                        <div class="card-title"><img src="/assets/img/linksis/icon-chaveiros.png" alt=""></div>
+                        <h6 class="card-subtitle">Chaveiros</h6>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-2">
+                <div class="card" data-aos="zoom-in-top">
+                    <div class="card-body">
+                        <div class="card-title"><img src="/assets/img/linksis/icon-bicicletarias.png" alt=""></div>
+                        <h6 class="card-subtitle">Bicicletarias</h6>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-2">
+                <div class="card" data-aos="zoom-in-top">
+                    <div class="card-body">
+                        <div class="card-title"><img src="/assets/img/linksis/icon-autopecas.png" alt=""></div>
+                        <h6 class="card-subtitle">Autopeças</h6>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-3 col-md-2">
+                <div class="card" data-aos="zoom-in-top">
+                    <div class="card-body">
+                        <div class="card-title"><img src="/assets/img/linksis/icon-floriculturas.png" alt=""></div>
+                        <h6 class="card-subtitle">Floriculturas</h6>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-2">
+                <div class="card" data-aos="zoom-in-top">
+                    <div class="card-body">
+                        <div class="card-title"><img src="/assets/img/linksis/icon-agropecuarias.png" alt=""></div>
+                        <h6 class="card-subtitle">Agropecuárias</h6>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-2">
+                <div class="card" data-aos="zoom-in-top">
+                    <div class="card-body">
+                        <div class="card-title"><img src="/assets/img/linksis/icon-pesca.png" alt=""></div>
+                        <h6 class="card-subtitle">Caça e pesca</h6>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-2">
+                <div class="card" data-aos="zoom-in-top">
+                    <div class="card-body">
+                        <div class="card-title"><img src="/assets/img/linksis/icon-moveis.png" alt=""></div>
+                        <h6 class="card-subtitle">Móveis e eletros</h6>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-6 col-md-2">
+                <div class="card" data-aos="zoom-in-top">
+                    <div class="card-body">
+                        <div class="card-title"><img src="/assets/img/linksis/icon-mais.png" alt=""></div>
+                        <h6 class="card-subtitle">Muito mais</h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ARKEflow Footer -->
+<footer class="lk-footer">
+  <div class="container">
+    <a href="https://www.arkeflow.com.br" class="lk-footer-logo">
+      <span class="arke">ARKE</span><span class="flow">flow</span>
+    </a>
+    <p class="lk-footer-copy">© 2026 ARKEflow Tech Solutions. Todos os direitos reservados.</p>
+  </div>
+</footer>
+
+<!-- JS -->
+<script src="https://cervantestecnologia.com.br/assets/bootstrap4.3.1/js/bootstrap.bundle.js"></script>
+<script src="https://cervantestecnologia.com.br/assets/js/aos.js"></script>
+<script src="https://www.youtube.com/iframe_api"></script>
+<script src="https://cervantestecnologia.com.br/assets/js/main.js?v=1782105779"></script>
+<script>
+  const lb = GLightbox({
+    selector: '*[data-glightbox]',
+    openEffect: 'fade',
+    closeEffect: 'fade',
+    plyr: {
+      config: {
+        ratio: '16:9',
+        hideControls: true
+      }
+    }
+  });
+</script>
+
+</body>
+</html>
